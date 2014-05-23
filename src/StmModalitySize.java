@@ -48,13 +48,13 @@ public class StmModalitySize extends DefaultReporter {
       if (BaseExtensionVariablesAndMethods.validModality(modality)) {
         
         if (modality.equalsIgnoreCase(Modality.ACTION.toString())) {
-          stmSize = Double.valueOf(BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getActionStmSize());
+          stmSize = Double.valueOf(BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getActionStmNodeCount());
         }
         if (modality.equalsIgnoreCase(Modality.VERBAL.toString())) {
-          stmSize = Double.valueOf(BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getVerbalStmSize());
+          stmSize = Double.valueOf(BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getVerbalStmNodeCount());
         }
         if (modality.equalsIgnoreCase(Modality.VISUAL.toString())) {
-          stmSize = Double.valueOf(BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getVisualStmSize());
+          stmSize = Double.valueOf(BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getVisualStmNodeCount());
         }
         
       }
