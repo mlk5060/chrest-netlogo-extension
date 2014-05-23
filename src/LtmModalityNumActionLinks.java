@@ -1,7 +1,6 @@
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import jchrest.architecture.Chrest;
 import jchrest.architecture.Link;
 import jchrest.architecture.Node;
 import jchrest.lib.Modality;
