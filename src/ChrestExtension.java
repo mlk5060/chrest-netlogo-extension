@@ -20,6 +20,7 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("get-ltm-modality-num-action-links", new LtmModalityNumActionLinks());
     primitiveManager.addPrimitive("get-ltm-modality-avg-depth", new LtmModalityAvgDepth());
     primitiveManager.addPrimitive("get-ltm-modality-size", new LtmModalitySize());
+    primitiveManager.addPrimitive("get-stm-modality-size", new StmModalitySize());
     primitiveManager.addPrimitive("instantiate-chrest-in-turtle", new InstantiateChrestInTurtle());
     primitiveManager.addPrimitive("recognise-and-learn-pattern", new RecogniseAndLearnPattern());
     primitiveManager.addPrimitive("recognise-pattern-and-return-patterns-of-specified-modality", new RecognisePatternAndReturnPatternsOfSpecifiedModality());
