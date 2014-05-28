@@ -3,6 +3,7 @@ import jchrest.architecture.Chrest;
 import jchrest.lib.ItemSquarePattern;
 import jchrest.lib.ListPattern;
 import jchrest.lib.Modality;
+import jchrest.lib.NumberPattern;
 import org.nlogo.api.AgentException;
 import org.nlogo.api.Context;
 import org.nlogo.api.ExtensionException;
@@ -91,6 +92,10 @@ public class BaseExtensionVariablesAndMethods {
           }
           listPattern.add(new ItemSquarePattern(minorPatternParts[0], Integer.parseInt(minorPatternParts[1]), Integer.parseInt(minorPatternParts[2])));
         }
+      }
+      
+      if (patternType.equalsIgnoreCase(PatternType.NUMBER.toString())){
+        listPattern.add(NumberPattern.create(Integer.parseInt(pattern)));
       }
     }
     else{

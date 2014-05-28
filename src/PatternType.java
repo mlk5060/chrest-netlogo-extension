@@ -4,4 +4,4 @@
  * 
  * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
  */
-public enum PatternType { ITEM_SQUARE }
+public enum PatternType { ITEM_SQUARE, NUMBER }

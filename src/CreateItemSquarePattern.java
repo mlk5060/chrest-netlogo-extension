@@ -47,6 +47,6 @@ public class CreateItemSquarePattern extends DefaultReporter{
     
     @Override
     public Object report(Argument[] args, Context context) throws ExtensionException, LogoException{
-        return new ItemSquarePattern(args[0].getString(), args[1].getIntValue(), args[2].getIntValue()).toString();
+      return new ItemSquarePattern(args[0].getString(), args[1].getIntValue(), args[2].getIntValue()).toString();
     }
 }
