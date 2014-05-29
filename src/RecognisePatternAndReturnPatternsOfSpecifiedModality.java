@@ -1,5 +1,5 @@
 
-import java.util.ListIterator;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jchrest.architecture.Node;
@@ -58,7 +58,7 @@ public class RecognisePatternAndReturnPatternsOfSpecifiedModality extends Defaul
         if (BaseExtensionVariablesAndMethods.validModality(modalitySpecified)) {
 
           if (modalitySpecified.equalsIgnoreCase(Modality.ACTION.toString())) {
-            ListIterator<Node> actions = retrievedNode.getActionLinks().listIterator();
+            Iterator<Node> actions = retrievedNode.getActionLinks().keySet().iterator();
             while (actions.hasNext()) {
               list.add(actions.next().getContents().toString());
             }
