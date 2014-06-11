@@ -8,7 +8,7 @@ Primitives Available
 | -------------------------------------------------------------	| --------------------------------------------------------------------- |	
 | associate-patterns											| Associates two patterns of any modality together accordingly.			|
 | create-item-on-square-pattern 								| Creates an "ItemOnSquare" object from a string and two integers and  
-|																| reports this object's string representation.						|
+																  reports this object's string representation.						|
 | create-number-pattern         								| Creates a "NumberPattern" object from an integer and reports this |
 |																| object's string representation.									|
 | get-add-link-time												| Reports the value that the calling turtle's "_addLinkTime" 		|
