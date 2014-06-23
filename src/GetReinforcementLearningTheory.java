@@ -7,13 +7,21 @@ import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
 import org.nlogo.api.ExtensionException;
 import org.nlogo.api.LogoException;
+import org.nlogo.api.Syntax;
 
 
 /**
- *
+ * Reports the value that the calling turtle's "_reinforcementLearningTheory" 
+ * variable is set to in its CHREST instance.
+ * 
  * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
  */
 public class GetReinforcementLearningTheory extends DefaultReporter {
+  
+  @Override
+  public Syntax getSyntax(){
+    return Syntax.reporterSyntax(new int[]{}, Syntax.StringType());
+  }
 
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {

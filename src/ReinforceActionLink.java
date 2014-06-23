@@ -13,14 +13,14 @@ import org.nlogo.api.Context;
 import org.nlogo.api.DefaultCommand;
 import org.nlogo.api.ExtensionException;
 import org.nlogo.api.LogoException;
+import org.nlogo.api.LogoList;
 import org.nlogo.api.Syntax;
 
 /**
  * Enables a calling turtle to reinforce a link from the pattern specified to 
  * the action pattern specified by an amount.
- * 
- * 
- * Three parameters must be passed when the Netlogo extension primitive that 
+ *
+ * Six parameters must be passed when the Netlogo extension primitive that 
  * invokes this class is used in a Netlogo model:
  * 
  * Param #      Data Type       Description
@@ -76,27 +76,21 @@ public class ReinforceActionLink extends DefaultCommand {
           System.out.println(parentPatternOfAssociation + " does equal " + parentNode.getContents().toString() + " and " + childPatternOfAssociation + " equals " + childNode.getContents().toString());
           System.out.println("Constructing array of variables (variablesToPass) from the list passed to this primitive to pass to Node.reinforceActionLink()...");
           
-          Iterator variablesPassed = args[5].getList().iterator();
-          Double[] variablesToPass = {};
-          int variablesToPassIndex = 0;
+          LogoList variablesList = args[5].getList();
+          Iterator variablesPassed = variablesList.iterator();
           
           while(variablesPassed.hasNext()){
             String variable = variablesPassed.next().toString();
-            
             System.out.println("Checking to see if " + variable + " matches the regex pattern '[0-9]+\\.[0-9]+'...");
-            if(variable.matches("[0-9]+\\.[0-9]+")){
-              System.out.println(variable + " does match '[0-9]+\\.[0-9]+', adding this to the 'variablesToPassIndex'...");
-              variablesToPass[variablesToPassIndex] = Double.parseDouble(variable);
+            if(!variable.matches("[0-9]+\\.[0-9]+")){
+              throw new ExtensionException("Element " + variable + " in the list passed to this primitive is not a 'Double' object." );
             }
-            else{
-              throw new ExtensionException("Element " + (variablesToPassIndex + 1) + " in the list passed to this primitive is not a 'Double' object." );
-            }
-            System.out.println("The 'variablesToPass' array now equals: " + Arrays.toString(variablesToPass));
-            variablesToPassIndex++;
           }
           
-          System.out.println("After populating the 'variablesToPass' array it is now equal to: " + Arrays.toString(variablesToPass) + "...");
-          System.out.println("Passing the 'variablesToPass' array to Node.reinforceActionLink()...");
+          System.out.println("All variables passed are of the Double data type.  Converting the list of variables to a Double array...");
+          Double[] variablesToPass = variablesList.toArray(new Double[variablesList.size()]);
+          System.out.println("The result of list to Double array conversion is: " + Arrays.toString(variablesToPass) + "...");
+          System.out.println("Passing the Double array to Node.reinforceActionLink()...");
           parentNode.reinforceActionLink(childNode, variablesToPass);
         }
       }
