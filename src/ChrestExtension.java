@@ -21,6 +21,7 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("get-ltm-modality-num-action-links", new LtmModalityNumActionLinks());
     primitiveManager.addPrimitive("get-ltm-modality-avg-depth", new LtmModalityAvgDepth());
     primitiveManager.addPrimitive("get-ltm-modality-size", new LtmModalitySize());
+    primitiveManager.addPrimitive("get-reinforcement-learning-theories", new GetReinforcementLearningTheories());
     primitiveManager.addPrimitive("get-stm-contents-by-modality", new GetStmContentsByModality());
     primitiveManager.addPrimitive("get-stm-modality-size", new StmModalitySize());
     primitiveManager.addPrimitive("instantiate-chrest-in-turtle", new InstantiateChrestInTurtle());
@@ -31,5 +32,6 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("set-add-link-time", new SetAddLinkTime());
     primitiveManager.addPrimitive("set-discrimination-time", new SetDiscriminationTime());
     primitiveManager.addPrimitive("set-familiarisation-time", new SetFamiliarisationTime());
+    primitiveManager.addPrimitive("set-reinforcement-learning-theory", new SetReinforcementLearningTheory());
   }
 }

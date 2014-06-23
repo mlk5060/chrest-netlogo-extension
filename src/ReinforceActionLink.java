@@ -1,11 +1,10 @@
 
+import java.util.Arrays;
 import java.util.Iterator;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jchrest.architecture.Chrest;
 import jchrest.architecture.Node;
-import jchrest.architecture.Stm;
 import jchrest.lib.ListPattern;
 import jchrest.lib.Modality;
 import org.nlogo.api.AgentException;
@@ -31,7 +30,9 @@ import org.nlogo.api.Syntax;
  * 3            String          The contents of the parent pattern.
  * 4            String          The type of the association's child pattern.
  * 5            String          The contents of the child pattern.
- * 6            Integer         The amount to reinforce the link by.
+ * 6            List            The variables required by the CHREST turtle's 
+ *                              reinforcement learning theory to calculate how
+ *                              much the link should be reinforced by.
  * 
  * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
  */
@@ -39,7 +40,7 @@ public class ReinforceActionLink extends DefaultCommand {
   
   @Override
   public Syntax getSyntax() {
-    return Syntax.commandSyntax(new int[]{Syntax.StringType(), Syntax.StringType(), Syntax.StringType(), Syntax.StringType(), Syntax.StringType(), Syntax.NumberType()});
+    return Syntax.commandSyntax(new int[]{Syntax.StringType(), Syntax.StringType(), Syntax.StringType(), Syntax.StringType(), Syntax.StringType(), Syntax.ListType()});
   }
 
   @Override
@@ -73,8 +74,30 @@ public class ReinforceActionLink extends DefaultCommand {
         if( parentNode.getContents().equals(parentPatternOfAssociation) && childNode.getContents().equals(childPatternOfAssociation) ){
           
           System.out.println(parentPatternOfAssociation + " does equal " + parentNode.getContents().toString() + " and " + childPatternOfAssociation + " equals " + childNode.getContents().toString());
-          System.out.println("Attempting to reinforce link...");
-          parentNode.reinforceActionLink(childNode, args[5].getIntValue());
+          System.out.println("Constructing array of variables (variablesToPass) from the list passed to this primitive to pass to Node.reinforceActionLink()...");
+          
+          Iterator variablesPassed = args[5].getList().iterator();
+          Double[] variablesToPass = {};
+          int variablesToPassIndex = 0;
+          
+          while(variablesPassed.hasNext()){
+            String variable = variablesPassed.next().toString();
+            
+            System.out.println("Checking to see if " + variable + " matches the regex pattern '[0-9]+\\.[0-9]+'...");
+            if(variable.matches("[0-9]+\\.[0-9]+")){
+              System.out.println(variable + " does match '[0-9]+\\.[0-9]+', adding this to the 'variablesToPassIndex'...");
+              variablesToPass[variablesToPassIndex] = Double.parseDouble(variable);
+            }
+            else{
+              throw new ExtensionException("Element " + (variablesToPassIndex + 1) + " in the list passed to this primitive is not a 'Double' object." );
+            }
+            System.out.println("The 'variablesToPass' array now equals: " + Arrays.toString(variablesToPass));
+            variablesToPassIndex++;
+          }
+          
+          System.out.println("After populating the 'variablesToPass' array it is now equal to: " + Arrays.toString(variablesToPass) + "...");
+          System.out.println("Passing the 'variablesToPass' array to Node.reinforceActionLink()...");
+          parentNode.reinforceActionLink(childNode, variablesToPass);
         }
       }
     } catch (AgentException ex) {
