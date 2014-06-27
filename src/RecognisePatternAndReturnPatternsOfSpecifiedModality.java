@@ -61,7 +61,7 @@ public class RecognisePatternAndReturnPatternsOfSpecifiedModality extends Defaul
           if (modalitySpecified.equalsIgnoreCase(Modality.ACTION.toString())) {
             HashMap<Node,Double> links = retrievedNode.getActionLinks();
             for(Map.Entry<Node, Double> link : links.entrySet()) {
-              list.add(link.getKey().getContents().toString() + " " + link.getValue());
+              list.add(link.getKey().getContents().toString().replaceAll("<\\s|\\s>", "") + " " + link.getValue());
             }
           }
         }
