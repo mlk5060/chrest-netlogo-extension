@@ -9,12 +9,14 @@ import org.nlogo.api.PrimitiveManager;
  */
 public class ChrestExtension extends DefaultClassManager {
 
+  //TODO: Remove the "get-action-links" primitive since the 
+  //"recognise-pattern-and-return-patterns-of-specified-modality" does the same
+  //job but can handle returning other modalities too.
   @Override
   public void load(PrimitiveManager primitiveManager) {
     primitiveManager.addPrimitive("associate-patterns", new AssociatePatterns());
     primitiveManager.addPrimitive("create-item-square-pattern", new CreateItemSquarePattern());
     primitiveManager.addPrimitive("create-number-pattern", new CreateNumberPattern());
-    primitiveManager.addPrimitive("get-action-links", new GetActionLinks());
     primitiveManager.addPrimitive("get-add-link-time", new GetAddLinkTime());
     primitiveManager.addPrimitive("get-chrest-clock", new GetChrestClock());
     primitiveManager.addPrimitive("get-discrimination-time", new GetDiscriminationTime());
