@@ -4,7 +4,6 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jchrest.architecture.Node;
-import jchrest.lib.ListPattern;
 import jchrest.lib.Modality;
 import org.nlogo.api.AgentException;
 import org.nlogo.api.Argument;
@@ -61,7 +60,10 @@ public class RecognisePatternAndReturnPatternsOfSpecifiedModality extends Defaul
           if (modalitySpecified.equalsIgnoreCase(Modality.ACTION.toString())) {
             HashMap<Node,Double> links = retrievedNode.getActionLinks();
             for(Map.Entry<Node, Double> link : links.entrySet()) {
-              list.add(link.getKey().getContents().toString().replaceAll("<\\s|\\s>", "") + " " + link.getValue());
+              LogoListBuilder actionWeightList = new LogoListBuilder();
+              String actionPattern = link.getKey().getContents().toString();
+              actionWeightList.add(actionPattern + "," + link.getValue());
+              list.add(actionWeightList.toLogoList());
             }
           }
         }
