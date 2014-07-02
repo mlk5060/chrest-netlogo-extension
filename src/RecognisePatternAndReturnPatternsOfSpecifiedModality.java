@@ -1,5 +1,6 @@
 
-import java.util.Iterator;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jchrest.architecture.Node;
@@ -56,16 +57,16 @@ public class RecognisePatternAndReturnPatternsOfSpecifiedModality extends Defaul
         Node retrievedNode = BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).recognise(BaseExtensionVariablesAndMethods.createAndPopulateListPatternWithNetlogoPrimitivePattern(args[0].getString(), args[1].getString(), args[2].getString()));
         String modalitySpecified = args[3].getString();
         if (BaseExtensionVariablesAndMethods.validModality(modalitySpecified)) {
-
           if (modalitySpecified.equalsIgnoreCase(Modality.ACTION.toString())) {
-            Iterator<Node> actions = retrievedNode.getActionLinks().keySet().iterator();
-            while (actions.hasNext()) {
-              list.add(actions.next().getContents().toString());
+            HashMap<Node,Double> links = retrievedNode.getActionLinks();
+            for(Map.Entry<Node, Double> link : links.entrySet()) {
+              LogoListBuilder actionWeightList = new LogoListBuilder();
+              String actionPattern = link.getKey().getContents().toString();
+              actionWeightList.add(actionPattern + "," + link.getValue());
+              list.add(actionWeightList.toLogoList());
             }
           }
-          
         }
-        
       }
     } catch (AgentException ex) {
       Logger.getLogger(RecognisePatternAndReturnPatternsOfSpecifiedModality.class.getName()).log(Level.SEVERE, null, ex);
