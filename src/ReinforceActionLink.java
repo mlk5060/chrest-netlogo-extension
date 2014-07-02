@@ -1,5 +1,4 @@
 
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,51 +45,26 @@ public class ReinforceActionLink extends DefaultCommand {
   @Override
   public void perform(Argument[] args, Context context) throws ExtensionException, LogoException {
     try {
-      org.nlogo.agent.World world = (org.nlogo.agent.World) context.getAgent().world();
-      System.out.println("");
-      if(world.getObserverVariableByName("TRAINING?").toString().equalsIgnoreCase("true")){
-        System.out.println("=== TURTLE " + context.getAgent().id() + " @ SIM. TIME: " + world.getObserverVariableByName("CURRENT-TRAINING-TIME").toString() + " ===");
-      }
-      else{
-        System.out.println("=== TURTLE " + context.getAgent().id() + " @ SIM. TIME: " + world.getObserverVariableByName("CURRENT-GAME-TIME").toString() + " ===");
-      }
-      
       if(BaseExtensionVariablesAndMethods.agentHasChrestInstance(context) && BaseExtensionVariablesAndMethods.validModality(args[0].getString())){
         Chrest chrestInstance = BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context);
         ListPattern parentPatternOfAssociation = BaseExtensionVariablesAndMethods.createAndPopulateListPatternWithNetlogoPrimitivePattern(args[0].getString(), args[1].getString(), args[2].getString());
         ListPattern childPatternOfAssociation = BaseExtensionVariablesAndMethods.createAndPopulateListPatternWithNetlogoPrimitivePattern(Modality.ACTION.toString(), args[3].getString(), args[4].getString());
-        System.out.println("The 'parentPatternOfAssociation' variable is set to: " + parentPatternOfAssociation.toString());
-        System.out.println("The 'childPatternOfAssociation' variable is set to: " + childPatternOfAssociation.toString());
         
-        System.out.println("Attempting to recognise " + parentPatternOfAssociation + "...");
         Node parentNode = chrestInstance.recognise(parentPatternOfAssociation);
-        System.out.println("The result of attempting to recognise " + parentPatternOfAssociation + " is: " + parentNode.getContents().toString());
-        
-        System.out.println("Attempting to recognise " + childPatternOfAssociation + "...");
         Node childNode = chrestInstance.recognise(childPatternOfAssociation);
-        System.out.println("The result of attempting to recognise " + childPatternOfAssociation + " is: " + childNode.getContents().toString());
         
-        System.out.println("Checking to see if: " + parentPatternOfAssociation + " equals " + parentNode.getContents().toString() + " and if " + childPatternOfAssociation + " equals " + childNode.getContents().toString() + "...");
         if( parentNode.getContents().equals(parentPatternOfAssociation) && childNode.getContents().equals(childPatternOfAssociation) ){
-          
-          System.out.println(parentPatternOfAssociation + " does equal " + parentNode.getContents().toString() + " and " + childPatternOfAssociation + " equals " + childNode.getContents().toString());
-          System.out.println("Constructing array of variables (variablesToPass) from the list passed to this primitive to pass to Node.reinforceActionLink()...");
-          
           LogoList variablesList = args[5].getList();
           Iterator variablesPassed = variablesList.iterator();
           
           while(variablesPassed.hasNext()){
             String variable = variablesPassed.next().toString();
-            System.out.println("Checking to see if " + variable + " matches the regex pattern '[0-9]+\\.[0-9]+'...");
             if(!variable.matches("[0-9]+\\.[0-9]+")){
               throw new ExtensionException("Element " + variable + " in the list passed to this primitive is not a 'Double' object." );
             }
           }
           
-          System.out.println("All variables passed are of the Double data type.  Converting the list of variables to a Double array...");
           Double[] variablesToPass = variablesList.toArray(new Double[variablesList.size()]);
-          System.out.println("The result of list to Double array conversion is: " + Arrays.toString(variablesToPass) + "...");
-          System.out.println("Passing the Double array to Node.reinforceActionLink()...");
           parentNode.reinforceActionLink(childNode, variablesToPass);
         }
       }
