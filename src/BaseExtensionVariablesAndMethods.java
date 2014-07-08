@@ -1,4 +1,3 @@
-
 import jchrest.architecture.Chrest;
 import jchrest.lib.ItemSquarePattern;
 import jchrest.lib.ListPattern;

@@ -1,4 +1,3 @@
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.nlogo.api.AgentException;
@@ -40,10 +39,8 @@ public class AssociatePatterns extends DefaultCommand {
   @Override
   public void perform(Argument args[], Context context) throws ExtensionException, LogoException {
     try {
-      //Check to see if the calling turtle has a CHREST instance and that the
-      //patterns passed are not empty.
       if (BaseExtensionVariablesAndMethods.agentHasChrestInstance(context)) {
-
+        
         //Construct Listpattern instances from the patterns passed then use the
         //calling turtle's CHREST instance to associate and learn them.
         BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).associateAndLearn(BaseExtensionVariablesAndMethods.createAndPopulateListPatternWithNetlogoPrimitivePattern(args[0].getString(), args[1].getString(), args[2].getString()), BaseExtensionVariablesAndMethods.createAndPopulateListPatternWithNetlogoPrimitivePattern(args[3].getString(), args[4].getString(), args[5].getString()), args[6].getIntValue());
