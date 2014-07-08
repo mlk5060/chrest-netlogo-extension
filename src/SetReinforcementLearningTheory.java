@@ -1,5 +1,6 @@
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import jchrest.architecture.Chrest;
 import jchrest.lib.ReinforcementLearning;
 import jchrest.lib.ReinforcementLearning.ReinforcementLearningTheories;
 import org.nlogo.api.AgentException;
@@ -43,8 +44,14 @@ public class SetReinforcementLearningTheory extends DefaultCommand {
         String specifiedTheory = args[0].getString();
         
         for(ReinforcementLearning.ReinforcementLearningTheories reinforcementLearningTheory : reinforcementLearningTheories){
-          if(specifiedTheory.equalsIgnoreCase(reinforcementLearningTheory.toString())){
-            BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).setReinforcementLearningTheory(reinforcementLearningTheory);
+          if(specifiedTheory.equalsIgnoreCase(reinforcementLearningTheory.toString()) || specifiedTheory.equalsIgnoreCase("null") || specifiedTheory.isEmpty() ){
+            Chrest chrestInstance = BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context);
+            if(specifiedTheory.equalsIgnoreCase("null") || specifiedTheory.isEmpty()){
+              chrestInstance.setReinforcementLearningTheory(null);
+            }
+            else{
+              chrestInstance.setReinforcementLearningTheory(reinforcementLearningTheory);
+            }
             break;
           }
         }
