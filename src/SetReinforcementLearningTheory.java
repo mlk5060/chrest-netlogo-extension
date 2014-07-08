@@ -40,19 +40,19 @@ public class SetReinforcementLearningTheory extends DefaultCommand {
   public void perform(Argument[] args, Context context) throws ExtensionException, LogoException {
     try {
       if(BaseExtensionVariablesAndMethods.agentHasChrestInstance(context)){
-        ReinforcementLearningTheories[] reinforcementLearningTheories = ReinforcementLearning.getReinforcementLearningTheories();
+        Chrest chrestInstance = BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context);
         String specifiedTheory = args[0].getString();
         
-        for(ReinforcementLearning.ReinforcementLearningTheories reinforcementLearningTheory : reinforcementLearningTheories){
-          if(specifiedTheory.equalsIgnoreCase(reinforcementLearningTheory.toString()) || specifiedTheory.equalsIgnoreCase("null") || specifiedTheory.isEmpty() ){
-            Chrest chrestInstance = BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context);
-            if(specifiedTheory.equalsIgnoreCase("null") || specifiedTheory.isEmpty()){
-              chrestInstance.setReinforcementLearningTheory(null);
-            }
-            else{
+        if(specifiedTheory.equalsIgnoreCase("null") || specifiedTheory.isEmpty()){
+          chrestInstance.setReinforcementLearningTheory(null);
+        }
+        else{
+          ReinforcementLearningTheories[] reinforcementLearningTheories = ReinforcementLearning.getReinforcementLearningTheories();
+          for(ReinforcementLearning.ReinforcementLearningTheories reinforcementLearningTheory : reinforcementLearningTheories){
+            if(specifiedTheory.equalsIgnoreCase(reinforcementLearningTheory.toString())){
               chrestInstance.setReinforcementLearningTheory(reinforcementLearningTheory);
+              break;
             }
-            break;
           }
         }
       }
