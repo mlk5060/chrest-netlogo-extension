@@ -43,10 +43,7 @@ public class SetReinforcementLearningTheory extends DefaultCommand {
         Chrest chrestInstance = BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context);
         String specifiedTheory = args[0].getString();
         
-        if(specifiedTheory.equalsIgnoreCase("null") || specifiedTheory.isEmpty()){
-          chrestInstance.setReinforcementLearningTheory(null);
-        }
-        else{
+        if(!specifiedTheory.equalsIgnoreCase("null") || !specifiedTheory.isEmpty()){
           ReinforcementLearningTheories[] reinforcementLearningTheories = ReinforcementLearning.getReinforcementLearningTheories();
           for(ReinforcementLearning.ReinforcementLearningTheories reinforcementLearningTheory : reinforcementLearningTheories){
             if(specifiedTheory.equalsIgnoreCase(reinforcementLearningTheory.toString())){
