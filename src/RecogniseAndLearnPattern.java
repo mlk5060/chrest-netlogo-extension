@@ -24,7 +24,7 @@ import org.nlogo.api.Syntax;
  * 3            String          The pattern to be recognised and/or learned.
  * 4            Number          The current Netlogo time (in milliseconds).
  * 
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liv.ac.uk>
  */
 public class RecogniseAndLearnPattern extends DefaultCommand {
 
@@ -38,7 +38,7 @@ public class RecogniseAndLearnPattern extends DefaultCommand {
 
     try {
       if (BaseExtensionVariablesAndMethods.agentHasChrestInstance(context)) {
-          BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).recogniseAndLearn(BaseExtensionVariablesAndMethods.createAndPopulateListPatternWithNetlogoPrimitivePattern(args[0].getString(), args[1].getString(), args[2].getString()), args[3].getIntValue());
+        BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).recogniseAndLearn(BaseExtensionVariablesAndMethods.createAndPopulateListPatternWithNetlogoPrimitivePattern(args[0].getString(), args[1].getString(), args[2].getString()), args[3].getIntValue());
       }
     } catch (LogoException | AgentException ex) {
       Logger.getLogger(RecogniseAndLearnPattern.class.getName()).log(Level.SEVERE, null, ex);

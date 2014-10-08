@@ -36,7 +36,7 @@ import org.nlogo.api.Syntax;
  * Netlogo list           All patterns of a specified modality associated with
  *                        the pattern that is attempted to be recognised.
  * 
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liv.ac.uk>
  */
 public class RecognisePatternAndReturnPatternsOfSpecifiedModality extends DefaultReporter {
 

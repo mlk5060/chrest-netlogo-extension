@@ -27,7 +27,7 @@ import org.nlogo.api.Syntax;
  * 6            String          Second pattern.
  * 7            Number          The current Netlogo time (in milliseconds).
  * 
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liv.ac.uk>
  */
 public class AssociatePatterns extends DefaultCommand {
 

@@ -21,7 +21,7 @@ import org.nlogo.api.Syntax;
  *                              calling turtle should take when associating two 
  *                              patterns.
  *
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liv.ac.uk>
  */
 public class SetAddLinkTime extends DefaultCommand {
   

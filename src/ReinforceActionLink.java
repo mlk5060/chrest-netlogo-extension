@@ -32,7 +32,7 @@ import org.nlogo.api.Syntax;
  *                              reinforcement learning theory to calculate how
  *                              much the link should be reinforced by.
  * 
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liv.ac.uk>
  */
 public class ReinforceActionLink extends DefaultCommand {
   

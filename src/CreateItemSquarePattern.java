@@ -36,7 +36,7 @@ import org.nlogo.api.Syntax;
  * ------------------     -----------
  * String                 The string version of the ItemSquarePattern generated.
  * 
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liv.ac.uk>
  */
 public class CreateItemSquarePattern extends DefaultReporter{
     

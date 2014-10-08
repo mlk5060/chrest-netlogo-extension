@@ -32,7 +32,7 @@ import org.nlogo.api.Syntax;
  * Double                 The cumulative number of action links in the LTM 
  *                        modality specified for the calling turtle.
  * 
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liv.ac.uk>
  */
 public class LtmModalityNumActionLinks extends DefaultReporter{
   

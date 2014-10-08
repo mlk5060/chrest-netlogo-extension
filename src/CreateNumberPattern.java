@@ -25,7 +25,7 @@ import org.nlogo.api.Syntax;
  * ------------------     -----------
  * String                 The string version of the NumberPattern generated.
  * 
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liv.ac.uk>
  */
 public class CreateNumberPattern extends DefaultReporter{
     

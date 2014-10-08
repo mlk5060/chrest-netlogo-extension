@@ -12,9 +12,11 @@ import org.nlogo.api.LogoList;
 import org.nlogo.api.Syntax;
 
 /**
- * Instantiates a mind's eye for the calling turtle.
+ * Instantiates a mind's eye for the calling turtle and returns a boolean value
+ * indicating whether the mind's eye has been instantiated for the calling 
+ * turtle (true) or not (false).
  * 
- * Three parameters must be passed when the Netlogo extension primitive that 
+ * Six parameters must be passed when the Netlogo extension primitive that 
  * invokes this class is used in a Netlogo model:
  * 
  * Param #      Data Type       Description
@@ -27,20 +29,30 @@ import org.nlogo.api.Syntax;
  *                              with comments: "turtle1Id,turtle2Id;xcor;ycor".
  *                              For patches that contain no turtles, pass 
  *                              nothing as an identifier: ";xcor;ycor".
- * 2            Number          The amount of time (in milliseconds) that the 
+ * 2            Number          The amount of time (in milliseconds) that the
+ *                              mind's eye should exist for after instantiation 
+ *                              or interaction (mind's eye lifespan).
+ * 3            Number          The amount of time (in milliseconds) that it
+ *                              takes to place a single object in the mind's eye
+ *                              during instantiation of the visual-spatial 
+ *                              field.
+ * 4            Number          The amount of time (in milliseconds) that the 
  *                              calling turtle should take when accessing the
  *                              mind's eye.
- * 3            Number          The amount of time (in milliseconds) that the 
+ * 5            Number          The amount of time (in milliseconds) that the 
  *                              calling turtle should take when moving an object
  *                              in the mind's eye.
+ * 6            Number          The current time in the Netlogo model that the
+ *                              call to this extension primitive was made (in 
+ *                              milliseconds).
  * 
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
 public class InstantiateMindsEye extends DefaultCommand {
   
   @Override
   public Syntax getSyntax(){
-    return Syntax.commandSyntax(new int[] {Syntax.ListType(),Syntax.NumberType(),Syntax.NumberType()});
+    return Syntax.commandSyntax(new int[] { Syntax.ListType(), Syntax.NumberType(), Syntax.NumberType(), Syntax.NumberType(), Syntax.NumberType(), Syntax.NumberType()});
   }
   
   @Override
@@ -59,7 +71,7 @@ public class InstantiateMindsEye extends DefaultCommand {
         }
       }
       String[] visionStringArray = {};
-      BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).createNewMindsEye(vision.toArray(visionStringArray), args[1].getIntValue(), args[2].getIntValue());
+      BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).createNewMindsEye(vision.toArray(visionStringArray), args[1].getIntValue(), args[2].getIntValue(), args[3].getIntValue(), args[4].getIntValue(), args[5].getIntValue() );
     } catch (AgentException ex) {
       Logger.getLogger(InstantiateMindsEye.class.getName()).log(Level.SEVERE, null, ex);
     }

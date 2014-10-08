@@ -12,7 +12,7 @@ import org.nlogo.api.Syntax;
  * Returns a list of all enum values from the "jchrest.lib.ReinforcementLearning"
  * class in the CHREST architecture as strings within a Netlogo list.
  * 
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liv.ac.uk>
  */
 public class GetReinforcementLearningTheories extends DefaultReporter {
   

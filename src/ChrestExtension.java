@@ -4,7 +4,7 @@ import org.nlogo.api.PrimitiveManager;
 /**
  * Primitive manager for CHREST Netlogo extension.
  * 
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
 public class ChrestExtension extends DefaultClassManager {
 
@@ -16,8 +16,10 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("associate-patterns", new AssociatePatterns());
     primitiveManager.addPrimitive("create-item-square-pattern", new CreateItemSquarePattern());
     primitiveManager.addPrimitive("create-number-pattern", new CreateNumberPattern());
+    primitiveManager.addPrimitive("minds-eye-exist?", new MindsEyeExist());
     primitiveManager.addPrimitive("get-add-link-time", new GetAddLinkTime());
-    primitiveManager.addPrimitive("get-chrest-clock", new GetChrestClock());
+    primitiveManager.addPrimitive("get-attention-clock", new GetAttentionClock());
+    primitiveManager.addPrimitive("get-learning-clock", new GetLearningClock());
     primitiveManager.addPrimitive("get-discrimination-time", new GetDiscriminationTime());
     primitiveManager.addPrimitive("get-familiarisation-time", new GetFamiliarisationTime());
     primitiveManager.addPrimitive("get-minds-eye-content", new GetMindsEyeContent());
@@ -30,6 +32,7 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("get-stm-modality-size", new StmModalitySize());
     primitiveManager.addPrimitive("instantiate-chrest-in-turtle", new InstantiateChrestInTurtle());
     primitiveManager.addPrimitive("instantiate-minds-eye", new InstantiateMindsEye());
+    primitiveManager.addPrimitive("move-objects-in-minds-eye", new MoveObjectsInMindsEye());
     primitiveManager.addPrimitive("recognise-and-learn-pattern", new RecogniseAndLearnPattern());
     primitiveManager.addPrimitive("recognise-pattern-and-return-patterns-of-specified-modality", new RecognisePatternAndReturnPatternsOfSpecifiedModality());
     primitiveManager.addPrimitive("reinforce-action-link", new ReinforceActionLink());
