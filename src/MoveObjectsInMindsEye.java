@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import jchrest.lib.MindsEyeMoveObjectException;
 import org.nlogo.api.AgentException;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
@@ -72,12 +73,12 @@ class MoveObjectsInMindsEye extends DefaultReporter {
                 movesArrayList.get(objectMoveSet).add(objectMoveContentsString);
               }
               else{
-                throw new ExtensionException("Object move specification " + objectMoveContents.toString() + " is not a string.  Please rectify.");
+                throw new AgentException("Object move specification " + objectMoveContents.toString() + " is not a string.  Please rectify.");
               }
             }
           }
           else{
-            throw new ExtensionException("The second dimension " + objectMoveSetContents.toString() + " element of the " + moves.toString() + " list is not a list.  Please rectify.");
+            throw new AgentException("The second dimension " + objectMoveSetContents.toString() + " element of the " + moves.toString() + " list is not a list.  Please rectify.");
           }
         }
         
@@ -85,6 +86,8 @@ class MoveObjectsInMindsEye extends DefaultReporter {
       }
     } catch (AgentException ex) {
       Logger.getLogger(MoveObjectsInMindsEye.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (MindsEyeMoveObjectException e){
+      throw new ExtensionException(e);
     }
     
     return movesSuccessful;
