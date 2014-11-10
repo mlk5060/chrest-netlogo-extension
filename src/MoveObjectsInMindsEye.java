@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -6,7 +5,7 @@ import jchrest.lib.MindsEyeMoveObjectException;
 import org.nlogo.api.AgentException;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
-import org.nlogo.api.DefaultReporter;
+import org.nlogo.api.DefaultCommand;
 import org.nlogo.api.ExtensionException;
 import org.nlogo.api.LogoException;
 import org.nlogo.api.LogoList;
@@ -36,18 +35,16 @@ import org.nlogo.api.Syntax;
  * 
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
-class MoveObjectsInMindsEye extends DefaultReporter {
+class MoveObjectsInMindsEye extends DefaultCommand {
 
   @Override
   public Syntax getSyntax() {
-    return Syntax.reporterSyntax(new int[]{Syntax.ListType(), Syntax.NumberType()}, Syntax.BooleanType());
+    return Syntax.commandSyntax(new int[]{Syntax.ListType(), Syntax.NumberType()});
   }
   
   
   @Override
-  public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
-    boolean movesSuccessful = false;
-    
+  public void perform(Argument[] args, Context context) throws ExtensionException, LogoException {
     try {
       if(BaseExtensionVariablesAndMethods.agentHasChrestInstance(context)){
         
@@ -73,23 +70,21 @@ class MoveObjectsInMindsEye extends DefaultReporter {
                 movesArrayList.get(objectMoveSet).add(objectMoveContentsString);
               }
               else{
-                throw new AgentException("Object move specification " + objectMoveContents.toString() + " is not a string.  Please rectify.");
+                throw new ExtensionException("Object move specification " + objectMoveContents.toString() + " is not a string.  Please rectify.");
               }
             }
           }
           else{
-            throw new AgentException("The second dimension " + objectMoveSetContents.toString() + " element of the " + moves.toString() + " list is not a list.  Please rectify.");
+            throw new ExtensionException("The second dimension " + objectMoveSetContents.toString() + " element of the " + moves.toString() + " list is not a list.  Please rectify.");
           }
         }
         
-        movesSuccessful = BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).moveObjectsInMindsEye(movesArrayList, args[1].getIntValue());
+        BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).moveObjectsInMindsEye(movesArrayList, args[1].getIntValue());
       }
     } catch (AgentException ex) {
       Logger.getLogger(MoveObjectsInMindsEye.class.getName()).log(Level.SEVERE, null, ex);
     } catch (MindsEyeMoveObjectException e){
       throw new ExtensionException(e);
     }
-    
-    return movesSuccessful;
   }
 }

@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +26,7 @@ import org.nlogo.api.Syntax;
  * 
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
-public class GetMindsEyeContent extends DefaultReporter {
+public class GetAllMindsEyeContent extends DefaultReporter {
   
   @Override
   public Syntax getSyntax(){
@@ -42,14 +41,14 @@ public class GetMindsEyeContent extends DefaultReporter {
       if(BaseExtensionVariablesAndMethods.agentHasChrestInstance(context)){
         ArrayList<String> mindsEyeContent = BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getMindsEyeContent(args[0].getIntValue());
         if(mindsEyeContent != null){
-          mindsEyeContentList.addAll(mindsEyeContent);
+          mindsEyeContentList.addAll(mindsEyeContent); //Check what happens with blind spots.
         }
         else{
           mindsEyeContentList.add("null");
         }
       }
     } catch (AgentException ex) {
-      Logger.getLogger(GetMindsEyeContent.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(GetAllMindsEyeContent.class.getName()).log(Level.SEVERE, null, ex);
     }
     
     return mindsEyeContentList.toLogoList();

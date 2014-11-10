@@ -52,8 +52,8 @@ public class ReinforceActionLink extends DefaultCommand {
         Node parentNode = chrestInstance.recognise(parentPatternOfAssociation);
         Node childNode = chrestInstance.recognise(childPatternOfAssociation);
         
-        if( parentNode.getContents().equals(parentPatternOfAssociation) && childNode.getContents().equals(childPatternOfAssociation) ){
-          LogoList variablesList = args[5].getList();
+        if( parentNode.getImage().equals(parentPatternOfAssociation) && childNode.getImage().equals(childPatternOfAssociation) ){
+          LogoList variablesList = args[5].getList();          
           Iterator variablesPassed = variablesList.iterator();
           
           while(variablesPassed.hasNext()){

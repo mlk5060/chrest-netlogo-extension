@@ -67,7 +67,7 @@ public class GetStmContentsByModality extends DefaultReporter{
         if(stm != null){
           Iterator<Node> stmIterator = stm.iterator();
           while(stmIterator.hasNext()){
-            stmListRepresentation.add(stmIterator.next().getContents().toString());
+            stmListRepresentation.add(stmIterator.next().getImage().toString());
           }
         }
       }
