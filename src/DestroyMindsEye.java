@@ -35,7 +35,7 @@ public class DestroyMindsEye extends DefaultCommand {
         BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).destroyMindsEye(args[0].getIntValue());
       }
     } catch (AgentException ex) {
-      Logger.getLogger(DestroyMindsEye.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(DestroyMindsEye.class.getName()).log(Level.SEVERE,"", ex);
     }
   }
   

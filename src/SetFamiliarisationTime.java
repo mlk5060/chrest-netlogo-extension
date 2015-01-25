@@ -37,7 +37,7 @@ public class SetFamiliarisationTime extends DefaultCommand {
         BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).setFamiliarisationTime(args[0].getIntValue());
       }
     } catch (AgentException ex) {
-      Logger.getLogger(SetFamiliarisationTime.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(SetFamiliarisationTime.class.getName()).log(Level.SEVERE,"", ex);
     }
   }
 }

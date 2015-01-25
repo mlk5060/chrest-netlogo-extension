@@ -29,7 +29,7 @@ public class InstantiateChrestInTurtle extends DefaultCommand {
     try {
       BaseExtensionVariablesAndMethods.getAgent(context).setBreedVariable(BaseExtensionVariablesAndMethods.CHREST_INSTANCE_CHREST_AGENT_BREED_VAR_NAME, new Chrest());
     } catch (AgentException ex) {
-      Logger.getLogger(InstantiateChrestInTurtle.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(InstantiateChrestInTurtle.class.getName()).log(Level.SEVERE,"", ex);
     }
   }
 }

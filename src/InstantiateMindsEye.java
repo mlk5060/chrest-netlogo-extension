@@ -72,7 +72,7 @@ public class InstantiateMindsEye extends DefaultCommand {
       String[] visionStringArray = {};
       BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).createNewMindsEye(vision.toArray(visionStringArray), args[1].getIntValue(), args[2].getIntValue(), args[3].getIntValue(), args[4].getIntValue(), args[5].getIntValue() );
     } catch (AgentException ex) {
-      Logger.getLogger(InstantiateMindsEye.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(InstantiateMindsEye.class.getName()).log(Level.SEVERE,"", ex);
     }
   }
 }

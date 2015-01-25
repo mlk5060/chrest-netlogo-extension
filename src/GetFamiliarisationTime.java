@@ -22,7 +22,7 @@ public class GetFamiliarisationTime extends DefaultReporter {
         familiarisationTime = Double.valueOf(BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getFamiliarisationTime());
       }
     } catch (AgentException ex) {
-      Logger.getLogger(GetFamiliarisationTime.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(GetFamiliarisationTime.class.getName()).log(Level.SEVERE,"", ex);
     }
     
     return familiarisationTime;

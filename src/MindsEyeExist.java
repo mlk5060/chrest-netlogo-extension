@@ -38,7 +38,7 @@ class MindsEyeExist extends DefaultReporter {
         mindsEyeExist = BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).mindsEyeExists(args[0].getIntValue());
       }
     } catch (AgentException ex) {
-      Logger.getLogger(MindsEyeExist.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(MindsEyeExist.class.getName()).log(Level.SEVERE,"", ex);
     }
     
     return mindsEyeExist;

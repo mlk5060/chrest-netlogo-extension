@@ -58,7 +58,7 @@ public class LtmModalitySize extends DefaultReporter {
         
       }
     } catch (AgentException ex) {
-      Logger.getLogger(LtmModalitySize.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(LtmModalitySize.class.getName()).log(Level.SEVERE,"", ex);
     }
 
     return ltmSize;

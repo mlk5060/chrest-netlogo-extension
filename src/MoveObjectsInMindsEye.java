@@ -82,7 +82,7 @@ class MoveObjectsInMindsEye extends DefaultCommand {
         BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).moveObjectsInMindsEye(movesArrayList, args[1].getIntValue());
       }
     } catch (AgentException ex) {
-      Logger.getLogger(MoveObjectsInMindsEye.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(MoveObjectsInMindsEye.class.getName()).log(Level.SEVERE,"", ex);
     } catch (MindsEyeMoveObjectException e){
       throw new ExtensionException(e);
     }

@@ -22,7 +22,7 @@ public class GetAddLinkTime extends DefaultReporter {
         addLinkTime = Double.valueOf(BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getAddLinkTime());
       }
     } catch (AgentException ex) {
-      Logger.getLogger(GetAddLinkTime.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(GetAddLinkTime.class.getName()).log(Level.SEVERE,"", ex);
     }
     
     return addLinkTime;

@@ -82,7 +82,7 @@ public class SaveLtmNetworkImage extends DefaultCommand{
           try {
             file.createNewFile();
           } catch (IOException ex) {
-            Logger.getLogger(SaveLtmNetworkImage.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SaveLtmNetworkImage.class.getName()).log(Level.SEVERE,"", ex);
           }
         }
         
@@ -90,11 +90,11 @@ public class SaveLtmNetworkImage extends DefaultCommand{
         try {
           new ChrestView(BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context)).saveLongTermMemory(file);
         } catch (AgentException ex) {
-          Logger.getLogger(SaveLtmNetworkImage.class.getName()).log(Level.SEVERE, null, ex);
+          Logger.getLogger(SaveLtmNetworkImage.class.getName()).log(Level.SEVERE,"", ex);
         }
       }
     } catch (AgentException ex) {
-      Logger.getLogger(SaveLtmNetworkImage.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(SaveLtmNetworkImage.class.getName()).log(Level.SEVERE,"", ex);
     }
   }
 }

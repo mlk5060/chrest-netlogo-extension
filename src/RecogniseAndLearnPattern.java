@@ -43,7 +43,7 @@ public class RecogniseAndLearnPattern extends DefaultReporter {
         recognisedNode = BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).recogniseAndLearn(BaseExtensionVariablesAndMethods.createAndPopulateListPatternWithNetlogoPrimitivePattern(args[0].getString(), args[1].getString(), args[2].getString()), args[3].getIntValue()).getImage().toString();
       }
     } catch (LogoException | AgentException ex) {
-      Logger.getLogger(RecogniseAndLearnPattern.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(RecogniseAndLearnPattern.class.getName()).log(Level.SEVERE,"", ex);
     }
     
     return recognisedNode;

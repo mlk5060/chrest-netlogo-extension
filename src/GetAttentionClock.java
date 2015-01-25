@@ -21,7 +21,7 @@ public class GetAttentionClock extends DefaultReporter{
         chrestTime = Double.valueOf(BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getAttentionClock());
       }
     } catch (AgentException ex) {
-      Logger.getLogger(GetAttentionClock.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(GetAttentionClock.class.getName()).log(Level.SEVERE,"", ex);
     }
     
     return chrestTime;

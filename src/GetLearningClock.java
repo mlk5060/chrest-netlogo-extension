@@ -21,7 +21,7 @@ public class GetLearningClock extends DefaultReporter{
         chrestTime = Double.valueOf(BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getLearningClock());
       }
     } catch (AgentException ex) {
-      Logger.getLogger(GetLearningClock.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(GetLearningClock.class.getName()).log(Level.SEVERE,"", ex);
     }
     
     return chrestTime;

@@ -48,7 +48,7 @@ public class GetAllMindsEyeContent extends DefaultReporter {
         }
       }
     } catch (AgentException ex) {
-      Logger.getLogger(GetAllMindsEyeContent.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(GetAllMindsEyeContent.class.getName()).log(Level.SEVERE,"", ex);
     }
     
     return mindsEyeContentList.toLogoList();

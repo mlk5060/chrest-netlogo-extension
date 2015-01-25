@@ -37,7 +37,7 @@ public class SetDiscriminationTime extends DefaultCommand {
         BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).setDiscriminationTime(args[0].getIntValue());
       }
     } catch (AgentException ex) {
-      Logger.getLogger(SetDiscriminationTime.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(SetDiscriminationTime.class.getName()).log(Level.SEVERE,"", ex);
     }
   }
 }
