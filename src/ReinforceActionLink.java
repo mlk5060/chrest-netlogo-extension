@@ -68,7 +68,7 @@ public class ReinforceActionLink extends DefaultCommand {
         }
       }
     } catch (AgentException ex) {
-      Logger.getLogger(ReinforceActionLink.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(ReinforceActionLink.class.getName()).log(Level.SEVERE, ex);
     }
   }
   

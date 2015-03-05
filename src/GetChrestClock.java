@@ -21,7 +21,7 @@ public class GetChrestClock extends DefaultReporter{
         chrestTime = Double.valueOf(BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getClock());
       }
     } catch (AgentException ex) {
-      Logger.getLogger(GetChrestClock.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(GetChrestClock.class.getName()).log(Level.SEVERE, ex);
     }
     
     return chrestTime;

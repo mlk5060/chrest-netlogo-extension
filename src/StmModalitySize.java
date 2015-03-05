@@ -58,7 +58,7 @@ public class StmModalitySize extends DefaultReporter {
         
       }
     } catch (AgentException ex) {
-      Logger.getLogger(StmModalitySize.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(StmModalitySize.class.getName()).log(Level.SEVERE, ex);
     }
 
     return stmSize;

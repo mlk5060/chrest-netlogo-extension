@@ -22,7 +22,7 @@ public class GetDiscriminationTime extends DefaultReporter {
         discriminationTime = Double.valueOf(BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getDiscriminationTime());
       }
     } catch (AgentException ex) {
-      Logger.getLogger(GetDiscriminationTime.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(GetDiscriminationTime.class.getName()).log(Level.SEVERE, ex);
     }
     
     return discriminationTime;
