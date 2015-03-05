@@ -58,7 +58,7 @@ public class LtmModalityAvgDepth extends DefaultReporter {
         
       }
     } catch (AgentException ex) {
-      Logger.getLogger(LtmModalitySize.class.getName()).log(Level.SEVERE, ex);
+      Logger.getLogger(LtmModalitySize.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
     }
 
     return ltmAvgDepth;

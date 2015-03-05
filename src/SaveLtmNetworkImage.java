@@ -90,11 +90,11 @@ public class SaveLtmNetworkImage extends DefaultCommand{
         try {
           new ChrestView(BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context)).saveLongTermMemory(file);
         } catch (AgentException ex) {
-          Logger.getLogger(SaveLtmNetworkImage.class.getName()).log(Level.SEVERE, ex);
+          Logger.getLogger(SaveLtmNetworkImage.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
         }
       }
     } catch (AgentException ex) {
-      Logger.getLogger(SaveLtmNetworkImage.class.getName()).log(Level.SEVERE, ex);
+      Logger.getLogger(SaveLtmNetworkImage.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
     }
   }
 }

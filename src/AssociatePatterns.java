@@ -46,7 +46,7 @@ public class AssociatePatterns extends DefaultCommand {
         BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).associateAndLearn(BaseExtensionVariablesAndMethods.createAndPopulateListPatternWithNetlogoPrimitivePattern(args[0].getString(), args[1].getString(), args[2].getString()), BaseExtensionVariablesAndMethods.createAndPopulateListPatternWithNetlogoPrimitivePattern(args[3].getString(), args[4].getString(), args[5].getString()), args[6].getIntValue());
       }
     } catch (AgentException ex) {
-      Logger.getLogger(AssociatePatterns.class.getName()).log(Level.SEVERE, ex);
+      Logger.getLogger(AssociatePatterns.class.getName()).log(Level.SEVERE, null, ex);
     }
   }
 }

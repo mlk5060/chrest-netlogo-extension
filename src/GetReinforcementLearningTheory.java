@@ -31,7 +31,7 @@ public class GetReinforcementLearningTheory extends DefaultReporter {
         reinforcementLearningTheory = BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getReinforcementLearningTheory();
       }
     } catch (AgentException ex) {
-      Logger.getLogger(GetReinforcementLearningTheory.class.getName()).log(Level.SEVERE, ex);
+      Logger.getLogger(GetReinforcementLearningTheory.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
     }
     
     return reinforcementLearningTheory;

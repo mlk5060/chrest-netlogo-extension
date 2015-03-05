@@ -99,7 +99,7 @@ public class SetScene extends DefaultCommand{
       
       System.out.println(scene.toString());
     } catch (AgentException ex) {
-      Logger.getLogger(SetScene.class.getName()).log(Level.SEVERE, ex);
+      Logger.getLogger(SetScene.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
     }
   }
 }

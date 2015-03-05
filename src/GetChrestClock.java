@@ -18,10 +18,11 @@ public class GetChrestClock extends DefaultReporter{
     
     try {
       if(BaseExtensionVariablesAndMethods.agentHasChrestInstance(context)){
-        chrestTime = Double.valueOf(BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getClock());
+        //TODO: update this since "getClock()" is no longer available in CHREST.
+        //chrestTime = Double.valueOf(BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getClock());
       }
     } catch (AgentException ex) {
-      Logger.getLogger(GetChrestClock.class.getName()).log(Level.SEVERE, ex);
+      Logger.getLogger(GetChrestClock.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
     }
     
     return chrestTime;

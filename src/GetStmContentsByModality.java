@@ -72,7 +72,7 @@ public class GetStmContentsByModality extends DefaultReporter{
         }
       }
     } catch (AgentException ex) {
-      Logger.getLogger(GetStmContentsByModality.class.getName()).log(Level.SEVERE, ex);
+      Logger.getLogger(GetStmContentsByModality.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
     }
     
     return stmListRepresentation.toLogoList().reverse();

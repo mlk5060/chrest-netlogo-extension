@@ -71,7 +71,7 @@ public class LtmModalityNumActionLinks extends DefaultReporter{
       }
     }
     catch (AgentException ex) {
-      Logger.getLogger(LtmModalityNumActionLinks.class.getName()).log(Level.SEVERE, ex);
+      Logger.getLogger(LtmModalityNumActionLinks.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
     }
     
     return numActionLinks;

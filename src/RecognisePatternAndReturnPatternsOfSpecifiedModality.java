@@ -68,7 +68,7 @@ public class RecognisePatternAndReturnPatternsOfSpecifiedModality extends Defaul
         }
       }
     } catch (AgentException ex) {
-      Logger.getLogger(RecognisePatternAndReturnPatternsOfSpecifiedModality.class.getName()).log(Level.SEVERE, ex);
+      Logger.getLogger(RecognisePatternAndReturnPatternsOfSpecifiedModality.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
     }
 
     return list.toLogoList();

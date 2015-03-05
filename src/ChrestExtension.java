@@ -36,5 +36,7 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("set-discrimination-time", new SetDiscriminationTime());
     primitiveManager.addPrimitive("set-familiarisation-time", new SetFamiliarisationTime());
     primitiveManager.addPrimitive("set-reinforcement-learning-theory", new SetReinforcementLearningTheory());
+    
+    primitiveManager.addPrimitive("set-scene", new SetScene());
   }
 }

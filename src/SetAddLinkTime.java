@@ -37,7 +37,7 @@ public class SetAddLinkTime extends DefaultCommand {
         BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).setAddLinkTime(args[0].getIntValue());
       }
     } catch (AgentException ex) {
-      Logger.getLogger(SetAddLinkTime.class.getName()).log(Level.SEVERE, ex);
+      Logger.getLogger(SetAddLinkTime.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
     }
   }
 }

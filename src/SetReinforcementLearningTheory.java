@@ -54,7 +54,7 @@ public class SetReinforcementLearningTheory extends DefaultCommand {
         }
       }
     } catch (AgentException ex) {
-      Logger.getLogger(SetReinforcementLearningTheory.class.getName()).log(Level.SEVERE, ex);
+      Logger.getLogger(SetReinforcementLearningTheory.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
     }
   }
 }
