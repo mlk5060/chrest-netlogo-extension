@@ -1,22 +1,17 @@
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import jchrest.lib.ItemSquarePattern;
 import jchrest.lib.Scene;
 import org.nlogo.agent.AgentSet;
 import org.nlogo.agent.Patch;
 import org.nlogo.agent.Turtle;
-import org.nlogo.api.Agent;
 import org.nlogo.api.AgentException;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultCommand;
 import org.nlogo.api.ExtensionException;
 import org.nlogo.api.LogoException;
-import org.nlogo.api.Syntax;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -29,12 +24,7 @@ import org.nlogo.api.Syntax;
  * 
  * @author martyn
  */
-public class SetScene extends DefaultCommand{
-
-  @Override
-  public Syntax getSyntax(){
-    return Syntax.commandSyntax(new int[] {Syntax.ListType()});
-  }
+public class SetScene extends DefaultCommand {
   
   @Override
   public void perform(Argument[] args, Context context) throws ExtensionException, LogoException {
