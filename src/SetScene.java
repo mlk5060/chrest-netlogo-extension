@@ -12,6 +12,7 @@ import org.nlogo.api.Context;
 import org.nlogo.api.DefaultCommand;
 import org.nlogo.api.ExtensionException;
 import org.nlogo.api.LogoException;
+import org.nlogo.api.Syntax;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -22,9 +23,24 @@ import org.nlogo.api.LogoException;
 /**
  * Sets the current scene for CHREST to work with using Netlogo information.
  * 
+ * One parameter must be passed when the Netlogo extension primitive that 
+ * invokes this class is used in a Netlogo model:
+ * 
+ * Param #      Data Type       Description
+ * -------      ---------       -----------
+ * 1            Boolean         Indicates whether the identifier for turtles in
+ *                              the scene should be turtle ID's or breed names.
+ *                              Pass 'true' for ID's, 'false' for breed names.
+ * 
  * @author martyn
  */
 public class SetScene extends DefaultCommand {
+  
+  
+  @Override
+  public Syntax getSyntax(){
+    return Syntax.commandSyntax(new int[]{Syntax.BooleanType()});
+  }
   
   @Override
   public void perform(Argument[] args, Context context) throws ExtensionException, LogoException {
@@ -52,11 +68,11 @@ public class SetScene extends DefaultCommand {
   
       //Popoulate the scene starting from south-west, continuing eastwards then
       //north until north-east.
-      for(int yCorOffset = sightRadius * -1; yCorOffset <= sightRadius; yCorOffset++){
-        for(int xCorOffset = sightRadius * -1; xCorOffset <= sightRadius; xCorOffset++){
+      for(int rowOffset = sightRadius * -1; rowOffset <= sightRadius; rowOffset++){
+        for(int colOffset = sightRadius * -1; colOffset <= sightRadius; colOffset++){
 
           //Get the patch and return agents on that patch.
-          Patch patch = callingAgent.getPatchAtOffsets(xCorOffset, yCorOffset);
+          Patch patch = callingAgent.getPatchAtOffsets(colOffset, rowOffset);
           AgentSet agentsOnPatch = patch.turtlesHereAgentSet();
           
           //If there are agents on the patch, process them accordingly.
@@ -68,21 +84,26 @@ public class SetScene extends DefaultCommand {
             Iterator<Turtle> turtles = patch.turtlesHere().iterator();
             while(turtles.hasNext()){
               Turtle turtle = turtles.next();
-              String turtleBreed = turtle.getBreed().printName();
+              
+              //TODO: make it so that identifiers are unique.
+              String identifier = turtle.getBreed().printName().substring(0, 1);
+              
+              if(args[0].getBooleanValue()){
+                identifier = String.valueOf(turtle.id);
+              }
 
               //If the turtle isn't hidden, add it to the scene appropriately
               if( !turtle.hidden() ){
-                int sceneXCor = xCorOffset + sightRadius;
-                int sceneYCor = yCorOffset + sightRadius;
+                int sceneXCor = rowOffset + sightRadius;
+                int sceneYCor = colOffset + sightRadius;
                 
                 if(turtle.id == callingAgent.id){
-                  scene.setItem(sceneXCor, sceneYCor, "self");
+                  scene.setItem(sceneXCor, sceneYCor, BaseExtensionVariablesAndMethods._selfIdentifierToken);
                 }
                 else{
-                  scene.setItem(sceneXCor, sceneYCor, turtleBreed);
+                  scene.setItem(sceneXCor, sceneYCor, identifier);
                 }
               }
-              
             }
           }
         }

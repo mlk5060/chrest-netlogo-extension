@@ -15,6 +15,11 @@ import org.nlogo.api.ExtensionException;
 public class BaseExtensionVariablesAndMethods {
   
   public final static String CHREST_INSTANCE_CHREST_AGENT_BREED_VAR_NAME = "CHREST-INSTANCE";
+  
+  //TODO: This may not be the best idea, instead, it may be best to declare this
+  //in models or set a global variable in a model programatically using this 
+  //value.
+  public final static String _selfIdentifierToken = "SELF";
 
   /**
    * Checks to see if the calling turtle has been endowed with a CHREST 
