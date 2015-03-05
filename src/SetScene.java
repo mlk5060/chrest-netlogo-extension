@@ -32,7 +32,7 @@ public class SetScene extends DefaultCommand {
     
     try {
       //Get the calling agent's sight radius value.
-      int sightRadius = (int)callingAgent.getBreedVariable("sight-radius");
+      int sightRadius = (int)callingAgent.getBreedVariable("sight-radius".toUpperCase());
       
       //The scene will consist of sightRadius squares north/east/south/west of
       //the agent's current location.  So multiply the value of sightRadius by 2
