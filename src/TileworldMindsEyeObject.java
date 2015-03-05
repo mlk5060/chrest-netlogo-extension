@@ -10,8 +10,9 @@ public final class TileworldMindsEyeObject implements TwoDimensionalMindsEyeObje
   private int _ycor;
   private int _terminus;
   
-  public TileworldMindsEyeObject(String objectIdentifier, int xcor, int ycor){
+  public TileworldMindsEyeObject(String objectIdentifier, int xcor, int ycor, int currentDomainTime){
     this.instantiateObject(objectIdentifier, xcor, ycor);
+    this.setTerminus(currentDomainTime);
   }
   
   @Override
@@ -43,6 +44,6 @@ public final class TileworldMindsEyeObject implements TwoDimensionalMindsEyeObje
   
   @Override
   public void setTerminus(int currentDomainTime){
-    //Not sure how to do this yet.
+    //If the 
   }
 }
