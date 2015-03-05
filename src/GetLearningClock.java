@@ -6,11 +6,11 @@ import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
 
 /**
- * Reports the calling turtle's CHREST "_clock" value.
+ * Reports the calling turtle's CHREST "_learningClock" value.
  * 
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
-public class GetChrestClock extends DefaultReporter{
+public class GetLearningClock extends DefaultReporter{
   
   @Override
   public Object report(Argument args[], Context context){
@@ -18,11 +18,10 @@ public class GetChrestClock extends DefaultReporter{
     
     try {
       if(BaseExtensionVariablesAndMethods.agentHasChrestInstance(context)){
-        //TODO: update this since "getClock()" is no longer available in CHREST.
-        //chrestTime = Double.valueOf(BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getClock());
+        chrestTime = Double.valueOf(BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getLearningClock());
       }
     } catch (AgentException ex) {
-      Logger.getLogger(GetChrestClock.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
+      Logger.getLogger(GetLearningClock.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
     }
     
     return chrestTime;

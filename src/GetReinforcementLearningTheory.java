@@ -13,7 +13,7 @@ import org.nlogo.api.Syntax;
  * Reports the value that the calling turtle's "_reinforcementLearningTheory" 
  * variable is set to in its CHREST instance.
  * 
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liv.ac.uk>
  */
 public class GetReinforcementLearningTheory extends DefaultReporter {
   

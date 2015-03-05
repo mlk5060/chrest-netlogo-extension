@@ -34,9 +34,10 @@ import org.nlogo.api.Syntax;
  * Data Type Returned     Description
  * ------------------     -----------
  * Netlogo list           All patterns of a specified modality associated with
- *                        the pattern that is attempted to be recognised.
+ *                        the pattern that is attempted to be recognised 
+ *                        formatted as [[action-pat1,weight][action-pat2,weight]].
  * 
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liv.ac.uk>
  */
 public class RecognisePatternAndReturnPatternsOfSpecifiedModality extends DefaultReporter {
 
@@ -61,7 +62,7 @@ public class RecognisePatternAndReturnPatternsOfSpecifiedModality extends Defaul
             for(Map.Entry<Node, Double> link : links.entrySet()) {
               LogoListBuilder actionWeightList = new LogoListBuilder();
               String actionPattern = link.getKey().getContents().toString();
-              actionWeightList.add(actionPattern + "," + link.getValue());
+              actionWeightList.add(actionPattern.replaceAll("<\\s*|\\s*>", "") + "," + link.getValue());
               list.add(actionWeightList.toLogoList());
             }
           }

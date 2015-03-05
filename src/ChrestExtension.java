@@ -4,27 +4,25 @@ import org.nlogo.api.PrimitiveManager;
 /**
  * Primitive manager for CHREST Netlogo extension.
  * 
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
 public class ChrestExtension extends DefaultClassManager {
 
-  //TODO: Remove the "get-action-links" primitive since the 
-  //"recognise-pattern-and-return-patterns-of-specified-modality" does the same
-  //job but can handle returning other modalities too.
   @Override
   public void load(PrimitiveManager primitiveManager) {
+    
+    //CHREST primitives
     primitiveManager.addPrimitive("associate-patterns", new AssociatePatterns());
     primitiveManager.addPrimitive("create-item-square-pattern", new CreateItemSquarePattern());
     primitiveManager.addPrimitive("create-number-pattern", new CreateNumberPattern());
     primitiveManager.addPrimitive("get-add-link-time", new GetAddLinkTime());
-    primitiveManager.addPrimitive("get-chrest-clock", new GetChrestClock());
+    primitiveManager.addPrimitive("get-attention-clock", new GetAttentionClock());
+    primitiveManager.addPrimitive("get-learning-clock", new GetLearningClock());
     primitiveManager.addPrimitive("get-discrimination-time", new GetDiscriminationTime());
     primitiveManager.addPrimitive("get-familiarisation-time", new GetFamiliarisationTime());
     primitiveManager.addPrimitive("get-ltm-modality-num-action-links", new LtmModalityNumActionLinks());
     primitiveManager.addPrimitive("get-ltm-modality-avg-depth", new LtmModalityAvgDepth());
     primitiveManager.addPrimitive("get-ltm-modality-size", new LtmModalitySize());
-    primitiveManager.addPrimitive("get-reinforcement-learning-theories", new GetReinforcementLearningTheories());
-    primitiveManager.addPrimitive("get-reinforcement-learning-theory", new GetReinforcementLearningTheory());
     primitiveManager.addPrimitive("get-stm-contents-by-modality", new GetStmContentsByModality());
     primitiveManager.addPrimitive("get-stm-modality-size", new StmModalitySize());
     primitiveManager.addPrimitive("instantiate-chrest-in-turtle", new InstantiateChrestInTurtle());
@@ -35,6 +33,17 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("set-add-link-time", new SetAddLinkTime());
     primitiveManager.addPrimitive("set-discrimination-time", new SetDiscriminationTime());
     primitiveManager.addPrimitive("set-familiarisation-time", new SetFamiliarisationTime());
+    
+    //Mind's eye primitives
+    primitiveManager.addPrimitive("destroy-minds-eye", new DestroyMindsEye());
+    primitiveManager.addPrimitive("get-all-minds-eye-content", new GetAllMindsEyeContent());
+    primitiveManager.addPrimitive("instantiate-minds-eye", new InstantiateMindsEye());
+    primitiveManager.addPrimitive("minds-eye-exist?", new MindsEyeExist());
+    primitiveManager.addPrimitive("move-objects-in-minds-eye", new MoveObjectsInMindsEye());
+    
+    //Reinforcement theory primitives
+    primitiveManager.addPrimitive("get-reinforcement-learning-theories", new GetReinforcementLearningTheories());
+    primitiveManager.addPrimitive("get-reinforcement-learning-theory", new GetReinforcementLearningTheory());
     primitiveManager.addPrimitive("set-reinforcement-learning-theory", new SetReinforcementLearningTheory());
     
     primitiveManager.addPrimitive("set-scene", new SetScene());

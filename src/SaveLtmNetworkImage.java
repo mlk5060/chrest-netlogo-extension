@@ -30,7 +30,7 @@ import org.nlogo.api.Syntax;
  * 1            String          The absolute file path where the calling 
  *                              turtle's LTM CHREST image should be stored.
  * 
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liv.ac.uk>
  */
 public class SaveLtmNetworkImage extends DefaultCommand{
   
@@ -82,7 +82,7 @@ public class SaveLtmNetworkImage extends DefaultCommand{
           try {
             file.createNewFile();
           } catch (IOException ex) {
-            Logger.getLogger(SaveLtmNetworkImage.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SaveLtmNetworkImage.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
           }
         }
         

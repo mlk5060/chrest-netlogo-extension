@@ -36,7 +36,7 @@ import org.nlogo.api.Syntax;
  *                        recent pattern added to the STM modality is the first 
  *                        item in the list returned by this class.
  * 
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liv.ac.uk>
  */
 public class GetStmContentsByModality extends DefaultReporter{
   @Override
@@ -67,7 +67,7 @@ public class GetStmContentsByModality extends DefaultReporter{
         if(stm != null){
           Iterator<Node> stmIterator = stm.iterator();
           while(stmIterator.hasNext()){
-            stmListRepresentation.add(stmIterator.next().getContents().toString());
+            stmListRepresentation.add(stmIterator.next().getImage().toString());
           }
         }
       }

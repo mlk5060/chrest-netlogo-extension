@@ -21,7 +21,7 @@ import org.nlogo.api.Syntax;
  *                              calling turtle should take when discriminating a
  *                              new node in LTM.
  * 
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liv.ac.uk>
  */
 public class SetDiscriminationTime extends DefaultCommand {
   

@@ -20,7 +20,7 @@ import org.nlogo.api.LogoException;
  * No parameters can be passed when the Netlogo extension primitive that 
  * invokes this class is used in a Netlogo model.
  * 
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liv.ac.uk>
  */
 public class InstantiateChrestInTurtle extends DefaultCommand {
 

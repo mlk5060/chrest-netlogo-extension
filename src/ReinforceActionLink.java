@@ -32,7 +32,7 @@ import org.nlogo.api.Syntax;
  *                              reinforcement learning theory to calculate how
  *                              much the link should be reinforced by.
  * 
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liv.ac.uk>
  */
 public class ReinforceActionLink extends DefaultCommand {
   
@@ -52,8 +52,8 @@ public class ReinforceActionLink extends DefaultCommand {
         Node parentNode = chrestInstance.recognise(parentPatternOfAssociation);
         Node childNode = chrestInstance.recognise(childPatternOfAssociation);
         
-        if( parentNode.getContents().equals(parentPatternOfAssociation) && childNode.getContents().equals(childPatternOfAssociation) ){
-          LogoList variablesList = args[5].getList();
+        if( parentNode.getImage().equals(parentPatternOfAssociation) && childNode.getImage().equals(childPatternOfAssociation) ){
+          LogoList variablesList = args[5].getList();          
           Iterator variablesPassed = variablesList.iterator();
           
           while(variablesPassed.hasNext()){

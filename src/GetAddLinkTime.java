@@ -9,7 +9,7 @@ import org.nlogo.api.DefaultReporter;
  * Reports the value that the calling turtle's "_addLinkTime" variable is set to
  * in its CHREST instance.
  * 
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liv.ac.uk>
  */
 public class GetAddLinkTime extends DefaultReporter {
   

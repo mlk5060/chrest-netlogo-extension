@@ -29,7 +29,7 @@ import org.nlogo.api.Syntax;
  * Double                 The number of nodes in the STM modality specified for
  *                        the calling turtle.
  * 
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liv.ac.uk>
  */
 public class StmModalitySize extends DefaultReporter {
 

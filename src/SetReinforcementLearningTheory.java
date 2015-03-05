@@ -27,7 +27,7 @@ import org.nlogo.api.Syntax;
  *                              that the calling turtle's _reinforcementTheory
  *                              variable should be set to.
  * 
- * @author Martyn Lloyd-Kelly <mlk5060@liverpool.ac.uk>
+ * @author Martyn Lloyd-Kelly <martynlk@liv.ac.uk>
  */
 public class SetReinforcementLearningTheory extends DefaultCommand {
 

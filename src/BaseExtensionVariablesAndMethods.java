@@ -82,7 +82,7 @@ public class BaseExtensionVariablesAndMethods {
 
       //Populate the list pattern according to the pattern type specified.
       if (patternType.equalsIgnoreCase(PatternType.ITEM_SQUARE.toString())) {
-        String[] majorPatternParts = pattern.replace("[", "").split("]");
+        String[] majorPatternParts = pattern.replaceAll("\\s*\\[\\s*", "").replaceAll("\\s*\\]\\s*", "]").split("]");
 
         for (String majorPatternPart : majorPatternParts) {
           String[] minorPatternParts = majorPatternPart.split("\\s");
