@@ -14,14 +14,9 @@ import org.nlogo.api.ExtensionException;
 import org.nlogo.api.LogoException;
 import org.nlogo.api.Syntax;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Sets the current scene for CHREST to work with using Netlogo information.
+ * Creates a new {@link jchrest.lib.Scene} instance for CHREST to work with to 
+ * the calling turtle's "current-scene" turtle variable.
  * 
  * One parameter must be passed when the Netlogo extension primitive that 
  * invokes this class is used in a Netlogo model:
@@ -34,7 +29,7 @@ import org.nlogo.api.Syntax;
  * 
  * @author martyn
  */
-public class SetScene extends DefaultCommand {
+public class SetCurrentScene extends DefaultCommand {
   
   
   @Override
@@ -94,14 +89,14 @@ public class SetScene extends DefaultCommand {
 
               //If the turtle isn't hidden, add it to the scene appropriately
               if( !turtle.hidden() ){
-                int sceneXCor = rowOffset + sightRadius;
-                int sceneYCor = colOffset + sightRadius;
+                int sceneXCor = colOffset + sightRadius;
+                int sceneYCor = rowOffset + sightRadius;
                 
                 if(turtle.id == callingAgent.id){
-                  scene.setItem(sceneXCor, sceneYCor, BaseExtensionVariablesAndMethods._selfIdentifierToken);
+                  scene.setItem(sceneYCor, sceneXCor, BaseExtensionVariablesAndMethods._selfIdentifierToken);
                 }
                 else{
-                  scene.setItem(sceneXCor, sceneYCor, identifier);
+                  scene.setItem(sceneYCor, sceneXCor, identifier);
                 }
               }
             }
@@ -109,9 +104,9 @@ public class SetScene extends DefaultCommand {
         }
       }
       
-      System.out.println(scene.toString());
+      callingAgent.setBreedVariable("current-scene".toUpperCase(), scene);
     } catch (AgentException ex) {
-      Logger.getLogger(SetScene.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
+      Logger.getLogger(SetCurrentScene.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
     }
   }
 }
