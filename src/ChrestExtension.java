@@ -48,5 +48,6 @@ public class ChrestExtension extends DefaultClassManager {
     
     primitiveManager.addPrimitive("set-current-scene", new SetCurrentScene());
     primitiveManager.addPrimitive("get-current-scene", new GetCurrentScene());
+    primitiveManager.addPrimitive("learn-current-scene", new LearnCurrentScene());
   }
 }
