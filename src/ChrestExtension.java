@@ -46,8 +46,10 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("get-reinforcement-learning-theory", new GetReinforcementLearningTheory());
     primitiveManager.addPrimitive("set-reinforcement-learning-theory", new SetReinforcementLearningTheory());
     
+    //Perception primitives.
     primitiveManager.addPrimitive("set-current-scene", new SetCurrentScene());
     primitiveManager.addPrimitive("get-current-scene", new GetCurrentScene());
     primitiveManager.addPrimitive("learn-current-scene", new LearnCurrentScene());
+    primitiveManager.addPrimitive("set-domain", new SetDomain());
   }
 }

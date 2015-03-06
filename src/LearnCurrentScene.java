@@ -12,7 +12,9 @@ import org.nlogo.api.ExtensionException;
 import org.nlogo.api.LogoException;
 
 /**
- *
+ * Learns the scene that is currently set to the calling turtle's 
+ * "current-scene" variable using CHREST perception methods.
+ * 
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
 public class LearnCurrentScene extends DefaultCommand {
