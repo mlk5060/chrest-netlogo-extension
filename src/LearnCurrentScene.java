@@ -28,7 +28,7 @@ public class LearnCurrentScene extends DefaultCommand {
       if(currentSceneObject instanceof Scene){
         if(numberFixationsObject instanceof Double){
           Scene currentScene = (Scene)currentSceneObject;
-          int numberFixations = (int)numberFixationsObject;
+          int numberFixations = (int)Math.round( (double)numberFixationsObject );
           Chrest chrest = BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(cntxt);
           chrest.learnScene(currentScene, numberFixations);
         }
