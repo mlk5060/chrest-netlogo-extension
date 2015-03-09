@@ -24,8 +24,8 @@ public class LearnCurrentScene extends DefaultCommand {
     
     try {
       Agent callingAgent = BaseExtensionVariablesAndMethods.getAgent(cntxt);
-      Object currentSceneObject = callingAgent.getBreedVariable("current-scene".toUpperCase());
-      Object numberFixationsObject = callingAgent.getBreedVariable("number-fixations".toUpperCase());
+      Object currentSceneObject = callingAgent.getBreedVariable(BaseExtensionVariablesAndMethods.CURRENT_SCENE_BREED_VAR_NAME);
+      Object numberFixationsObject = callingAgent.getBreedVariable(BaseExtensionVariablesAndMethods.NUMBER_FIXATIONS_BREED_VAR_NAME);
       
       if(currentSceneObject instanceof Scene){
         if(numberFixationsObject instanceof Double){

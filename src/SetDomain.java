@@ -36,6 +36,8 @@ public class SetDomain extends DefaultCommand{
   @Override
   public void perform(Argument[] args, Context cntxt) throws ExtensionException, LogoException {
     try {
+      //Capitalise the domain name specified as per jchrest.lib Domain class 
+      //name conventions.
       String domainName = args[0].getString().substring(0, 1).toUpperCase() + args[0].getString().substring(1).toLowerCase();
       BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(cntxt).setDomain((DomainSpecifics)Class.forName("jchrest.lib." + domainName + "Domain").newInstance());
     } catch (AgentException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {

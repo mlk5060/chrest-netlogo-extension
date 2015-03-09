@@ -36,7 +36,7 @@ public class ChrestExtension extends DefaultClassManager {
     
     //Mind's eye primitives
     primitiveManager.addPrimitive("destroy-minds-eye", new DestroyMindsEye());
-    primitiveManager.addPrimitive("get-all-minds-eye-content", new GetAllMindsEyeContent());
+    primitiveManager.addPrimitive("get-minds-eye-scene", new GetMindsEyeScene());
     primitiveManager.addPrimitive("instantiate-minds-eye", new InstantiateMindsEye());
     primitiveManager.addPrimitive("minds-eye-exist?", new MindsEyeExist());
     primitiveManager.addPrimitive("move-objects-in-minds-eye", new MoveObjectsInMindsEye());

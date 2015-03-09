@@ -1,6 +1,10 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import jchrest.lib.ItemSquarePattern;
+import jchrest.lib.PrimitivePattern;
+import jchrest.lib.Scene;
 import org.nlogo.api.AgentException;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
@@ -14,8 +18,10 @@ import org.nlogo.api.Syntax;
  * If the mind's eye associated with the calling turtle exists at the domain
  * time specified and the attention of the CHREST model is free at the domain
  * time specified, the entire contents of the calling turtle's mind's eye 
- * with domain-specific coordinates is returned as a Netlogo list.  Otherwise,
- * the string "null" is returned.
+ * is returned as a Netlogo string list.  Otherwise, the string "null" is 
+ * returned.
+ * 
+ * Note that coordinates are not domain-specific so 
  * 
  * One parameter must be passed when the Netlogo extension primitive that 
  * invokes this class is used in a Netlogo model:
@@ -26,7 +32,7 @@ import org.nlogo.api.Syntax;
  * 
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
-public class GetAllMindsEyeContent extends DefaultReporter {
+public class GetMindsEyeScene extends DefaultReporter {
   
   @Override
   public Syntax getSyntax(){
@@ -39,16 +45,21 @@ public class GetAllMindsEyeContent extends DefaultReporter {
     
     try {
       if(BaseExtensionVariablesAndMethods.agentHasChrestInstance(context)){
-        ArrayList<String> mindsEyeContent = BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getMindsEyeContent(args[0].getIntValue());
-        if(mindsEyeContent != null){
-          mindsEyeContentList.addAll(mindsEyeContent); //Check what happens with blind spots.
+        Scene mindsEyeScene = BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getMindsEyeScene(args[0].getIntValue());
+        
+        if(mindsEyeScene != null){
+          Iterator<PrimitivePattern> mindsEyeIterator = mindsEyeScene.getScene().iterator();
+          while(mindsEyeIterator.hasNext()){
+            ItemSquarePattern mindsEyeItem = (ItemSquarePattern)mindsEyeIterator.next();
+            mindsEyeContentList.add( new ItemSquarePattern(mindsEyeItem.getItem(), mindsEyeItem.getColumn(), mindsEyeItem.getRow()).toString() );
+          }
         }
         else{
           mindsEyeContentList.add("null");
         }
       }
     } catch (AgentException ex) {
-      Logger.getLogger(GetAllMindsEyeContent.class.getName()).log(Level.SEVERE,"", ex);
+      Logger.getLogger(GetMindsEyeScene.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
     }
     
     return mindsEyeContentList.toLogoList();

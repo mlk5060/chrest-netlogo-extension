@@ -38,9 +38,12 @@ public class GetCurrentScene extends DefaultReporter{
       //First, attempt to retrieve the contents of the calling agent's 
       //"current-scene" turtle-variable.  If this is an instance of "Scene" then
       //continue by casting the retrieved contents to "Scene".
-      Object currentScene = callingAgent.getBreedVariable("current-scene".toUpperCase());
+      Object currentScene = callingAgent.getBreedVariable(BaseExtensionVariablesAndMethods.CURRENT_SCENE_BREED_VAR_NAME);
       if(currentScene instanceof Scene){
         Scene currentSceneAsScene = (Scene)currentScene;
+        
+        //TODO: remove this conversion to domain-specific coordinates since this
+        //should be done on a per-model basis.
         
         //Now, since it may be the case that the calling agent's sight radius 
         //has changed since the current scene was created, conversion from 

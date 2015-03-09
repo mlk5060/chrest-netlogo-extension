@@ -15,6 +15,9 @@ import org.nlogo.api.ExtensionException;
 public class BaseExtensionVariablesAndMethods {
   
   public final static String CHREST_INSTANCE_CHREST_AGENT_BREED_VAR_NAME = "CHREST-INSTANCE";
+  public final static String CURRENT_SCENE_BREED_VAR_NAME = "CURRENT-SCENE";
+  public final static String NUMBER_FIXATIONS_BREED_VAR_NAME = "NUMBER-FIXATIONS";
+  public final static String SIGHT_RADIUS_BREED_VAR_NAME = "SIGHT-RADIUS";
 
   /**
    * Checks to see if the calling turtle has been endowed with a CHREST 

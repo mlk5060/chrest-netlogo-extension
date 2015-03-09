@@ -43,8 +43,7 @@ import org.nlogo.api.Syntax;
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
 public class SetCurrentScene extends DefaultCommand {
-  
-  
+
   @Override
   public Syntax getSyntax(){
     return Syntax.commandSyntax(new int[]{Syntax.BooleanType(), Syntax.StringType(), Syntax.ListType()});
@@ -109,7 +108,7 @@ public class SetCurrentScene extends DefaultCommand {
       }
       
       //Get the calling agent's sight radius value.
-      Double sightRadiusDouble = (Double)callingAgent.getBreedVariable("sight-radius".toUpperCase());
+      Double sightRadiusDouble = (Double)callingAgent.getBreedVariable(BaseExtensionVariablesAndMethods.SIGHT_RADIUS_BREED_VAR_NAME);
       int sightRadius = sightRadiusDouble.intValue();
       
       //The scene will consist of sightRadius squares north/east/south/west of
@@ -178,7 +177,7 @@ public class SetCurrentScene extends DefaultCommand {
       }
       
       //Finally, set the "current-scene" variable to the Scene generated.
-      callingAgent.setBreedVariable("current-scene".toUpperCase(), scene);
+      callingAgent.setBreedVariable(BaseExtensionVariablesAndMethods.CURRENT_SCENE_BREED_VAR_NAME, scene);
     } catch (AgentException ex) {
       Logger.getLogger(SetCurrentScene.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
     }
