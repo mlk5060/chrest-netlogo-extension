@@ -17,11 +17,11 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("create-number-pattern", new CreateNumberPattern());
     primitiveManager.addPrimitive("get-add-link-time", new GetAddLinkTime());
     primitiveManager.addPrimitive("get-attention-clock", new GetAttentionClock());
-    primitiveManager.addPrimitive("get-learning-clock", new GetLearningClock());
     primitiveManager.addPrimitive("get-discrimination-time", new GetDiscriminationTime());
     primitiveManager.addPrimitive("get-familiarisation-time", new GetFamiliarisationTime());
-    primitiveManager.addPrimitive("get-ltm-modality-num-action-links", new LtmModalityNumActionLinks());
+    primitiveManager.addPrimitive("get-learning-clock", new GetLearningClock());
     primitiveManager.addPrimitive("get-ltm-modality-avg-depth", new LtmModalityAvgDepth());
+    primitiveManager.addPrimitive("get-ltm-modality-num-action-links", new LtmModalityNumActionLinks());
     primitiveManager.addPrimitive("get-ltm-modality-size", new LtmModalitySize());
     primitiveManager.addPrimitive("get-stm-contents-by-modality", new GetStmContentsByModality());
     primitiveManager.addPrimitive("get-stm-modality-size", new StmModalitySize());
