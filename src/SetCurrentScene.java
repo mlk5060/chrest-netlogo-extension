@@ -1,4 +1,5 @@
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -28,17 +29,23 @@ import org.nlogo.api.Syntax;
  * 
  * Param #      Data Type       Description
  * -------      ---------       -----------
- * 1            Boolean         Indicates whether the identifier for turtles in
- *                              the scene should be turtle ID's or breed names.
- *                              Pass 'true' for ID's, 'false' for breed names.
+ * 1            List            What the agent can see on patches as a list of 
+ *                              strings with three pieces of information 
+ *                              declared in the following order and separated by 
+ *                              whitespace:
+ *                              - Object identifier (empty squares should be 
+ *                                denoted by a period/full-stop).
+ *                              - x-cor of the patch (can be relative or 
+ *                                absolute to the calling turtle).
+ *                              - y-cor of the patch (can be relative or 
+ *                                absolute to the calling turtle).
+ *                              NOTE: a decision must be made on whether all 
+ *                              x/y-cor offsets will be relative OR absolute.
+ *                              Mixtures of relative and absolute coordinates 
+ *                              will result in incorrect Scene instances being
+ *                              generated.
  * 2            String          The name of the scene (first parameter used by 
  *                              {@link jchrest.lib.Scene#Scene(java.lang.String, int, int)}).
- * 3            List            A 2D list of strings that act as key-value 
- *                              pairs.  Keys are breed names and values are 
- *                              identifiers that should be used to instantiate
- *                              a {@link jchrest.lib.Scene} instance according
- *                              to the relevant domain found in 
- *                              {@link jchrest.lib}.
  * 
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
@@ -46,7 +53,7 @@ public class SetCurrentScene extends DefaultCommand {
 
   @Override
   public Syntax getSyntax(){
-    return Syntax.commandSyntax(new int[]{Syntax.BooleanType(), Syntax.StringType(), Syntax.ListType()});
+    return Syntax.commandSyntax(new int[]{Syntax.ListType(), Syntax.StringType()});
   }
   
   @Override
@@ -54,129 +61,95 @@ public class SetCurrentScene extends DefaultCommand {
     org.nlogo.agent.Agent callingAgent = BaseExtensionVariablesAndMethods.getAgent(context);
     
     try {
-      //Check that the list passed is correct before starting since there may be
-      //a number of issues with it given that its user-specified.  Check:
-      // 1. That the list is a 2D list of strings.
-      // 2. That the first elements in the second-dimension are breed names in
-      //    the model.
-      //If these checks pass, generate a HashMap version of the list for easy 
-      //Scene creation later.
+      //First, analyse the scene passed to establish the smallest and greatest 
+      //width and height (x/y-coordinates, respectively) so that a 
+      //jchrest.lib.Scene instance can be correctly constructed.
+      LogoList originalScene = args[0].getList();
+      Integer minX = null;
+      Integer maxX = null;
+      Integer minY = null;
+      Integer maxY = null;
       
-      //Create the HashMap that will (hopefully) be populated.
-      Map<String, String> breedTokenMap = new HashMap<>();
-      
-      //Get the breed names in the model.
-      World world = (World)context.getAgent().world();
-      Set<String> breedsInModel = world.getBreeds().keySet();
-      
-      //Process the list.
-      LogoList breedsAndTokens = args[2].getList();
-      for(int i = 0; i < breedsAndTokens.size(); i++){
-        Object breedAndToken = breedsAndTokens.get(i);
-        if(breedAndToken instanceof LogoList){
-          LogoList breedTokenList = (LogoList)breedAndToken;
-          Object breed = breedTokenList.get(0);
-          if(breed instanceof String){
-            String breedName = (String)breed;
+      for(int i = 0; i < originalScene.size(); i++){
+        Object originalSceneInfo = originalScene.get(i);
+        if(originalSceneInfo instanceof String){
+          String originalSceneUnit = (String)originalSceneInfo;
+          String[] originalSceneUnitInfo = originalSceneUnit.split("\\s+");
+          if(originalSceneUnitInfo.length == 3){
+            Integer xcor = Integer.valueOf(originalSceneUnitInfo[1]);
+            Integer ycor = Integer.valueOf(originalSceneUnitInfo[2]);
             
-            //Remember to upper-case the breed name since Netlogo stores 
-            //variable names in upper-case.
-            breedName = breedName.toUpperCase();
-            
-            //If breedName is "SELF" or if it isn't but is a specified breed 
-            //name, continue.
-            if( breedName.equals("SELF") || breedsInModel.contains(breedName) ){
-              Object token = breedTokenList.get(1);
-              if(token instanceof String){
-                breedTokenMap.put( breedName, (String)token );
-              }
-              else{
-                throw new ExtensionException("The second element of element " + i + " in the list passed is not an instance of java.lang.String.");
-              }
+            //Set the minX value accordingly.
+            if(minX == null){
+              minX = xcor;
             }
-            else{
-              throw new ExtensionException("The first element of element " + i + " in the list passed (" + breedName + ") is not a breed in this model.");
+            else if(xcor < minX){
+              minX = xcor;
+            }
+            
+            //Set the minY value accordingly.
+            if(minY == null){
+              minY = ycor;
+            }
+            else if(ycor < minY){
+              minY = ycor;
+            }
+            
+            //Set the maxX value accordingly.
+            if(maxX == null){
+              maxX = xcor;
+            }
+            else if(xcor < maxX){
+              maxX = xcor;
+            }
+            
+            //Set the maxY value accordingly.
+            if(maxY == null){
+              maxY = ycor;
+            }
+            else if(ycor < maxY){
+              maxY = ycor;
             }
           }
           else{
-            throw new ExtensionException("The first element of element " + i + " in the list passed is not an instance of java.lang.String.");
+            throw new ExtensionException("The information for item " + i + " in the scene passed to "
+              + "the 'set-current-scene' CHREST extention does not contain 3 units of information but "
+              + "contains " + originalSceneUnitInfo.length + " (" + Arrays.toString(originalSceneUnitInfo) 
+              + ").  Please ensure that there is a suitable object identifier, x-cor offset and y-cor "
+              + "offset specified in this order and seperated by whitespace i.e. "
+              + "'objectIdentifier xcorOffset ycorOffset'.");
           }
         }
         else{
-          throw new ExtensionException("Element " + i + " of the second-dimension in the list passed is not an instance of org.nlogo.api.LogoList.");
+          throw new ExtensionException("The information for item " + i + " in the scene passed to "
+              + "the 'set-current-scene' CHREST extention is not a String instance.");
         }
       }
       
-      //Get the calling agent's sight radius value.
-      Double sightRadiusDouble = (Double)callingAgent.getBreedVariable(BaseExtensionVariablesAndMethods.SIGHT_RADIUS_BREED_VAR_NAME);
-      int sightRadius = sightRadiusDouble.intValue();
+      //Create a new scene instance using the max/min x/y values set above.  Add
+      //1 to the result since if maxX and minX are 2 and 1 respectively, the 
+      //result (1) does not take into account the 2 xcors.
+      Scene scene = new Scene(args[1].getString(), (maxY - minY) + 1, (maxX - minX) + 1);
       
-      //The scene will consist of sightRadius squares north/east/south/west of
-      //the agent's current location.  So multiply the value of sightRadius by 2
-      //to get how many squares in total can be seen north/south and east/west
-      //and add 1 to take into account the current row/col where the agent is.
-      //To illustrate, if the sight radius is set to 2 then the agent can see
-      //the following ("A" represents the agent, coordinates are Scene-specific
-      //not domain/model-specific):
-      //
-      // 2  |---|---|---|---|---|
-      // 1  |---|---|---|---|---|
-      // 0  |---|---|-A-|---|---|
-      // -1 |---|---|---|---|---|
-      // -2 |---|---|---|---|---|
-      //      -2  -1  0   1   2
-      Scene scene = new Scene(args[1].getString(), ((sightRadius * 2) + 1), ((sightRadius * 2) + 1) );
+      //Set the domain-specific to non domain-specific (Scene coordinate) 
+      //converters (Scene coordinates start at 0).
+      int xcorConverter = 0 - minX;
+      int ycorConverter = 0 - minY;
   
-      //Populate the scene starting from south-west, continuing eastwards then
-      //north until north-east.
-      for(int rowOffset = sightRadius * -1; rowOffset <= sightRadius; rowOffset++){
-        for(int colOffset = sightRadius * -1; colOffset <= sightRadius; colOffset++){
-
-          //Get the patch and return agents on that patch.
-          Patch patch = callingAgent.getPatchAtOffsets(colOffset, rowOffset);
-          AgentSet agentsOnPatch = patch.turtlesHereAgentSet();
-          
-          //If there are agents on the patch, process them accordingly.
-          if(!agentsOnPatch.isEmpty()){
-            
-            //Get an iterator of Turtle instances rather than an iterator of 
-            //Agent instances so that the "breed" and "hidden?" values can be 
-            //checked.
-            Iterator<Turtle> turtles = patch.turtlesHere().iterator();
-            while(turtles.hasNext()){
-              Turtle turtle = turtles.next();
-              
-              //If the turtle isn't hidden, add it to the scene appropriately
-              if( !turtle.hidden() ){
-              
-                //Set the identifier for this turtle to its ID.
-                String identifier = String.valueOf(turtle.id);
-
-                //If the first parameter is false, the identifier should be 
-                //overwritten with the token specified for the turtle's breed or
-                //the token specified for "SELF" if the turtle seen is the 
-                //calling agent.
-                if(!args[0].getBooleanValue()){
-                  if(turtle.id == callingAgent.id){
-                    identifier = breedTokenMap.get("SELF");
-                  }
-                  else{
-                    identifier = breedTokenMap.get(turtle.getBreed().printName());
-                  }
-                }
-
-                //Convert the domain-specific x/y coordinates into non 
-                //domain-specific Scene coordinates.
-                int sceneXCor = colOffset + sightRadius;
-                int sceneYCor = rowOffset + sightRadius;
-                scene.setItem(sceneYCor, sceneXCor, identifier);
-              }
-            }
-          }
-        }
+      //Populate the scene using info from the list passed.
+      for(int i = 0; i < originalScene.size(); i++){
+        Object originalSceneInfo = originalScene.get(i);
+        String originalSceneUnit = (String)originalSceneInfo;
+        String[] originalSceneUnitInfo = originalSceneUnit.split(" ");
+        scene.addItemToSquare(
+          Integer.valueOf(originalSceneUnitInfo[2]) + ycorConverter, //row (ycor)
+          Integer.valueOf(originalSceneUnitInfo[1]) + xcorConverter, //col (xcor)
+          originalSceneUnitInfo[0] //item identifier
+        );
       }
       
-      //Finally, set the "current-scene" variable to the Scene generated.
+      //Finally, set the calling turtle's "current-scene" variable to the Scene 
+      //generated.
       callingAgent.setBreedVariable(BaseExtensionVariablesAndMethods.CURRENT_SCENE_BREED_VAR_NAME, scene);
     } catch (AgentException ex) {
       Logger.getLogger(SetCurrentScene.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
