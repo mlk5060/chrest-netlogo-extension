@@ -33,8 +33,12 @@ import org.nlogo.api.Syntax;
  *                              strings with three pieces of information 
  *                              declared in the following order and separated by 
  *                              whitespace:
- *                              - Object identifier (empty squares should be 
- *                                denoted by a period/full-stop).
+ *                              - Object identifier.  These should be consistent
+ *                                with the notation used in the corresponding
+ *                                jchrest.lib domain class to enable salient
+ *                                and movement fixations to be generated (empty 
+ *                                squares should always be denoted with a 
+ *                                full-stop).
  *                              - x-cor of the patch (can be relative or 
  *                                absolute to the calling turtle).
  *                              - y-cor of the patch (can be relative or 
