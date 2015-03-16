@@ -65,9 +65,11 @@ public class SetCurrentScene extends DefaultCommand {
     org.nlogo.agent.Agent callingAgent = BaseExtensionVariablesAndMethods.getAgent(context);
     
     try {
-      //First, analyse the scene passed to establish the smallest and greatest 
-      //width and height (x/y-coordinates, respectively) so that a 
-      //jchrest.lib.Scene instance can be correctly constructed.
+      //Since domain-specific and agent relative xcor and ycor coordinates may 
+      //be specified for items in a Nelogo environment, analyse the scene passed 
+      //to establish the smallest and greatest width and height (x/y-cors, 
+      //respectively) so that a jchrest.lib.Scene instance can be correctly 
+      //constructed.
       LogoList originalScene = args[0].getList();
       Integer minX = null;
       Integer maxX = null;
@@ -130,15 +132,11 @@ public class SetCurrentScene extends DefaultCommand {
         }
       }
       
-      System.out.println("Max X = " + maxX + ".  Max Y = " + maxY);
-      System.out.println("Min X = " + minX + ".  Min Y = " + minY);
-      
       //Create a new scene instance using the max/min x/y values set above.  Add
       //1 to the result since if maxX and minX are 2 and 1 respectively, the 
-      //result (1) does not take into account the 2 xcors.
+      //result (1) does not take into account 2 xcors (which it should since the
+      //turtle can see two "columns" in the environment, not 1).
       Scene scene = new Scene(args[1].getString(), (maxY - minY) + 1, (maxX - minX) + 1);
-      System.out.println("Scene width = " + scene.getWidth());
-      System.out.println("Scene height = " + scene.getHeight());
       
       //Set the domain-specific to non domain-specific (Scene coordinate) 
       //converters (Scene coordinates start at 0).
@@ -151,8 +149,8 @@ public class SetCurrentScene extends DefaultCommand {
         String originalSceneUnit = (String)originalSceneInfo;
         String[] originalSceneUnitInfo = originalSceneUnit.split("\\s+");
         scene.addItemToSquare(
-          Integer.valueOf(originalSceneUnitInfo[2]) + ycorConverter, //row (ycor)
           Integer.valueOf(originalSceneUnitInfo[1]) + xcorConverter, //col (xcor)
+          Integer.valueOf(originalSceneUnitInfo[2]) + ycorConverter, //row (ycor)
           originalSceneUnitInfo[0] //item identifier
         );
       }

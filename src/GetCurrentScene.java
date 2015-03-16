@@ -54,7 +54,7 @@ public class GetCurrentScene extends DefaultReporter{
         }
       }
       else{
-        throw new ExtensionException("The contents of turtle " + callingAgent.id + "s 'current-scene' turtle variable is not an instance of 'ListPattern'.");
+        throw new ExtensionException("The contents of turtle " + callingAgent.id + "s 'current-scene' turtle variable is not an instance of 'jchrest.lib.Scene'.");
       }
         
     } catch (AgentException ex) {
