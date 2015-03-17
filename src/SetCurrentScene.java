@@ -1,16 +1,8 @@
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jchrest.lib.Scene;
-import org.nlogo.agent.AgentSet;
-import org.nlogo.agent.Patch;
-import org.nlogo.agent.Turtle;
-import org.nlogo.agent.World;
 import org.nlogo.api.AgentException;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
@@ -142,7 +134,7 @@ public class SetCurrentScene extends DefaultCommand {
       //converters (Scene coordinates start at 0).
       int xcorConverter = 0 - minX;
       int ycorConverter = 0 - minY;
-  
+      
       //Populate the scene using info from the list passed.
       for(int i = 0; i < originalScene.size(); i++){
         Object originalSceneInfo = originalScene.get(i);

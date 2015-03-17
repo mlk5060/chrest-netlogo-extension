@@ -1,11 +1,3 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import jchrest.lib.ItemSquarePattern;
-import jchrest.lib.PrimitivePattern;
-import jchrest.lib.Scene;
-import org.nlogo.api.AgentException;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
@@ -43,24 +35,24 @@ public class GetMindsEyeScene extends DefaultReporter {
   public Object report(Argument args[], Context context) throws ExtensionException, LogoException{
     LogoListBuilder mindsEyeContentList = new LogoListBuilder();
     
-    try {
-      if(BaseExtensionVariablesAndMethods.agentHasChrestInstance(context)){
-        Scene mindsEyeScene = BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getMindsEyeScene(args[0].getIntValue());
-        
-        if(mindsEyeScene != null){
-          Iterator<PrimitivePattern> mindsEyeIterator = mindsEyeScene.getScene().iterator();
-          while(mindsEyeIterator.hasNext()){
-            ItemSquarePattern mindsEyeItem = (ItemSquarePattern)mindsEyeIterator.next();
-            mindsEyeContentList.add( new ItemSquarePattern(mindsEyeItem.getItem(), mindsEyeItem.getColumn(), mindsEyeItem.getRow()).toString() );
-          }
-        }
-        else{
-          mindsEyeContentList.add("null");
-        }
-      }
-    } catch (AgentException ex) {
-      Logger.getLogger(GetMindsEyeScene.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
-    }
+//    try {
+//      if(BaseExtensionVariablesAndMethods.agentHasChrestInstance(context)){
+//        Scene mindsEyeScene = BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getMindsEyeScene(args[0].getIntValue());
+//        
+//        if(mindsEyeScene != null){
+//          Iterator<PrimitivePattern> mindsEyeIterator = mindsEyeScene.getScene().iterator();
+//          while(mindsEyeIterator.hasNext()){
+//            ItemSquarePattern mindsEyeItem = (ItemSquarePattern)mindsEyeIterator.next();
+//            mindsEyeContentList.add( new ItemSquarePattern(mindsEyeItem.getItem(), mindsEyeItem.getColumn(), mindsEyeItem.getRow()).toString() );
+//          }
+//        }
+//        else{
+//          mindsEyeContentList.add("null");
+//        }
+//      }
+//    } catch (AgentException ex) {
+//      Logger.getLogger(GetMindsEyeScene.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
+//    }
     
     return mindsEyeContentList.toLogoList();
   }
