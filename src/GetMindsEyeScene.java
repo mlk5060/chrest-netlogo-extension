@@ -13,8 +13,6 @@ import org.nlogo.api.Syntax;
  * is returned as a Netlogo string list.  Otherwise, the string "null" is 
  * returned.
  * 
- * Note that coordinates are not domain-specific so 
- * 
  * One parameter must be passed when the Netlogo extension primitive that 
  * invokes this class is used in a Netlogo model:
  * 

@@ -10,17 +10,30 @@ import org.nlogo.api.Context;
 import org.nlogo.api.DefaultCommand;
 import org.nlogo.api.ExtensionException;
 import org.nlogo.api.LogoException;
+import org.nlogo.api.Syntax;
 
 /**
  * Learns the scene that is currently set to the calling turtle's breed variable 
  * that contains the current scene using CHREST perception methods.
  * 
+ * One parameter must be passed when the Netlogo extension primitive that 
+ * invokes this class is used in a Netlogo model:
+ * 
+ * Param #      Data Type       Description
+ * -------      ---------       -----------
+ * 1            Number          The current time in the model (in milliseconds).
+ * 
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
 public class LearnCurrentScene extends DefaultCommand {
+  
+  @Override
+  public Syntax getSyntax(){
+    return Syntax.commandSyntax(new int[]{Syntax.NumberType()});
+  }
 
   @Override
-  public void perform(Argument[] argmnts, Context cntxt) throws ExtensionException, LogoException {
+  public void perform(Argument[] args, Context cntxt) throws ExtensionException, LogoException {
     
     try {
       Agent callingAgent = BaseExtensionVariablesAndMethods.getAgent(cntxt);
@@ -41,7 +54,7 @@ public class LearnCurrentScene extends DefaultCommand {
             //divide by 2.  This allows for unequal width and heights to be 
             //dealt with easily.
             turtlesChrestInstance.getPerceiver().setFieldOfView( (Math.max(scene.getHeight(), scene.getWidth()) - 1) / 2);
-            turtlesChrestInstance.learnScene(scene, numberFixations);
+            turtlesChrestInstance.learnScene(scene, numberFixations, args[0].getIntValue());
           }
           else{
             throw new ExtensionException("The '" + BaseExtensionVariablesAndMethods.NUMBER_FIXATIONS_BREED_VAR_NAME + "' variable for turtle with ID " + callingAgent.id + " is less than or equal to 0.");

@@ -19,17 +19,29 @@ import org.nlogo.api.Syntax;
  * Returns a Netlogo list representation of the calling turtle's "current-scene"
  * turtle variable.
  * 
+ * One parameter must be passed when the Netlogo extension primitive that 
+ * invokes this class is used in a Netlogo model:
+ * 
+ * Param #      Data Type       Description
+ * -------      ---------       -----------
+ * 1            Boolean         Set to true to have object coordinates be 
+ *                              relative to the scene creator (if present in
+ *                              scene) i.e. make scene egocentric.  Set to false
+ *                              to have object coordinates equal the scene
+ *                              coordinates even if scene creator is present in
+ *                              the scene i.e. make scene allocentric.
+ * 
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
 public class GetCurrentScene extends DefaultReporter{
   
   @Override
   public Syntax getSyntax(){
-    return Syntax.reporterSyntax(new int[]{}, Syntax.ListType());
+    return Syntax.reporterSyntax(new int[]{Syntax.BooleanType()}, Syntax.ListType());
   }
 
   @Override
-  public Object report(Argument[] argmnts, Context cntxt) throws ExtensionException, LogoException {
+  public Object report(Argument[] args, Context cntxt) throws ExtensionException, LogoException {
     LogoListBuilder sceneAsList = new LogoListBuilder();
     Agent callingAgent = BaseExtensionVariablesAndMethods.getAgent(cntxt);
     
@@ -41,7 +53,7 @@ public class GetCurrentScene extends DefaultReporter{
       Object currentScene = callingAgent.getBreedVariable(BaseExtensionVariablesAndMethods.CURRENT_SCENE_BREED_VAR_NAME);
       if(currentScene instanceof Scene){
         Scene currentSceneAsScene = (Scene)currentScene;
-        ListPattern currentSceneListPattern = currentSceneAsScene.getScene();
+        ListPattern currentSceneListPattern = currentSceneAsScene.getEntireScene(args[0].getBoolean());
         Iterator<PrimitivePattern> currentSceneContents = currentSceneListPattern.iterator();
         while(currentSceneContents.hasNext()){
           

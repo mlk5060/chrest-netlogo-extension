@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import jchrest.lib.ItemSquarePattern;
 import jchrest.lib.MindsEyeMoveObjectException;
 import org.nlogo.api.AgentException;
 import org.nlogo.api.Argument;
@@ -13,8 +14,8 @@ import org.nlogo.api.Syntax;
 
 
 /**
- * Moves objects specified to domain coordinates specified in the minds eye that 
- * is associated with the calling turtle's CHREST instance.
+ * Moves objects specified to domain coordinates specified in the latest minds 
+ * eye that is associated with the calling turtle's CHREST instance.
  * 
  * Two parameters must be passed when the Netlogo extension primitive that 
  * invokes this class is used in a Netlogo model:
@@ -22,14 +23,22 @@ import org.nlogo.api.Syntax;
  * Param #      Data Type       Description
  * -------      ---------       -----------
  * 1            2D list         A 2D list whose first dimension elements should 
- *                              contain lists of strings whose elements specify 
- *                              a sequence of moves for one object using object 
- *                              identifiers and domain-specific coordinates.  
+ *                              contain lists of ItemSquarePattern instances 
+ *                              whose elements specify a sequence of moves for 
+ *                              one object using object identifiers and 
+ *                              domain-specific coordinates.  
  *                              For example, if two objects, A and B, are to be 
  *                              moved from domain specific x/y coordinates 0/1 
  *                              and 0/2 to 1/1 and 1/2 respectively, the list 
  *                              passed should be: 
- *                              [ ["A;0;1" "A;1;1"], ["B;0;2" "B;1;2"] ].
+ *                              [ 
+ *                                [ 
+ *                                  [A 0 1] [A 1 1] 
+ *                                ] 
+ *                                [ 
+ *                                  [B 0 2] [B 1 2] 
+ *                                ] 
+ *                              ]
  * 
  * 2            Number          The current Netlogo time (in milliseconds).
  * 
@@ -49,25 +58,24 @@ class MoveObjectsInMindsEye extends DefaultCommand {
       if(BaseExtensionVariablesAndMethods.agentHasChrestInstance(context)){
         
         LogoList moves = args[0].getList();
-        ArrayList<ArrayList<String>> movesArrayList = new ArrayList<>();
+        ArrayList<ArrayList<ItemSquarePattern>> movesArrayList = new ArrayList<>();
         
         //Get the first dimension of the first parameter passed as a LogoList
         //and check that all first dimension list elements are lists and that
-        //all second dimension elements are strings.
+        //all second dimension elements are ItemSquarePattern instances.
         for(int objectMoveSet = 0; objectMoveSet < moves.size(); objectMoveSet++){
           
-          Object objectMoveSetContents = moves.get(objectMoveSet);
-          if( objectMoveSetContents instanceof LogoList ){
+          Object objectMoves = moves.get(objectMoveSet);
+          if( objectMoves instanceof LogoList ){
             
             movesArrayList.add(new ArrayList<>());
             
-            LogoList objectMoveSetContentsLogoList = (LogoList)objectMoveSetContents;
-            for(int objectMove = 0; objectMove < objectMoveSetContentsLogoList.size(); objectMove++){
+            LogoList objectMovesLogoList = (LogoList)objectMoves;
+            for(int objectMove = 0; objectMove < objectMovesLogoList.size(); objectMove++){
             
-              Object objectMoveContents = objectMoveSetContentsLogoList.get(objectMove);
-              if( objectMoveContents instanceof String ){
-                String objectMoveContentsString = (String)objectMoveContents;
-                movesArrayList.get(objectMoveSet).add(objectMoveContentsString);
+              Object objectMoveContents = objectMovesLogoList.get(objectMove);
+              if( objectMoveContents instanceof ItemSquarePattern ){
+                movesArrayList.get(objectMoveSet).add((ItemSquarePattern)objectMoveContents);
               }
               else{
                 throw new ExtensionException("Object move specification " + objectMoveContents.toString() + " is not a string.  Please rectify.");
@@ -75,11 +83,11 @@ class MoveObjectsInMindsEye extends DefaultCommand {
             }
           }
           else{
-            throw new ExtensionException("The second dimension " + objectMoveSetContents.toString() + " element of the " + moves.toString() + " list is not a list.  Please rectify.");
+            throw new ExtensionException("The second dimension " + objectMoves.toString() + " element of the " + moves.toString() + " list is not a list.  Please rectify.");
           }
         }
         
-        BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).moveObjectsInMindsEye(movesArrayList, args[1].getIntValue());
+        BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getMindsEyes().lastEntry().getValue().moveObjects(movesArrayList, args[1].getIntValue());
       }
     } catch (AgentException ex) {
       Logger.getLogger(MoveObjectsInMindsEye.class.getName()).log(Level.SEVERE,"", ex);

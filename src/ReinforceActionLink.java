@@ -31,6 +31,7 @@ import org.nlogo.api.Syntax;
  * 6            List            The variables required by the CHREST turtle's 
  *                              reinforcement learning theory to calculate how
  *                              much the link should be reinforced by.
+ * 7            Number          The current time in the model (in milliseconds).
  * 
  * @author Martyn Lloyd-Kelly <martynlk@liv.ac.uk>
  */
@@ -38,7 +39,15 @@ public class ReinforceActionLink extends DefaultCommand {
   
   @Override
   public Syntax getSyntax() {
-    return Syntax.commandSyntax(new int[]{Syntax.StringType(), Syntax.StringType(), Syntax.StringType(), Syntax.StringType(), Syntax.StringType(), Syntax.ListType()});
+    return Syntax.commandSyntax(new int[]{
+      Syntax.StringType(), 
+      Syntax.StringType(), 
+      Syntax.StringType(), 
+      Syntax.StringType(), 
+      Syntax.StringType(), 
+      Syntax.ListType(),
+      Syntax.NumberType()
+    });
   }
 
   @Override
@@ -49,8 +58,8 @@ public class ReinforceActionLink extends DefaultCommand {
         ListPattern parentPatternOfAssociation = BaseExtensionVariablesAndMethods.createAndPopulateListPatternWithNetlogoPrimitivePattern(args[0].getString(), args[1].getString(), args[2].getString());
         ListPattern childPatternOfAssociation = BaseExtensionVariablesAndMethods.createAndPopulateListPatternWithNetlogoPrimitivePattern(Modality.ACTION.toString(), args[3].getString(), args[4].getString());
         
-        Node parentNode = chrestInstance.recognise(parentPatternOfAssociation);
-        Node childNode = chrestInstance.recognise(childPatternOfAssociation);
+        Node parentNode = chrestInstance.recognise(parentPatternOfAssociation, args[6].getIntValue());
+        Node childNode = chrestInstance.recognise(childPatternOfAssociation, args[6].getIntValue());
         
         if( parentNode.getImage().equals(parentPatternOfAssociation) && childNode.getImage().equals(childPatternOfAssociation) ){
           LogoList variablesList = args[5].getList();          
@@ -64,7 +73,7 @@ public class ReinforceActionLink extends DefaultCommand {
           }
           
           Double[] variablesToPass = variablesList.toArray(new Double[variablesList.size()]);
-          parentNode.reinforceActionLink(childNode, variablesToPass);
+          parentNode.reinforceActionLink(childNode, variablesToPass, args[6].getIntValue());
         }
       }
     } catch (AgentException ex) {

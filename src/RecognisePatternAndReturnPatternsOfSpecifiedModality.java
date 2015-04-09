@@ -17,7 +17,7 @@ import org.nlogo.api.Syntax;
  * Recognises a pattern, <i>x</i>, and returns patterns, <i>n</i>, of a 
  * specified modality that <i>x</i> is associated with as a Netlogo list.
  * 
- * Three parameters must be passed when the Netlogo extension primitive that 
+ * Five parameters must be passed when the Netlogo extension primitive that 
  * invokes this class is used in a Netlogo model:
  * 
  * Param #      Data Type       Description
@@ -27,6 +27,7 @@ import org.nlogo.api.Syntax;
  * 3            String          The pattern to recognise.
  * 4            String          The modality of associated patterns that should 
  *                              be returned.
+ * 5            Number          The current time in the model (in milliseconds).
  * 
  * The Netlogo extension primitive that invokes this class returns the following 
  * when it is used in a Netlogo model:
@@ -43,7 +44,13 @@ public class RecognisePatternAndReturnPatternsOfSpecifiedModality extends Defaul
 
   @Override
   public Syntax getSyntax() {
-    return Syntax.reporterSyntax(new int[]{Syntax.StringType(), Syntax.StringType(), Syntax.StringType(), Syntax.StringType()}, Syntax.ListType());
+    return Syntax.reporterSyntax(new int[]{
+      Syntax.StringType(), 
+      Syntax.StringType(), 
+      Syntax.StringType(), 
+      Syntax.StringType(),
+      Syntax.NumberType()
+    }, Syntax.ListType());
   }
 
   @Override
@@ -54,7 +61,7 @@ public class RecognisePatternAndReturnPatternsOfSpecifiedModality extends Defaul
     try {
       if (BaseExtensionVariablesAndMethods.agentHasChrestInstance(context)) {
         
-        Node retrievedNode = BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).recognise(BaseExtensionVariablesAndMethods.createAndPopulateListPatternWithNetlogoPrimitivePattern(args[0].getString(), args[1].getString(), args[2].getString()));
+        Node retrievedNode = BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).recognise(BaseExtensionVariablesAndMethods.createAndPopulateListPatternWithNetlogoPrimitivePattern(args[0].getString(), args[1].getString(), args[2].getString()), args[4].getIntValue());
         String modalitySpecified = args[3].getString();
         if (BaseExtensionVariablesAndMethods.validModality(modalitySpecified)) {
           if (modalitySpecified.equalsIgnoreCase(Modality.ACTION.toString())) {

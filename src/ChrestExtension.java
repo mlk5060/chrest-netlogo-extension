@@ -35,10 +35,8 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("set-familiarisation-time", new SetFamiliarisationTime());
     
     //Mind's eye primitives
-    primitiveManager.addPrimitive("destroy-minds-eye", new DestroyMindsEye());
     primitiveManager.addPrimitive("get-minds-eye-scene", new GetMindsEyeScene());
     primitiveManager.addPrimitive("instantiate-minds-eye", new InstantiateMindsEye());
-    primitiveManager.addPrimitive("minds-eye-exist?", new MindsEyeExist());
     primitiveManager.addPrimitive("move-objects-in-minds-eye", new MoveObjectsInMindsEye());
     
     //Reinforcement theory primitives
@@ -50,6 +48,5 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("set-current-scene", new SetCurrentScene());
     primitiveManager.addPrimitive("get-current-scene", new GetCurrentScene());
     primitiveManager.addPrimitive("learn-current-scene", new LearnCurrentScene());
-    primitiveManager.addPrimitive("set-domain", new SetDomain());
   }
 }
