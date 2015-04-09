@@ -45,11 +45,18 @@ public class SetReinforcementLearningTheory extends DefaultCommand {
         
         if(!specifiedTheory.equalsIgnoreCase("null") || !specifiedTheory.isEmpty()){
           ReinforcementLearningTheories[] reinforcementLearningTheories = ReinforcementLearning.getReinforcementLearningTheories();
+          boolean reinforcementLearningTheoryRecognised = false;
+          
           for(ReinforcementLearning.ReinforcementLearningTheories reinforcementLearningTheory : reinforcementLearningTheories){
             if(specifiedTheory.equalsIgnoreCase(reinforcementLearningTheory.toString())){
+              reinforcementLearningTheoryRecognised = true;
               chrestInstance.setReinforcementLearningTheory(reinforcementLearningTheory);
               break;
             }
+          }
+          
+          if(!reinforcementLearningTheoryRecognised){
+            throw new ExtensionException("The reinforcement theory specified (" + specifiedTheory + ") is not a reinforcement learning theory recognised by CHREST.");
           }
         }
       }
