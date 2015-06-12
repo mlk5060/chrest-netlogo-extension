@@ -17,6 +17,7 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("create-number-pattern", new CreateNumberPattern());
     primitiveManager.addPrimitive("get-add-link-time", new GetAddLinkTime());
     primitiveManager.addPrimitive("get-attention-clock", new GetAttentionClock());
+    primitiveManager.addPrimitive("get-declared-domains", new GetDeclaredDomains());
     primitiveManager.addPrimitive("get-discrimination-time", new GetDiscriminationTime());
     primitiveManager.addPrimitive("get-familiarisation-time", new GetFamiliarisationTime());
     primitiveManager.addPrimitive("get-learning-clock", new GetLearningClock());
@@ -31,6 +32,7 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("reinforce-action-link", new ReinforceActionLink());
     primitiveManager.addPrimitive("save-ltm-network-image", new SaveLtmNetworkImage());
     primitiveManager.addPrimitive("set-add-link-time", new SetAddLinkTime());
+    primitiveManager.addPrimitive("set-domain", new SetDomain());
     primitiveManager.addPrimitive("set-discrimination-time", new SetDiscriminationTime());
     primitiveManager.addPrimitive("set-familiarisation-time", new SetFamiliarisationTime());
     
@@ -45,7 +47,9 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("set-reinforcement-learning-theory", new SetReinforcementLearningTheory());
     
     //Perception primitives.
-    primitiveManager.addPrimitive("set-current-scene", new SetCurrentScene());
+    primitiveManager.addPrimitive("get-empty-square-identifier-in-scene", new GetEmptySquareIdentifierInScene());
+    primitiveManager.addPrimitive("get-self-identifier-in-scene", new GetSelfIdentifierInScene());
+    primitiveManager.addPrimitive("create-scene", new CreateScene());
     primitiveManager.addPrimitive("get-current-scene", new GetCurrentScene());
     primitiveManager.addPrimitive("learn-current-scene", new LearnCurrentScene());
   }

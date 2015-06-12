@@ -42,7 +42,7 @@ public class CreateItemSquarePattern extends DefaultReporter{
     
     @Override
     public Syntax getSyntax(){
-        return Syntax.reporterSyntax( new int[] {Syntax.StringType(), Syntax.NumberType(), Syntax.NumberType()}, Syntax.StringType() );
+      return Syntax.reporterSyntax( new int[] {Syntax.StringType(), Syntax.NumberType(), Syntax.NumberType()}, Syntax.StringType() );
     }
     
     @Override
