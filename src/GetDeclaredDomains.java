@@ -10,7 +10,7 @@ import org.nlogo.api.Syntax;
 /**
  * Gets the result of {@link jchrest.lib.DomainSpecifics#getDeclaredDomains()}
  * from the CHREST package used by the calling turtle and packages the elements
- * into a {@link org.nlogo.api.LogoList}.
+ * into a {@link org.nlogo.api.LogoList} that is returned.
  * 
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */

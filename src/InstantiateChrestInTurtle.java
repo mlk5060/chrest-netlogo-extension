@@ -1,7 +1,6 @@
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jchrest.architecture.Chrest;
-import jchrest.lib.DomainSpecifics;
 import org.nlogo.api.AgentException;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
