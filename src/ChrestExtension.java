@@ -17,6 +17,7 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("create-number-pattern", new CreateNumberPattern());
     primitiveManager.addPrimitive("get-add-link-time", new GetAddLinkTime());
     primitiveManager.addPrimitive("get-attention-clock", new GetAttentionClock());
+    primitiveManager.addPrimitive("get-current-domain", new GetCurrentDomain());
     primitiveManager.addPrimitive("get-declared-domains", new GetDeclaredDomains());
     primitiveManager.addPrimitive("get-discrimination-time", new GetDiscriminationTime());
     primitiveManager.addPrimitive("get-familiarisation-time", new GetFamiliarisationTime());
