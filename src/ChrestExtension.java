@@ -38,6 +38,7 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("set-familiarisation-time", new SetFamiliarisationTime());
     
     //Mind's eye primitives
+    primitiveManager.addPrimitive("get-minds-eye-history", new GetMindsEyeHistory());
     primitiveManager.addPrimitive("get-minds-eye-scene", new GetMindsEyeScene());
     primitiveManager.addPrimitive("instantiate-minds-eye", new InstantiateMindsEye());
     primitiveManager.addPrimitive("move-objects-in-minds-eye", new MoveObjectsInMindsEye());

@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,18 +43,20 @@ public class CreateScene extends DefaultReporter {
 
   @Override
   public Syntax getSyntax(){
-    return Syntax.reporterSyntax(new int[]{Syntax.ListType(), Syntax.StringType()}, Syntax.getTypeConstant(jchrest.lib.Scene.class));
+    return Syntax.reporterSyntax(new int[]{Syntax.ListType(), Syntax.StringType()}, Syntax.WildcardType());
   }
   
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
+    
+    LogoList input = args[0].getList();
+    ArrayList<String[]> dataForScene = new ArrayList();
 
     //Since domain-specific and agent relative xcor and ycor coordinates may 
     //be specified for items in a Nelogo environment, analyse the scene passed 
     //to establish the smallest and greatest width and height (x/y-cors, 
     //respectively) so that a jchrest.lib.Scene instance can be correctly 
     //constructed.
-    LogoList input = args[0].getList();
     Integer minX = null;
     Integer maxX = null;
     Integer minY = null;
@@ -63,7 +66,12 @@ public class CreateScene extends DefaultReporter {
       Object item = input.get(i);
       if(item instanceof String){
         String itemString = (String)item;
-        String[] itemDetails = itemString.split("\\s+");
+        
+        //The itemString variable will look like: "[object-identifier xcor ycor]"
+        //so the angled brackets need to be removed otherwise errors will be
+        //thrown since the ycor variable below will contain "ycor]", i.e. it 
+        //won't actually be a pure number.
+        String[] itemDetails = itemString.replaceAll("\\[|\\]", "").split("\\s+");
         if(itemDetails.length == 3){
           Integer xcor = Integer.valueOf(itemDetails[1]);
           Integer ycor = Integer.valueOf(itemDetails[2]);
@@ -99,6 +107,8 @@ public class CreateScene extends DefaultReporter {
           else if(ycor > maxY){
             maxY = ycor;
           }
+          
+          dataForScene.add(itemDetails);
         }
         else{
           throw new ExtensionException("The information for item " + item + " in the first parameter passed to "
@@ -129,13 +139,11 @@ public class CreateScene extends DefaultReporter {
     int ycorConverter = 0 - minY;
 
     //Populate the scene using info from the list passed.
-    for(int i = 0; i < input.size(); i++){
-      String item = (String)input.get(i);
-      String[] itemDetails = item.split("\\s+");
+    for(String[] data : dataForScene){
       scene.addItemToSquare(
-        Integer.valueOf(itemDetails[1]) + xcorConverter, //col (xcor)
-        Integer.valueOf(itemDetails[2]) + ycorConverter, //row (ycor)
-        itemDetails[0] //item identifier
+        Integer.valueOf(data[1]) + xcorConverter, //col (xcor)
+        Integer.valueOf(data[2]) + ycorConverter, //row (ycor)
+        data[0] //item identifier
       );
     }
 
