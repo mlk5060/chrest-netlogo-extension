@@ -24,7 +24,7 @@ public class GetFixations extends DefaultReporter {
   
   @Override
   public Syntax getSyntax(){
-    return Syntax.reporterSyntax(Syntax.LinkType());
+    return Syntax.reporterSyntax(Syntax.ListType());
   }
 
   @Override

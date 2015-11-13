@@ -14,11 +14,6 @@ import org.nlogo.api.Syntax;
  * calling turtle's most recently created 
  * {@link jchrest.architecture.VisualSpatialField}.
  * 
- * Param #      Data Type
- * -------      ---------
- * 1            Number
- * 2            Boolean
- * 
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
 public class GetAsScene extends DefaultReporter {
