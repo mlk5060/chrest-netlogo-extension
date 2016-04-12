@@ -43,25 +43,17 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("set-familiarisation-time", new architecture.Chrest.SetFamiliarisationTime());
     primitiveManager.addPrimitive("set-reinforcement-learning-theory", new architecture.Chrest.SetReinforcementLearningTheory());
     
-    //DomainSpecific primitives
-    primitiveManager.addPrimitive("DomainSpecifics.convert-scene-specific-coordinates-to-domain-specific-coordinates", new DomainSpecifics.ConvertFromSceneToDomainSpecificCoordinates());
-    primitiveManager.addPrimitive("DomainSpecifics.get-current-domain", new DomainSpecifics.GetCurrentDomain());
-    primitiveManager.addPrimitive("DomainSpecifics.get-current-domain-name", new DomainSpecifics.GetCurrentDomainName());
-    primitiveManager.addPrimitive("DomainSpecifics.get-domains", new DomainSpecifics.GetDeclaredDomains());
-    primitiveManager.addPrimitive("DomainSpecifics.normalise-list-pattern", new DomainSpecifics.NormaliseListPattern());
-    primitiveManager.addPrimitive("DomainSpecifics.get-salient-patches", new DomainSpecifics.GetSalientPatches());
-    
     //DomainSpecifics.TileworldDomain primitives
-    primitiveManager.addPrimitive("TileworldDomain.get-hole-identifier", new DomainSpecifics.TileworldDomain.GetHoleIdentifier());
-    primitiveManager.addPrimitive("TileworldDomain.get-opponent-identifier", new DomainSpecifics.TileworldDomain.GetOpponentIdentifier());
-    primitiveManager.addPrimitive("TileworldDomain.get-tile-identifier", new DomainSpecifics.TileworldDomain.GetTileIdentifier());
+    primitiveManager.addPrimitive("TileworldDomain.get-hole-identifier", new domainSpecifics.tileworld.GetHoleIdentifier());
+    primitiveManager.addPrimitive("TileworldDomain.get-opponent-identifier", new domainSpecifics.tileworld.GetOpponentIdentifier());
+    primitiveManager.addPrimitive("TileworldDomain.get-tile-identifier", new domainSpecifics.tileworld.GetTileIdentifier());
   
     //Modality primitives
     primitiveManager.addPrimitive("Modality.get-modalities", new lib.Modality.Values());
     
     //Node primitives
-    primitiveManager.addPrimitive("Node.get-image", new Node.GetImage());
-    primitiveManager.addPrimitive("Node.get-productions", new Node.GetProductions());
+    primitiveManager.addPrimitive("Node.get-image", new architecture.Node.GetImage());
+    primitiveManager.addPrimitive("Node.get-productions", new architecture.Node.GetProductions());
     
     //Pattern primitives
     primitiveManager.addPrimitive("Pattern.create-number-pattern", new Pattern.CreateNumberPattern());

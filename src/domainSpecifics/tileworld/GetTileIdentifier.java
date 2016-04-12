@@ -1,4 +1,4 @@
-package DomainSpecifics.TileworldDomain;
+package domainSpecifics.tileworld;
 
 import jchrest.lib.TileworldDomain;
 import org.nlogo.api.Argument;

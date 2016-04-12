@@ -1,4 +1,4 @@
-package DomainSpecifics.TileworldDomain;
+package domainSpecifics.tileworld;
 
 import jchrest.lib.TileworldDomain;
 import org.nlogo.api.Argument;
@@ -10,11 +10,11 @@ import org.nlogo.api.Syntax;
 
 /**
  * Returns the result of invoking {@link 
- * jchrest.lib.TileworldDomain#getOpponentIdentifier()}.
+ * jchrest.lib.TileworldDomain#getHoleIdentifier()}.
  * 
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
-public class GetOpponentIdentifier extends DefaultReporter {
+public class GetHoleIdentifier extends DefaultReporter {
   
   @Override
   public Syntax getSyntax(){
@@ -23,7 +23,7 @@ public class GetOpponentIdentifier extends DefaultReporter {
 
   @Override
   public Object report(Argument[] args, Context cntxt) throws ExtensionException, LogoException {
-    return TileworldDomain.getOpponentIdentifier();
+    return TileworldDomain.getHoleIdentifier();
   }
   
 }
