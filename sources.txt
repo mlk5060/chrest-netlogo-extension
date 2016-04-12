@@ -5,6 +5,7 @@ src/Chrest/GetActionStm.java
 src/Chrest/GetActionStmNodeCount.java
 src/Chrest/GetAddLinkTime.java
 src/Chrest/GetAttentionClock.java
+src/Chrest/GetChrestInstance.java
 src/Chrest/GetDiscriminationTime.java
 src/Chrest/GetFamiliarisationTime.java
 src/Chrest/GetLearningClock.java
@@ -32,6 +33,7 @@ src/Chrest/SetDomain.java
 src/Chrest/SetFamiliarisationTime.java
 src/Chrest/SetReinforcementLearningTheory.java
 src/ChrestExtension.java
+src/DomainSpecifics/ConvertFromSceneToDomainSpecificCoordinates.java
 src/DomainSpecifics/GetCurrentDomain.java
 src/DomainSpecifics/GetCurrentDomainName.java
 src/DomainSpecifics/GetDeclaredDomains.java

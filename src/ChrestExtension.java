@@ -29,6 +29,7 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("get-action-stm-node-count", new Chrest.GetActionStmNodeCount());
     primitiveManager.addPrimitive("get-add-link-time", new Chrest.GetAddLinkTime());
     primitiveManager.addPrimitive("get-attention-clock", new Chrest.GetAttentionClock());
+    primitiveManager.addPrimitive("get-chrest-instance", new Chrest.GetChrestInstance());
     primitiveManager.addPrimitive("get-discrimination-time", new Chrest.GetDiscriminationTime());
     primitiveManager.addPrimitive("get-familiarisation-time", new Chrest.GetFamiliarisationTime());
     primitiveManager.addPrimitive("get-learning-clock", new Chrest.GetLearningClock());
@@ -56,6 +57,7 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("set-reinforcement-learning-theory", new Chrest.SetReinforcementLearningTheory());
     
     //DomainSpecific primitives
+    primitiveManager.addPrimitive("DomainSpecifics.convert-scene-specific-coordinates-to-domain-specific-coordinates", new DomainSpecifics.ConvertFromSceneToDomainSpecificCoordinates());
     primitiveManager.addPrimitive("DomainSpecifics.get-current-domain", new DomainSpecifics.GetCurrentDomain());
     primitiveManager.addPrimitive("DomainSpecifics.get-current-domain-name", new DomainSpecifics.GetCurrentDomainName());
     primitiveManager.addPrimitive("DomainSpecifics.get-domains", new DomainSpecifics.GetDeclaredDomains());

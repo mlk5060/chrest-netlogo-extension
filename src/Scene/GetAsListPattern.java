@@ -10,7 +10,7 @@ import org.nlogo.api.Syntax;
 
 /**
  * Returns the result of invoking {@link 
- * jchrest.lib.Scene#getAsListPattern(boolean, boolean)}.
+ * jchrest.lib.Scene#getAsListPattern(boolean)}.
  * 
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
@@ -21,7 +21,6 @@ public class GetAsListPattern extends DefaultReporter {
     return Syntax.reporterSyntax(
       new int[]{
         Syntax.WildcardType(), //Scene
-        Syntax.BooleanType(), //Creator-relative coordinates?
         Syntax.BooleanType() //Identify objects by object class?
       },
       Syntax.WildcardType()
@@ -30,7 +29,7 @@ public class GetAsListPattern extends DefaultReporter {
 
   @Override
   public Object report(Argument[] args, Context cntxt) throws ExtensionException, LogoException {
-    return ((Scene)args[0].get()).getAsListPattern(args[1].getBooleanValue(), args[2].getBooleanValue());
+    return ((Scene)args[0].get()).getAsListPattern(args[1].getBooleanValue());
   }
   
 }
