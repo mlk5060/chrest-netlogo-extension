@@ -29,9 +29,10 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("get-familiarisation-time", new architecture.Chrest.GetFamiliarisationTime());
     primitiveManager.addPrimitive("get-ltm-avg-depth", new architecture.Chrest.GetLtmAverageDepth());
     primitiveManager.addPrimitive("get-ltm-size", new architecture.Chrest.GetLtmSize());
-    primitiveManager.addPrimitive("get-stm-node-count", new architecture.Stm.GetCount());
+    primitiveManager.addPrimitive("get-perceiver", new architecture.Chrest.GetPerceiver());
     primitiveManager.addPrimitive("get-production-count", new architecture.Chrest.GetProductionCount());
     primitiveManager.addPrimitive("get-reinforcement-learning-theory", new architecture.Chrest.GetReinforcementLearningTheory());
+    primitiveManager.addPrimitive("get-stm-node-count", new architecture.Stm.GetCount());
     primitiveManager.addPrimitive("learn-production", new architecture.Chrest.LearnProduction());
     primitiveManager.addPrimitive("recognise-and-learn", new architecture.Chrest.RecogniseAndLearn());
     primitiveManager.addPrimitive("reinforce-production", new architecture.Chrest.ReinforceProduction());
@@ -75,9 +76,7 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("ListPattern.remove-blind-empty-and-unknown-patches", new Pattern.List.RemoveBlindEmptyAndUnknownPatches());
     
     //Perceiver primitives.
-    primitiveManager.addPrimitive("Perceiver.get-fixation-xcor", new Perceiver.GetFixationXcor());
-    primitiveManager.addPrimitive("Perceiver.get-fixation-ycor", new Perceiver.GetFixationYcor());
-    primitiveManager.addPrimitive("Perceiver.get-fixations", new Perceiver.GetFixations());
+    primitiveManager.addPrimitive("Perceiver.get-fixations", new architecture.Perceiver.GetFixations());
     
     //Reinforcement primitives
     primitiveManager.addPrimitive("ReinforcementLearning.get-theories", new Reinforcement.GetReinforcementLearningTheories());
