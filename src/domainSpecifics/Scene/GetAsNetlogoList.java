@@ -1,7 +1,6 @@
-package Scene;
+package domainSpecifics.Scene;
 
-import jchrest.lib.Scene;
-import jchrest.lib.SceneObject;
+import jchrest.domainSpecifics.Scene;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
@@ -11,17 +10,6 @@ import org.nlogo.api.LogoListBuilder;
 import org.nlogo.api.Syntax;
 
 /**
- * Reports a {@link jchrest.lib.Scene} as a 3D {@link org.nlogo.api.LogoList}
- * whose first dimension {@link org.nlogo.api.LogoList} represents columns of 
- * the {@link jchrest.lib.Scene}, second dimension {@link 
- * org.nlogo.api.LogoList} represents rows of the {@link jchrest.lib.Scene} and 
- * third dimension {@link org.nlogo.api.LogoList} contains two elements: the 
- * result of invoking {@link 
- * jchrest.lib.SceneObject#getIdentifier()} and {@link 
- * jchrest.lib.SceneObject#getObjectClass()} on the {@link 
- * jchrest.lib.SceneObject} on the column and row specified in the 
- * {@link jchrest.lib.Scene} passed.
- * 
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
 public class GetAsNetlogoList extends DefaultReporter {
@@ -36,8 +24,26 @@ public class GetAsNetlogoList extends DefaultReporter {
     );
   }
 
+  /**
+   * 
+   * @param args The {@link jchrest.lib.Scene} to be parsed as a {@link 
+   * org.nlogo.api.LogoList}.
+   * @param context
+   * 
+   * @return A two dimensional {@link org.nlogo.api.LogoList} representing the
+   * {@link jchrest.lib.Scene} passed as the first parameter to this primitive.
+   * For example, if {@link jchrest.lib.Scene#getWidth()} and {@link 
+   * jchrest.lib.Scene#getHeight()} both return 5 for the {@link 
+   * jchrest.lib.Scene} passed as the first parameter to this primitive then 
+   * invoking {@code item (2) (item (0) (list)))} will return the {@link 
+   * jchrest.domainSpecifics.SceneObject} on coordinates (0, 2) in the {@link 
+   * jchrest.lib.Scene} passed as the first parameter to this primitive.
+   * 
+   * @throws ExtensionException
+   * @throws LogoException 
+   */
   @Override
-  public Object report(Argument[] args, Context cntxt) throws ExtensionException, LogoException {
+  public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
     LogoListBuilder sceneAsLogoList = new LogoListBuilder();
     Scene scene = (Scene)args[0].get();
     
@@ -46,10 +52,7 @@ public class GetAsNetlogoList extends DefaultReporter {
       
       for(int rowIndex = 0; rowIndex < scene.getHeight(); rowIndex++){
         LogoListBuilder row = new LogoListBuilder();
-        
-        SceneObject squareContents = scene.getSquareContents(colIndex, rowIndex);
-        row.add(squareContents.getIdentifier());
-        row.add(squareContents.getObjectClass());
+        row.add(scene.getSquareContents(colIndex, rowIndex));
         column.add(row.toLogoList());
       }
       

@@ -1,4 +1,4 @@
-package Scene;
+package domainSpecifics.Scene;
 
 import jchrest.lib.Scene;
 import org.nlogo.api.Argument;
@@ -9,8 +9,6 @@ import org.nlogo.api.LogoException;
 import org.nlogo.api.Syntax;
 
 /**
- * Returns the result of invoking {@link jchrest.lib.Scene#getCreatorToken()}.
- * 
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
 public class GetCreatorToken extends DefaultReporter {
@@ -20,8 +18,19 @@ public class GetCreatorToken extends DefaultReporter {
     return Syntax.reporterSyntax(Syntax.StringType());
   }
 
+  /**
+   * 
+   * @param args
+   * @param context
+   * 
+   * @return The result of {@link 
+   * jchrest.domainSpecifics.Scene#getCreatorToken()}.
+   * 
+   * @throws ExtensionException
+   * @throws LogoException 
+   */
   @Override
-  public Object report(Argument[] argmnts, Context cntxt) throws ExtensionException, LogoException {
+  public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
     return Scene.getCreatorToken();
   }
 }

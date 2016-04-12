@@ -82,16 +82,16 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("ReinforcementLearning.get-theories", new Reinforcement.GetReinforcementLearningTheories());
     
     //Scene primitives.
-    primitiveManager.addPrimitive("Scene.new", new Scene.New());
-    primitiveManager.addPrimitive("Scene.get-as-list-pattern", new Scene.GetAsListPattern());
-    primitiveManager.addPrimitive("Scene.get-as-netlogo-list", new Scene.GetAsNetlogoList());
-    primitiveManager.addPrimitive("Scene.get-blind-square-token", new Scene.GetBlindSquareToken());
-    primitiveManager.addPrimitive("Scene.get-creator-token", new Scene.GetCreatorToken());
-    primitiveManager.addPrimitive("Scene.get-empty-square-token", new Scene.GetEmptySquareToken());
-    primitiveManager.addPrimitive("Scene.get-location-of-creator", new Scene.GetLocationOfCreator());
-    primitiveManager.addPrimitive("Scene.get-object-locations", new Scene.GetObjectLocations());
-    primitiveManager.addPrimitive("Scene.get-self-identifier", new Scene.GetCreatorToken());
-    primitiveManager.addPrimitive("Scene.get-square-contents-as-netlogo-list", new Scene.GetSquareContentsAsNetlogoList());
+    primitiveManager.addPrimitive("Scene.new", new domainSpecifics.Scene.New());
+    primitiveManager.addPrimitive("Scene.get-as-list-pattern", new domainSpecifics.Scene.GetAsListPattern());
+    primitiveManager.addPrimitive("Scene.get-as-netlogo-list", new domainSpecifics.Scene.GetAsNetlogoList());
+    primitiveManager.addPrimitive("Scene.get-blind-square-token", new domainSpecifics.Scene.GetBlindSquareToken());
+    primitiveManager.addPrimitive("Scene.get-creator-token", new domainSpecifics.Scene.GetCreatorToken());
+    primitiveManager.addPrimitive("Scene.get-empty-square-token", new domainSpecifics.Scene.GetEmptySquareToken());
+    primitiveManager.addPrimitive("Scene.get-location-of-creator", new domainSpecifics.Scene.GetLocationOfCreator());
+    primitiveManager.addPrimitive("Scene.get-scene-object-locations", new domainSpecifics.Scene.GetSceneObjectLocations());
+    primitiveManager.addPrimitive("Scene.get-creator-token", new domainSpecifics.Scene.GetCreatorToken());
+    primitiveManager.addPrimitive("Scene.get-square-contents", new domainSpecifics.Scene.GetSquareContents());
     
     //VisualSpatialField primitives
     primitiveManager.addPrimitive("VisualSpatialField.new", new VisualSpatialField.New());
