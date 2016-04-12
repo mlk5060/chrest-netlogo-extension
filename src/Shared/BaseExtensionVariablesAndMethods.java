@@ -1,7 +1,6 @@
 package Shared;
 
 import jchrest.architecture.Chrest;
-import jchrest.lib.Modality;
 import org.nlogo.api.AgentException;
 import org.nlogo.api.Context;
 import org.nlogo.api.ExtensionException;
@@ -13,7 +12,7 @@ import org.nlogo.api.ExtensionException;
  */
 public class BaseExtensionVariablesAndMethods {
   
-  public final static String CHREST_INSTANCE_CHREST_AGENT_BREED_VAR_NAME = "CHREST-INSTANCE";
+  public final static String CHREST_BREED_VARIABLE_NAME = "CHREST";
   public final static String CURRENT_SCENE_BREED_VAR_NAME = "CURRENT-SCENE";
   public final static String NUMBER_FIXATIONS_BREED_VAR_NAME = "NUMBER-FIXATIONS";
   public final static String SIGHT_RADIUS_BREED_VAR_NAME = "SIGHT-RADIUS";
@@ -37,7 +36,7 @@ public class BaseExtensionVariablesAndMethods {
     Chrest chrest = null;
     
     try {
-      chrest = (Chrest)BaseExtensionVariablesAndMethods.getAgent(context).getBreedVariable(BaseExtensionVariablesAndMethods.CHREST_INSTANCE_CHREST_AGENT_BREED_VAR_NAME);
+      chrest = (Chrest)BaseExtensionVariablesAndMethods.getAgent(context).getBreedVariable(BaseExtensionVariablesAndMethods.CHREST_BREED_VARIABLE_NAME);
     } catch (AgentException ex) {
       throw new ExtensionException(ex);
     }

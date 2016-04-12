@@ -22,39 +22,26 @@ public class ChrestExtension extends DefaultClassManager {
   public void load(PrimitiveManager primitiveManager) {
     
     //Chrest primitives
-    primitiveManager.addPrimitive("associate-list-patterns", new Chrest.AssociateListPatterns());
-    primitiveManager.addPrimitive("get-action-ltm-avg-depth", new Chrest.GetActionLtmAvgDepth());
-    primitiveManager.addPrimitive("get-action-ltm-size", new Chrest.GetActionLtmSize());
-    primitiveManager.addPrimitive("get-action-stm", new Chrest.GetActionStm());
-    primitiveManager.addPrimitive("get-action-stm-node-count", new Chrest.GetActionStmNodeCount());
-    primitiveManager.addPrimitive("get-add-link-time", new Chrest.GetAddLinkTime());
-    primitiveManager.addPrimitive("get-attention-clock", new Chrest.GetAttentionClock());
-    primitiveManager.addPrimitive("get-chrest-instance", new Chrest.GetChrestInstance());
-    primitiveManager.addPrimitive("get-discrimination-time", new Chrest.GetDiscriminationTime());
-    primitiveManager.addPrimitive("get-familiarisation-time", new Chrest.GetFamiliarisationTime());
-    primitiveManager.addPrimitive("get-learning-clock", new Chrest.GetLearningClock());
-    primitiveManager.addPrimitive("get-production-count", new Chrest.GetProductionCount());
-    primitiveManager.addPrimitive("get-reinforcement-learning-theory", new Chrest.GetReinforcementLearningTheory());
-    primitiveManager.addPrimitive("get-verbal-ltm-avg-depth", new Chrest.GetVerbalLtmAvgDepth());
-    primitiveManager.addPrimitive("get-verbal-ltm-size", new Chrest.GetVerbalLtmSize());
-    primitiveManager.addPrimitive("get-verbal-stm", new Chrest.GetVisualStm());
-    primitiveManager.addPrimitive("get-verbal-stm-node-count", new Chrest.GetVerbalStmNodeCount());
-    primitiveManager.addPrimitive("get-visual-ltm-avg-depth", new Chrest.GetVisualLtmAvgDepth());
-    primitiveManager.addPrimitive("get-visual-ltm-size", new Chrest.GetVisualLtmSize());
-    primitiveManager.addPrimitive("get-visual-stm", new Chrest.GetVisualStm());
-    primitiveManager.addPrimitive("get-visual-stm-node-count", new Chrest.GetVisualStmNodeCount());
-    primitiveManager.addPrimitive("instantiate-chrest-in-turtle", new Chrest.InstantiateChrestInTurtle());
-    primitiveManager.addPrimitive("learn-scene", new Chrest.LearnScene());
-    primitiveManager.addPrimitive("recognise", new Chrest.Recognise());
-    primitiveManager.addPrimitive("recognise-and-learn", new Chrest.RecogniseAndLearn());
-    primitiveManager.addPrimitive("reinforce-production", new Chrest.ReinforceProduction());
-    primitiveManager.addPrimitive("save-ltm-network-image", new Chrest.SaveLtmNetworkImage());
-    primitiveManager.addPrimitive("scan-scene", new Chrest.ScanScene());
-    primitiveManager.addPrimitive("set-add-link-time", new Chrest.SetAddLinkTime());
-    primitiveManager.addPrimitive("set-discrimination-time", new Chrest.SetDiscriminationTime());
-    primitiveManager.addPrimitive("set-domain", new Chrest.SetDomain());
-    primitiveManager.addPrimitive("set-familiarisation-time", new Chrest.SetFamiliarisationTime());
-    primitiveManager.addPrimitive("set-reinforcement-learning-theory", new Chrest.SetReinforcementLearningTheory());
+    primitiveManager.addPrimitive("get-add-production-time", new architecture.Chrest.GetAddProductionTime());
+    primitiveManager.addPrimitive("get-attention-clock", new architecture.Chrest.GetAttentionClock());
+    primitiveManager.addPrimitive("get-cognition-clock", new architecture.Chrest.GetCognitionClock());
+    primitiveManager.addPrimitive("get-discrimination-time", new architecture.Chrest.GetDiscriminationTime());
+    primitiveManager.addPrimitive("get-familiarisation-time", new architecture.Chrest.GetFamiliarisationTime());
+    primitiveManager.addPrimitive("get-ltm-avg-depth", new architecture.Chrest.GetLtmAverageDepth());
+    primitiveManager.addPrimitive("get-ltm-size", new architecture.Chrest.GetLtmSize());
+    primitiveManager.addPrimitive("get-stm-node-count", new architecture.Stm.GetCount());
+    primitiveManager.addPrimitive("get-production-count", new architecture.Chrest.GetProductionCount());
+    primitiveManager.addPrimitive("get-reinforcement-learning-theory", new architecture.Chrest.GetReinforcementLearningTheory());
+    primitiveManager.addPrimitive("learn-production", new architecture.Chrest.LearnProduction());
+    primitiveManager.addPrimitive("recognise-and-learn", new architecture.Chrest.RecogniseAndLearn());
+    primitiveManager.addPrimitive("reinforce-production", new architecture.Chrest.ReinforceProduction());
+    primitiveManager.addPrimitive("save-ltm-network-image", new architecture.Chrest.SaveLtmNetworkImage());
+    primitiveManager.addPrimitive("schedule-or-make-next-fixation", new architecture.Chrest.ScheduleOrMakeNextFixation());
+    primitiveManager.addPrimitive("set-add-production-time", new architecture.Chrest.SetAddProductionTime());
+    primitiveManager.addPrimitive("set-discrimination-time", new architecture.Chrest.SetDiscriminationTime());
+    primitiveManager.addPrimitive("set-domain", new architecture.Chrest.SetDomain());
+    primitiveManager.addPrimitive("set-familiarisation-time", new architecture.Chrest.SetFamiliarisationTime());
+    primitiveManager.addPrimitive("set-reinforcement-learning-theory", new architecture.Chrest.SetReinforcementLearningTheory());
     
     //DomainSpecific primitives
     primitiveManager.addPrimitive("DomainSpecifics.convert-scene-specific-coordinates-to-domain-specific-coordinates", new DomainSpecifics.ConvertFromSceneToDomainSpecificCoordinates());
@@ -70,7 +57,7 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("TileworldDomain.get-tile-identifier", new DomainSpecifics.TileworldDomain.GetTileIdentifier());
   
     //Modality primitives
-    primitiveManager.addPrimitive("Modality.get-modalities", new Modality.GetModalities());
+    primitiveManager.addPrimitive("Modality.get-modalities", new lib.Modality.Values());
     
     //Node primitives
     primitiveManager.addPrimitive("Node.get-image", new Node.GetImage());
@@ -117,7 +104,7 @@ public class ChrestExtension extends DefaultClassManager {
     
     //VisualSpatialField primitives
     primitiveManager.addPrimitive("VisualSpatialField.new", new VisualSpatialField.New());
-    primitiveManager.addPrimitive("VisualSpatialField.get-all", new Chrest.GetVisualSpatialFields());
+    primitiveManager.addPrimitive("VisualSpatialField.get-all", new architecture.Chrest.GetVisualSpatialFields());
     primitiveManager.addPrimitive("VisualSpatialField.get-as-netlogo-list", new VisualSpatialField.GetAsNetlogoList());
     primitiveManager.addPrimitive("VisualSpatialField.get-as-scene", new VisualSpatialField.GetAsScene());
     primitiveManager.addPrimitive("VisualSpatialField.get-object-locations", new VisualSpatialField.GetObjectLocations());
