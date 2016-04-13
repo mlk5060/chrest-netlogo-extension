@@ -33,7 +33,11 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("get-production-count", new architecture.Chrest.GetProductionCount());
     primitiveManager.addPrimitive("get-reinforcement-learning-theory", new architecture.Chrest.GetReinforcementLearningTheory());
     primitiveManager.addPrimitive("get-stm-node-count", new architecture.Stm.GetCount());
+    primitiveManager.addPrimitive("get-visual-spatial-fields", new architecture.Chrest.GetVisualSpatialFields());
+    primitiveManager.addPrimitive("get-visual-spatial-field-as-scene", new architecture.Chrest.GetVisualSpatialFieldAsScene());
+    primitiveManager.addPrimitive("get-visual-spatial-field-object-locations", new architecture.Chrest.GetVisualSpatialFieldObjectLocations());
     primitiveManager.addPrimitive("learn-production", new architecture.Chrest.LearnProduction());
+    primitiveManager.addPrimitive("move-visual-spatial-field-objects", new architecture.Chrest.MoveObjectsInVisualSpatialField());
     primitiveManager.addPrimitive("recognise-and-learn", new architecture.Chrest.RecogniseAndLearn());
     primitiveManager.addPrimitive("reinforce-production", new architecture.Chrest.ReinforceProduction());
     primitiveManager.addPrimitive("save-ltm-network-image", new architecture.Chrest.SaveLtmNetworkImage());
@@ -92,15 +96,6 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("Scene.get-scene-object-locations", new domainSpecifics.Scene.GetSceneObjectLocations());
     primitiveManager.addPrimitive("Scene.get-creator-token", new domainSpecifics.Scene.GetCreatorToken());
     primitiveManager.addPrimitive("Scene.get-square-contents", new domainSpecifics.Scene.GetSquareContents());
-    
-    //VisualSpatialField primitives
-    primitiveManager.addPrimitive("VisualSpatialField.new", new VisualSpatialField.New());
-    primitiveManager.addPrimitive("VisualSpatialField.get-all", new architecture.Chrest.GetVisualSpatialFields());
-    primitiveManager.addPrimitive("VisualSpatialField.get-as-netlogo-list", new VisualSpatialField.GetAsNetlogoList());
-    primitiveManager.addPrimitive("VisualSpatialField.get-as-scene", new VisualSpatialField.GetAsScene());
-    primitiveManager.addPrimitive("VisualSpatialField.get-object-locations", new VisualSpatialField.GetObjectLocations());
-    primitiveManager.addPrimitive("VisualSpatialField.is-object-on-square?", new VisualSpatialField.IsObjectOnSquare());
-    primitiveManager.addPrimitive("VisualSpatialField.move-objects", new VisualSpatialField.MoveObjects());
     
     //VisualSpatialFieldObject primitives
     primitiveManager.addPrimitive("VisualSpatialFieldObject.get-identifier", new VisualSpatialFieldObject.GetIdentifier());
