@@ -9,9 +9,6 @@ import org.nlogo.api.LogoException;
 import org.nlogo.api.Syntax;
 
 /**
- * Returns the result of invoking {@link 
- * jchrest.lib.VisualSpatialFieldObject#getUnknownSquareToken()}.
- * 
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
 public class GetUnknownSquareToken extends DefaultReporter{
@@ -21,8 +18,19 @@ public class GetUnknownSquareToken extends DefaultReporter{
     return Syntax.reporterSyntax(Syntax.StringType());
   }
   
+  /**
+   * 
+   * @param argmnts
+   * @param context
+   * 
+   * @return The result of {@link 
+   * jchrest.lib.VisualSpatialFieldObject#getUnknownSquareToken()}.
+   * 
+   * @throws ExtensionException
+   * @throws LogoException 
+   */
   @Override
-  public Object report(Argument[] argmnts, Context cntxt) throws ExtensionException, LogoException {
+  public Object report(Argument[] argmnts, Context context) throws ExtensionException, LogoException {
     return VisualSpatialFieldObject.getUnknownSquareToken();
   }
   

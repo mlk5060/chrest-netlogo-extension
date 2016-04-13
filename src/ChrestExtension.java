@@ -99,7 +99,7 @@ public class ChrestExtension extends DefaultClassManager {
     
     //VisualSpatialFieldObject primitives
     primitiveManager.addPrimitive("VisualSpatialFieldObject.get-identifier", new VisualSpatialFieldObject.GetIdentifier());
-    primitiveManager.addPrimitive("VisualSpatialFieldObject.get-object-class", new VisualSpatialFieldObject.GetObjectClass());
+    primitiveManager.addPrimitive("VisualSpatialFieldObject.get-object-type", new VisualSpatialFieldObject.GetObjectType());
     primitiveManager.addPrimitive("VisualSpatialFieldObject.get-unknown-square-token", new VisualSpatialFieldObject.GetUnknownSquareToken());
   }
 }

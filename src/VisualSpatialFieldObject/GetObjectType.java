@@ -9,29 +9,32 @@ import org.nlogo.api.LogoException;
 import org.nlogo.api.Syntax;
 
 /**
+ * Returns the result of invoking {@link 
+ * jchrest.lib.VisualSpatialFieldObject#getObjectClass()}.
+ * 
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
-public class GetIdentifier extends DefaultReporter{
-
+public class GetObjectType extends DefaultReporter {
+  
   @Override
   public Syntax getSyntax(){
     return Syntax.reporterSyntax(
       new int[]{
         Syntax.WildcardType()
-      }, 
+      },
       Syntax.StringType()
     );
   }
-  
+
   /**
    * 
    * @param args The {@link jchrest.lib.VisualSpatialFieldObject} that {@link 
-   * jchrest.lib.VisualSpatialFieldObject#getIdentifier()} is to be invoked
+   * jchrest.lib.VisualSpatialFieldObject#getObjectType()} is to be invoked
    * in context of.
    * @param context
    * 
    * @return The result of invoking {@link 
-   * jchrest.lib.VisualSpatialFieldObject#getIdentifier()} in context of the 
+   * jchrest.lib.VisualSpatialFieldObject#getObjectType()} in context of the 
    * {@link jchrest.lib.VisualSpatialFieldObject} specified as a parameter to 
    * this primitive.
    * 
@@ -40,7 +43,7 @@ public class GetIdentifier extends DefaultReporter{
    */
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
-    return ((VisualSpatialFieldObject)args[0].get()).getIdentifier();
+    return ((VisualSpatialFieldObject)args[0].get()).getObjectType();
   }
   
 }
