@@ -1,6 +1,6 @@
 package architecture.Chrest;
 
-import Shared.BaseExtensionVariablesAndMethods;
+import classManager.ChrestExtension;
 import jchrest.architecture.Chrest;
 import jchrest.lib.ReinforcementLearning;
 import jchrest.lib.ReinforcementLearning.ReinforcementLearningTheories;
@@ -54,7 +54,7 @@ public class SetReinforcementLearningTheory extends DefaultCommand {
    */
   @Override
   public void perform(Argument[] args, Context context) throws ExtensionException, LogoException {
-    Chrest chrestInstance = BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context);
+    Chrest chrestInstance = ChrestExtension.getTurtlesChrestInstance(context);
     String specifiedTheory = args[0].getString();
 
     if(!specifiedTheory.equalsIgnoreCase("null") || !specifiedTheory.isEmpty()){

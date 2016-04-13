@@ -1,6 +1,6 @@
 package architecture.Chrest;
 
-import Shared.BaseExtensionVariablesAndMethods;
+import classManager.ChrestExtension;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -94,6 +94,6 @@ public class SaveLtmNetworkImage extends DefaultCommand{
     }
         
     //Create and save the LTM graphic to the file specified.
-    new ChrestView(BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context), args[1].getIntValue()).saveLongTermMemory(file);
+    new ChrestView(ChrestExtension.getTurtlesChrestInstance(context), args[1].getIntValue()).saveLongTermMemory(file);
   }
 }

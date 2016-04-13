@@ -1,7 +1,6 @@
 package architecture.Stm;
 
-import Shared.BaseExtensionVariablesAndMethods;
-import jchrest.architecture.Stm;
+import classManager.ChrestExtension;
 import jchrest.lib.Modality;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
@@ -45,6 +44,6 @@ public class GetCount extends DefaultReporter {
    */
   @Override
   public Double report(Argument args[], Context context) throws ExtensionException, LogoException {
-    return Double.valueOf( BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getStm((Modality)args[0].get()).getCount(args[1].getIntValue()) );
+    return Double.valueOf( ChrestExtension.getTurtlesChrestInstance(context).getStm((Modality)args[0].get()).getCount(args[1].getIntValue()) );
   }
 }

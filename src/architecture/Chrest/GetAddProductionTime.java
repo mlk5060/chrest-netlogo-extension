@@ -1,6 +1,6 @@
 package architecture.Chrest;
 
-import Shared.BaseExtensionVariablesAndMethods;
+import classManager.ChrestExtension;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
@@ -30,6 +30,6 @@ public class GetAddProductionTime extends DefaultReporter {
    */
   @Override
   public Object report(Argument args[], Context context) throws ExtensionException{
-    return Double.valueOf(BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getAddProductionTime());
+    return Double.valueOf(ChrestExtension.getTurtlesChrestInstance(context).getAddProductionTime());
   }
 }

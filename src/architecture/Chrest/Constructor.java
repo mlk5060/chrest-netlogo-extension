@@ -1,6 +1,6 @@
 package architecture.Chrest;
 
-import Shared.BaseExtensionVariablesAndMethods;
+import classManager.ChrestExtension;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jchrest.architecture.Chrest;
@@ -42,8 +42,8 @@ public class Constructor extends DefaultCommand {
   @Override
   public void perform(Argument[] args, Context context) throws ExtensionException, LogoException {
     try {
-      BaseExtensionVariablesAndMethods.getAgent(context).setBreedVariable(
-        BaseExtensionVariablesAndMethods.CHREST_BREED_VARIABLE_NAME,
+      ChrestExtension.getAgent(context).setBreedVariable(
+        ChrestExtension.CHREST_BREED_VARIABLE,
         new Chrest(args[0].getIntValue(), args[1].getBooleanValue())
       );
     } catch (AgentException ex) {

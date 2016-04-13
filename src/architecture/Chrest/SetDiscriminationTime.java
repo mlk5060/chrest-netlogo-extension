@@ -1,6 +1,6 @@
 package architecture.Chrest;
 
-import Shared.BaseExtensionVariablesAndMethods;
+import classManager.ChrestExtension;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultCommand;
@@ -32,6 +32,6 @@ public class SetDiscriminationTime extends DefaultCommand {
    */
   @Override
   public void perform(Argument args[], Context context) throws ExtensionException, LogoException{
-    BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).setDiscriminationTime(args[0].getIntValue());
+    ChrestExtension.getTurtlesChrestInstance(context).setDiscriminationTime(args[0].getIntValue());
   }
 }

@@ -1,6 +1,6 @@
 package architecture.Chrest;
 
-import Shared.BaseExtensionVariablesAndMethods;
+import classManager.ChrestExtension;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
@@ -33,7 +33,7 @@ public class GetPerceiver extends DefaultReporter{
    */
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
-    return BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getPerceiver();
+    return ChrestExtension.getTurtlesChrestInstance(context).getPerceiver();
   }
   
 }

@@ -1,6 +1,6 @@
 package architecture.Chrest;
 
-import Shared.BaseExtensionVariablesAndMethods;
+import classManager.ChrestExtension;
 import jchrest.lib.ListPattern;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
@@ -43,7 +43,7 @@ public class LearnProduction extends DefaultReporter{
    */
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
-    return BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).learnProduction((ListPattern)args[0].get(), (ListPattern)args[1].get(), args[2].getIntValue());
+    return ChrestExtension.getTurtlesChrestInstance(context).learnProduction((ListPattern)args[0].get(), (ListPattern)args[1].get(), args[2].getIntValue());
   }
   
 }

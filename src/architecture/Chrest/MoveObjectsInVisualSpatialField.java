@@ -1,6 +1,6 @@
 package architecture.Chrest;
 
-import Shared.BaseExtensionVariablesAndMethods;
+import classManager.ChrestExtension;
 import java.util.ArrayList;
 import jchrest.lib.ItemSquarePattern;
 import jchrest.lib.VisualSpatialFieldException;
@@ -89,7 +89,7 @@ public class MoveObjectsInVisualSpatialField extends DefaultCommand {
     }
 
     try {
-      BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).moveObjectsInVisualSpatialField(movesArrayList, args[1].getIntValue());
+      ChrestExtension.getTurtlesChrestInstance(context).moveObjectsInVisualSpatialField(movesArrayList, args[1].getIntValue());
     } catch (VisualSpatialFieldException ex) {
       throw new ExtensionException(ex);
     }

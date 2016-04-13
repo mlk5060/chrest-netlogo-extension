@@ -1,6 +1,6 @@
 package architecture.Chrest;
 
-import Shared.BaseExtensionVariablesAndMethods;
+import classManager.ChrestExtension;
 import java.util.Iterator;
 import jchrest.lib.ListPattern;
 import org.nlogo.api.Argument;
@@ -57,7 +57,7 @@ public class ReinforceProduction extends DefaultCommand {
     }
     Double[] variablesToPass = variables.toArray(new Double[variables.size()]);
 
-    BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context)
+    ChrestExtension.getTurtlesChrestInstance(context)
       .reinforceProduction(visualListPattern, actionListPattern, variablesToPass, time);
   }
   

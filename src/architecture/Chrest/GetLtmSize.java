@@ -1,6 +1,6 @@
 package architecture.Chrest;
 
-import Shared.BaseExtensionVariablesAndMethods;
+import classManager.ChrestExtension;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
@@ -38,6 +38,6 @@ public class GetLtmSize extends DefaultReporter {
    */
   @Override
   public Double report(Argument args[], Context context) throws ExtensionException, LogoException {
-    return Double.valueOf(BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getLtmSize(args[0].getIntValue()));
+    return Double.valueOf(ChrestExtension.getTurtlesChrestInstance(context).getLtmSize(args[0].getIntValue()));
   }
 }

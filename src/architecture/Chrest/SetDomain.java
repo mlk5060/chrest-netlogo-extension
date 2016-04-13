@@ -1,6 +1,6 @@
 package architecture.Chrest;
 
-import Shared.BaseExtensionVariablesAndMethods;
+import classManager.ChrestExtension;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import jchrest.domainSpecifics.DomainSpecifics;
@@ -119,7 +119,7 @@ public class SetDomain extends DefaultCommand {
       /*********************************/
       /** SET CALLING TURTLE'S DOMAIN **/
       /*********************************/
-      BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(cntxt).setDomain(domain);
+      ChrestExtension.getTurtlesChrestInstance(cntxt).setDomain(domain);
     
     } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
       throw new ExtensionException(ex.getMessage());

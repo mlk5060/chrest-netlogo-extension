@@ -1,6 +1,6 @@
 package architecture.Chrest;
 
-import Shared.BaseExtensionVariablesAndMethods;
+import classManager.ChrestExtension;
 import jchrest.lib.Modality;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
@@ -43,6 +43,6 @@ public class GetLtmAverageDepth extends DefaultReporter {
    */
   @Override
   public Double report(Argument args[], Context context) throws ExtensionException, LogoException {
-    return BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getLtmAverageDepth((Modality)args[0].get(), args[1].getIntValue());
+    return ChrestExtension.getTurtlesChrestInstance(context).getLtmAverageDepth((Modality)args[0].get(), args[1].getIntValue());
   }
 }

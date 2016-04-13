@@ -1,6 +1,6 @@
 package architecture.Chrest;
 
-import Shared.BaseExtensionVariablesAndMethods;
+import classManager.ChrestExtension;
 import java.util.Map.Entry;
 import jchrest.architecture.VisualSpatialField;
 import org.nlogo.api.Argument;
@@ -44,7 +44,7 @@ public class GetVisualSpatialFields extends DefaultReporter{
   public Object report(Argument[] args, Context cntxt) throws ExtensionException, LogoException {
     LogoListBuilder visualSpatialFieldHistory = new LogoListBuilder();
 
-    for(Entry<Integer, VisualSpatialField> entry : BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(cntxt).getVisualSpatialFields().entrySet()){
+    for(Entry<Integer, VisualSpatialField> entry : ChrestExtension.getTurtlesChrestInstance(cntxt).getVisualSpatialFields().entrySet()){
       LogoListBuilder visualSpatialHistoryEntry = new LogoListBuilder();
       visualSpatialHistoryEntry.add((double)entry.getKey());
       visualSpatialHistoryEntry.add(entry.getValue());

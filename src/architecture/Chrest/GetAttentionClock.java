@@ -1,6 +1,6 @@
 package architecture.Chrest;
 
-import Shared.BaseExtensionVariablesAndMethods;
+import classManager.ChrestExtension;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
@@ -30,6 +30,6 @@ public class GetAttentionClock extends DefaultReporter{
    */
   @Override
   public Object report(Argument args[], Context context) throws ExtensionException{
-    return Double.valueOf(BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getAttentionClock());
+    return Double.valueOf(ChrestExtension.getTurtlesChrestInstance(context).getAttentionClock());
   }
 }

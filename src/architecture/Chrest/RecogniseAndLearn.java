@@ -1,6 +1,6 @@
 package architecture.Chrest;
 
-import Shared.BaseExtensionVariablesAndMethods;
+import classManager.ChrestExtension;
 import jchrest.lib.ListPattern;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
@@ -39,6 +39,6 @@ public class RecogniseAndLearn extends DefaultCommand {
    */
   @Override
   public void perform(Argument args[], Context context) throws ExtensionException, LogoException {
-    BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).recogniseAndLearn((ListPattern)args[0].get(), args[1].getIntValue());
+    ChrestExtension.getTurtlesChrestInstance(context).recogniseAndLearn((ListPattern)args[0].get(), args[1].getIntValue());
   }
 }

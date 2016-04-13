@@ -1,6 +1,6 @@
 package architecture.Chrest;
 
-import Shared.BaseExtensionVariablesAndMethods;
+import classManager.ChrestExtension;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
@@ -32,6 +32,6 @@ public class GetReinforcementLearningTheory extends DefaultReporter {
    */
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
-    return BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getReinforcementLearningTheory();
+    return ChrestExtension.getTurtlesChrestInstance(context).getReinforcementLearningTheory();
   }
 }

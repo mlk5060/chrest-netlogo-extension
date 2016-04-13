@@ -1,6 +1,6 @@
 package architecture.Chrest;
 
-import Shared.BaseExtensionVariablesAndMethods;
+import classManager.ChrestExtension;
 import java.util.TreeMap;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
@@ -91,7 +91,7 @@ public class GetVisualSpatialFieldAsScene extends DefaultReporter {
     
     //Invoke the CHREST function.
     int time = args[0].getIntValue();
-    return BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context)
+    return ChrestExtension.getTurtlesChrestInstance(context)
       .getVisualSpatialFields().floorEntry(time).getValue().getAsScene(time, unknownProbabilities);
         
   }

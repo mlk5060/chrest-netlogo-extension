@@ -1,6 +1,6 @@
 package architecture.Chrest;
 
-import Shared.BaseExtensionVariablesAndMethods;
+import classManager.ChrestExtension;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
@@ -40,6 +40,6 @@ public class GetProductionCount extends DefaultReporter{
    */
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException{
-    return (double)BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context).getProductionCount(args[0].getIntValue());
+    return (double)ChrestExtension.getTurtlesChrestInstance(context).getProductionCount(args[0].getIntValue());
   }
 }

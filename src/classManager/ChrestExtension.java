@@ -1,22 +1,50 @@
+package classManager;
+
+import jchrest.architecture.Chrest;
+import org.nlogo.agent.Agent;
+import org.nlogo.api.AgentException;
+import org.nlogo.api.Context;
 import org.nlogo.api.DefaultClassManager;
+import org.nlogo.api.ExtensionException;
 import org.nlogo.api.PrimitiveManager;
 
 /**
- * Primitive manager for CHREST Netlogo extension.
- * 
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
+//TODO: Check if the primitive name appears in ExtensionExceptions that are
+//thrown.  If not, try to prepend the error message with the primitive name for
+//better debugging.
 public class ChrestExtension extends DefaultClassManager {
   
-  //TODO: Check if the primitive name appears in ExtensionExceptions that are
-  //thrown.  If not, try to catch these exceptions in this class and prepend the
-  //error message with the relative primitive name.
+  public final static String CHREST_BREED_VARIABLE = "CHREST";
+
+  /**
+   * @param context
+   * @return The result of casting {@link org.nlogo.api.Context#getAgent()} in
+   * context of the {@code context} specified to {@link org.nlogo.agent.Agent}.
+   */
+  public static Agent getAgent(Context context) {
+    return (Agent) context.getAgent();
+  }
   
-  //TODO: Review and improve javadoc at top of each class file (add {@link} tags
-  //etc.).
-  
-  //TODO: Put all tabular-formatted information in class' javadoc's into actual 
-  //HTML tables.
+  /**
+   * @param context
+   * 
+   * @return The {@link jchrest.architecture.Chrest} instance for the calling 
+   * {@link org.nlogo.agent.Agent}.
+   * 
+   * @throws org.nlogo.api.ExtensionException If turtle does not have a {@link
+   * jchrest.architecture.Chrest}.
+   */
+  public static Chrest getTurtlesChrestInstance(Context context) throws ExtensionException {
+    Chrest chrest = null;
+    try {
+      chrest = (Chrest)ChrestExtension.getAgent(context).getBreedVariable(ChrestExtension.CHREST_BREED_VARIABLE);
+    } catch (AgentException ex) {
+      throw new ExtensionException(ex);
+    }
+    return chrest;
+  }
 
   @Override
   public void load(PrimitiveManager primitiveManager) {

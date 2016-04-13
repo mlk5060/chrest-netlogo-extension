@@ -1,6 +1,6 @@
 package architecture.Chrest;
 
-import Shared.BaseExtensionVariablesAndMethods;
+import classManager.ChrestExtension;
 import jchrest.architecture.VisualSpatialField;
 import jchrest.lib.VisualSpatialFieldObject;
 import org.nlogo.api.Argument;
@@ -69,7 +69,7 @@ public class GetVisualSpatialFieldObjectLocations extends DefaultReporter {
     String objectToFind = args[1].getString();
     boolean identifyByObjectType = args[2].getBooleanValue();
 
-    VisualSpatialField visualSpatialField = BaseExtensionVariablesAndMethods.getTurtlesChrestInstance(context)
+    VisualSpatialField visualSpatialField = ChrestExtension.getTurtlesChrestInstance(context)
       .getVisualSpatialFields().floorEntry(time).getValue();
 
     for(int col = 0; col < visualSpatialField.getWidth(); col++){
