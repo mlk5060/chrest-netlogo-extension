@@ -83,7 +83,8 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("Perceiver.get-fixations", new architecture.Perceiver.GetFixations());
     
     //Reinforcement primitives
-    primitiveManager.addPrimitive("ReinforcementLearning.get-theories", new Reinforcement.GetReinforcementLearningTheories());
+    primitiveManager.addPrimitive("ReinforcementLearning.get-theory-names", new lib.ReinforcementLearning.GetTheoryNames());
+    primitiveManager.addPrimitive("ReinforcementLearning.values", new lib.ReinforcementLearning.Values());
     
     //Scene primitives.
     primitiveManager.addPrimitive("Scene.new", new domainSpecifics.Scene.New());
