@@ -61,8 +61,8 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("Node.get-productions", new architecture.Node.GetProductions());
     
     //Pattern primitives
-    primitiveManager.addPrimitive("Pattern.create-number-pattern", new Pattern.CreateNumberPattern());
-    primitiveManager.addPrimitive("Pattern.get-class-names", new Pattern.GetPatternClassNames());
+    primitiveManager.addPrimitive("Pattern.create-number-pattern", new lib.Pattern.CreateNumberPattern());
+    primitiveManager.addPrimitive("Pattern.get-subclasses", new lib.Pattern.GetSubclasses());
     
     //Pattern.ItemSquare primitives
     primitiveManager.addPrimitive("ItemSquarePattern.new", new Pattern.ItemSquare.New());
