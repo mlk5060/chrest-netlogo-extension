@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
 Extension-Name: chrest
-Class-Manager: classManager.ChrestExtension
+Class-Manager: org.nlogo.extensions.chrest.ChrestExtension
 NetLogo-Extension-API-Version: 5.0
