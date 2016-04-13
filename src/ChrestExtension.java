@@ -64,12 +64,12 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("Pattern.create-number-pattern", new lib.Pattern.CreateNumberPattern());
     primitiveManager.addPrimitive("Pattern.get-subclasses", new lib.Pattern.GetSubclasses());
     
-    //Pattern.ItemSquare primitives
-    primitiveManager.addPrimitive("ItemSquarePattern.new", new Pattern.ItemSquare.New());
-    primitiveManager.addPrimitive("ItemSquarePattern.get-column", new Pattern.ItemSquare.GetColumn());
-    primitiveManager.addPrimitive("ItemSquarePattern.get-item", new Pattern.ItemSquare.GetItem());
-    primitiveManager.addPrimitive("ItemSquarePattern.get-as-string", new Pattern.ItemSquare.GetAsString());
-    primitiveManager.addPrimitive("ItemSquarePattern.get-row", new Pattern.ItemSquare.GetRow());
+    //ItemSquarePattern primitives
+    primitiveManager.addPrimitive("ItemSquarePattern.new", new lib.ItemSquarePattern.New());
+    primitiveManager.addPrimitive("ItemSquarePattern.get-column", new lib.ItemSquarePattern.GetColumn());
+    primitiveManager.addPrimitive("ItemSquarePattern.get-item", new lib.ItemSquarePattern.GetItem());
+    primitiveManager.addPrimitive("ItemSquarePattern.get-as-string", new lib.ItemSquarePattern.GetAsString());
+    primitiveManager.addPrimitive("ItemSquarePattern.get-row", new lib.ItemSquarePattern.GetRow());
     
     //Pattern.List primitives
     primitiveManager.addPrimitive("ListPattern.new", new Pattern.List.New());
