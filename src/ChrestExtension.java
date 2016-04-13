@@ -71,13 +71,13 @@ public class ChrestExtension extends DefaultClassManager {
     primitiveManager.addPrimitive("ItemSquarePattern.get-as-string", new lib.ItemSquarePattern.GetAsString());
     primitiveManager.addPrimitive("ItemSquarePattern.get-row", new lib.ItemSquarePattern.GetRow());
     
-    //Pattern.List primitives
-    primitiveManager.addPrimitive("ListPattern.new", new Pattern.List.New());
-    primitiveManager.addPrimitive("ListPattern.get-as-netlogo-list", new Pattern.List.GetAsNetlogoList());
-    primitiveManager.addPrimitive("ListPattern.get-as-string", new Pattern.List.GetAsString());
-    primitiveManager.addPrimitive("ListPattern.empty?", new Pattern.List.IsEmpty());
-    primitiveManager.addPrimitive("ListPattern.remove", new Pattern.List.Remove());
-    primitiveManager.addPrimitive("ListPattern.remove-blind-empty-and-unknown-patches", new Pattern.List.RemoveBlindEmptyAndUnknownPatches());
+    //ListPattern primitives
+    primitiveManager.addPrimitive("ListPattern.new", new lib.ListPattern.New());
+    primitiveManager.addPrimitive("ListPattern.get-as-netlogo-list", new lib.ListPattern.GetAsNetlogoList());
+    primitiveManager.addPrimitive("ListPattern.get-as-string", new lib.ListPattern.GetAsString());
+    primitiveManager.addPrimitive("ListPattern.empty?", new lib.ListPattern.IsEmpty());
+    primitiveManager.addPrimitive("ListPattern.remove", new lib.ListPattern.Remove());
+    primitiveManager.addPrimitive("ListPattern.remove-blind-empty-and-unknown-patches", new lib.ListPattern.RemoveBlindEmptyAndUnknownPatches());
     
     //Perceiver primitives.
     primitiveManager.addPrimitive("Perceiver.get-fixations", new architecture.Perceiver.GetFixations());

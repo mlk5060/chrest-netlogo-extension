@@ -1,4 +1,4 @@
-package Pattern.List;
+package lib.ListPattern;
 
 import java.util.Iterator;
 import jchrest.lib.ItemSquarePattern;
@@ -14,9 +14,6 @@ import org.nlogo.api.LogoException;
 import org.nlogo.api.Syntax;
 
 /**
- * Returns the result of invoking {@link 
- * jchrest.lib.ListPattern#ListPattern(jchrest.lib.Modality)}.
- * 
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
 public class New extends DefaultReporter {
@@ -25,16 +22,34 @@ public class New extends DefaultReporter {
   public Syntax getSyntax(){
     return Syntax.reporterSyntax(
       new int[]{
-        Syntax.StringType(), //Modality of the ListPattern to create.
-        Syntax.ListType() //A LogoList of jchrest.lib.Patterns to create the 
-                          //ListPattern with.
+        Syntax.ListType(),
+        Syntax.WildcardType()
       }, 
       Syntax.WildcardType()
     );
   }
 
+  /**
+   * 
+   * @param args The first parameter should be a {@link org.nlogo.api.LogoList}
+   * containing {@link jchrest.lib.Pattern Patterns} that should constitute the
+   * {@link jchrest.lib.ListPattern} to be constructed.
+   * <p>
+   * For other parameters, see {@link jchrest.lib.ListPattern#ListPattern(
+   * jchrest.lib.Modality)}.
+   * @param context
+   * 
+   * @return The result of invoking {@link jchrest.lib.ListPattern#add(
+   * jchrest.lib.PrimitivePattern)} on the result of {@link 
+   * jchrest.lib.ListPattern#ListPattern(jchrest.lib.Modality)} for each {@link 
+   * jchrest.lib.Pattern} specified in the {@link org.nlogo.api.LogoList} passed 
+   * as a parameter to this primitive.
+   * 
+   * @throws ExtensionException
+   * @throws LogoException 
+   */
   @Override
-  public Object report(Argument[] args, Context cntxt) throws ExtensionException, LogoException {
+  public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
     
     ListPattern listPattern = new ListPattern(Modality.valueOf(args[0].getString().toUpperCase()));
     Iterator<Object> patternsToAddToListPattern = args[1].getList().iterator();

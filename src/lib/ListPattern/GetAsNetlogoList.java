@@ -1,4 +1,4 @@
-package Pattern.List;
+package lib.ListPattern;
 
 import jchrest.lib.ListPattern;
 import jchrest.lib.PrimitivePattern;
@@ -11,9 +11,6 @@ import org.nlogo.api.LogoListBuilder;
 import org.nlogo.api.Syntax;
 
 /**
- * Returns the result of packaging the {@link jchrest.lib.Pattern}s in a
- * {@link jchrest.lib.ListPattern} as a {@link org.nlogo.api.LogoList}.
- * 
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
 public class GetAsNetlogoList extends DefaultReporter {
@@ -22,14 +19,27 @@ public class GetAsNetlogoList extends DefaultReporter {
   public Syntax getSyntax(){
     return Syntax.reporterSyntax(
       new int[]{
-        Syntax.WildcardType() //ListPattern
+        Syntax.WildcardType()
       },
       Syntax.ListType()
     );
   }
 
+  /**
+   * 
+   * @param args The {@link jchrest.lib.ListPattern} to render as a {@link 
+   * org.nlogo.api.LogoList}.
+   * @param context
+   * 
+   * @return A {@link org.nlogo.api.LogoList} containing the {@link 
+   * jchrest.lib.PrimitivePattern PrimitivePatterns} constituting the {@link 
+   * jchrest.lib.ListPattern} specified as a parameter to this primitive.
+   * 
+   * @throws ExtensionException
+   * @throws LogoException 
+   */
   @Override
-  public Object report(Argument[] args, Context cntxt) throws ExtensionException, LogoException {
+  public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
     LogoListBuilder list = new LogoListBuilder();
     ListPattern listPattern = (ListPattern)args[0].get();
     for(PrimitivePattern pattern : listPattern){
