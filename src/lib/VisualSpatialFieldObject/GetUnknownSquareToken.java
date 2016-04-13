@@ -1,4 +1,4 @@
-package VisualSpatialFieldObject;
+package lib.VisualSpatialFieldObject;
 
 import jchrest.lib.VisualSpatialFieldObject;
 import org.nlogo.api.Argument;
