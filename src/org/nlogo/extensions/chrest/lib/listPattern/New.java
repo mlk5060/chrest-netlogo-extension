@@ -51,11 +51,11 @@ public class New extends DefaultReporter {
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
     
-    ListPattern listPattern = new ListPattern(Modality.valueOf(args[0].getString().toUpperCase()));
-    Iterator<Object> patternsToAddToListPattern = args[1].getList().iterator();
+    Iterator<Object> patternsToAdd = args[0].getList().iterator();
+    ListPattern listPattern = new ListPattern((Modality)args[1].get());
     
-    while(patternsToAddToListPattern.hasNext()){
-      Object patternToAdd = patternsToAddToListPattern.next();
+    while(patternsToAdd.hasNext()){
+      Object patternToAdd = patternsToAdd.next();
       if(patternToAdd instanceof ItemSquarePattern){
         listPattern.add( (ItemSquarePattern)patternToAdd );
       } 
@@ -66,7 +66,10 @@ public class New extends DefaultReporter {
         listPattern.add( (NumberPattern)patternToAdd );
       }
       else{
-        throw new ExtensionException("CreateListPattern doesn't recognise pattern type");
+        throw new ExtensionException(
+          "Pattern type of " + patternToAdd.toString() + "(" + 
+          patternToAdd.getClass().getCanonicalName() + ") is not supported"
+        );
       }
     }
     

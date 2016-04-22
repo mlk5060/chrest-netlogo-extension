@@ -1,6 +1,6 @@
 package org.nlogo.extensions.chrest.domainSpecifics.scene;
 
-import jchrest.lib.Scene;
+import jchrest.domainSpecifics.Scene;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
@@ -23,7 +23,7 @@ public class GetEmptySquareToken extends DefaultReporter{
    * @param args
    * @param context
    * 
-   * @return The result of {@link jchrest.lib.Scene#getEmptySquareToken()}.
+   * @return The result of {@link jchrest.domainSpecifics.Scene#getEmptySquareToken()}.
    * 
    * @throws ExtensionException
    * @throws LogoException 

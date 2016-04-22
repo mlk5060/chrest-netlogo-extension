@@ -44,7 +44,8 @@ public class GetLtmModalitySize extends DefaultReporter{
    */
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
-    return ChrestExtension.getTurtlesChrestInstance(context).getLtmModalitySize((Modality)args[0].get(), args[1].getIntValue());
+    Integer ltmModalitySize = ChrestExtension.getTurtlesChrestInstance(context).getLtmModalitySize((Modality)args[0].get(), args[1].getIntValue());
+    return Double.parseDouble("" + (ltmModalitySize == null ? 0 : ltmModalitySize));
   }
   
 }

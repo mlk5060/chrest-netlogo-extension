@@ -1,7 +1,10 @@
 package org.nlogo.extensions.chrest.lib.listPattern;
 
+import jchrest.lib.ItemSquarePattern;
 import jchrest.lib.ListPattern;
+import jchrest.lib.NumberPattern;
 import jchrest.lib.PrimitivePattern;
+import jchrest.lib.StringPattern;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
@@ -33,7 +36,11 @@ public class GetAsNetlogoList extends DefaultReporter {
    * 
    * @return A {@link org.nlogo.api.LogoList} containing the {@link 
    * jchrest.lib.PrimitivePattern PrimitivePatterns} constituting the {@link 
-   * jchrest.lib.ListPattern} specified as a parameter to this primitive.
+   * jchrest.lib.ListPattern} specified as a parameter to this primitive.  Note
+   * that the {@link jchrest.lib.PrimitivePattern PrimitivePatterns} will be 
+   * cast to their appropriate type before addition, i.e. {@link 
+   * jchrest.lib.ItemSquarePattern}, {@link jchrest.lib.NumberPattern} or {@link 
+   * jchrest.lib.StringPattern}.
    * 
    * @throws ExtensionException
    * @throws LogoException 
@@ -43,8 +50,20 @@ public class GetAsNetlogoList extends DefaultReporter {
     LogoListBuilder list = new LogoListBuilder();
     ListPattern listPattern = (ListPattern)args[0].get();
     for(PrimitivePattern pattern : listPattern){
-      list.add(pattern);
+      
+      if(pattern instanceof ItemSquarePattern){
+        list.add((ItemSquarePattern)pattern);
+      }
+      
+      if(pattern instanceof NumberPattern){
+        list.add((NumberPattern)pattern);
+      }
+      
+      if(pattern instanceof StringPattern){
+        list.add((StringPattern)pattern);
+      }
     }
+    
     return list.toLogoList();
   }
   

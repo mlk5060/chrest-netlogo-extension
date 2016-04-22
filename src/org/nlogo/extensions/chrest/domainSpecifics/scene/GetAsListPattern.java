@@ -1,6 +1,6 @@
 package org.nlogo.extensions.chrest.domainSpecifics.scene;
 
-import jchrest.lib.Scene;
+import jchrest.domainSpecifics.Scene;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
@@ -17,8 +17,7 @@ public class GetAsListPattern extends DefaultReporter {
   public Syntax getSyntax() {
     return Syntax.reporterSyntax(
       new int[]{
-        Syntax.WildcardType(),
-        Syntax.BooleanType()
+        Syntax.WildcardType()
       },
       Syntax.WildcardType()
     );
@@ -26,14 +25,11 @@ public class GetAsListPattern extends DefaultReporter {
 
   /**
    * 
-   * @param args The first parameter should be the {@link jchrest.lib.Scene} 
-   * that {@link jchrest.lib.Scene#getAsListPattern(boolean)} will be invoked in
-   * context of.  For other parameters see {@link 
-   * jchrest.lib.Scene#getAsListPattern(boolean)}.
+   * @param args A {@link jchrest.lib.Scene}.
    * @param context
    * 
    * @return The result of invoking {@link 
-   * jchrest.lib.Scene#getAsListPattern(boolean)} in context of the {@link 
+   * jchrest.domainSpecifics.Scene#getAsListPattern()} in context of the {@link 
    * jchrest.lib.Scene} passed as a parameter to this primitive.
    * 
    * @throws ExtensionException
@@ -41,7 +37,7 @@ public class GetAsListPattern extends DefaultReporter {
    */
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
-    return ((Scene)args[0].get()).getAsListPattern(args[1].getBooleanValue());
+    return ((Scene)args[0].get()).getAsListPattern();
   }
   
 }

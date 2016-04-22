@@ -1,6 +1,6 @@
 package org.nlogo.extensions.chrest.domainSpecifics.scene;
 
-import jchrest.lib.Scene;
+import jchrest.domainSpecifics.Scene;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;

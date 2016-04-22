@@ -1,6 +1,6 @@
 package org.nlogo.extensions.chrest.domainSpecifics.scene;
 
-import jchrest.lib.Scene;
+import jchrest.domainSpecifics.Scene;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
@@ -19,19 +19,18 @@ public class GetLocationOfCreator extends DefaultReporter {
       new int[] {
         Syntax.WildcardType()
       },
-      Syntax.ListType()
+      Syntax.WildcardType()
     );
   }
   
   /**
    * 
-   * @param args The {@link jchrest.lib.Scene} to invoke {@link 
-   * jchrest.lib.Scene#getLocationOfCreator()} in context of.
+   * @param args A {@link jchrest.domainSpecifics.Scene}.
    * @param context
    * 
    * @return The result of invoking {@link 
-   * jchrest.lib.Scene#getLocationOfCreator()} in context of the {@link 
-   * jchrest.lib.Scene} passed as a parameter to this primitive.
+   * jchrest.domainSpecifics.Scene#getLocationOfCreator()} in context of the 
+   * {@link jchrest.lib.Scene} passed as a parameter to this primitive.
    * 
    * @throws ExtensionException
    * @throws LogoException 

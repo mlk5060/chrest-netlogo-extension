@@ -20,9 +20,9 @@ public class GetVisualSpatialFieldObjectLocations extends DefaultReporter {
   public Syntax getSyntax(){
     return Syntax.reporterSyntax(
       new int[]{
-        Syntax.NumberType(), // The time that the visual-spatial field state should be searched.
-        Syntax.StringType(), // The object to search for (ID or class)
-        Syntax.BooleanType() // Set to true to search by ID, otherwise, search by class
+        Syntax.NumberType(),
+        Syntax.StringType(),
+        Syntax.BooleanType()
       }, 
       Syntax.ListType()
     );

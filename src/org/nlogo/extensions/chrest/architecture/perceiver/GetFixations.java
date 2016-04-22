@@ -1,9 +1,6 @@
 package org.nlogo.extensions.chrest.architecture.perceiver;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import jchrest.architecture.Perceiver;
-import jchrest.domainSpecifics.Fixation;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;

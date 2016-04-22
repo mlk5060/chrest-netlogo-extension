@@ -75,8 +75,8 @@ public class SetDomain extends DefaultCommand {
       /********************************************/
       /** SETUP ARRAYS TO CONSTRUCT DOMAIN CLASS **/
       /********************************************/
-      Class[] constructorParamTypes = new Class[parameterDetails.size()];
-      Object[] constructorParams = new Object[parameterDetails.size()];
+      Class[] constructorParamClasses = new Class[parameterDetails.size()];
+      Object[] constructorParamValues = new Object[parameterDetails.size()];
       
       for(int i = 0; i < parameterDetails.size(); i++){
         LogoList paramDetail = (LogoList)parameterDetails.get(i);
@@ -84,37 +84,37 @@ public class SetDomain extends DefaultCommand {
         /************************************************/
         /** ADD PARAMETER TYPE TO PARAMETER TYPE ARRAY **/
         /************************************************/
-        Class<?> paramType = Class.forName((String)paramDetail.get(0));
-        constructorParamTypes[i] = paramType;
+        Class<?> paramClass = Class.forName((String)paramDetail.get(0));
+        constructorParamClasses[i] = paramClass;
         
         /**************************************/
         /** ADD PARAMETER TO PARAMETER ARRAY **/
         /**************************************/
-        Object parameter = paramDetail.get(1);
+        Object paramValue = paramDetail.get(1);
         
         //Since Netlogo assumes numbers are Doubles, some casting may be 
         //required to get the parameter type required.
-        if(parameter instanceof Double){
+        if(paramValue instanceof Double){
           
           //Have tried getting this to work using 
           //Integer.class.isInstance(paramType) but it never passes?  This may 
           //be a little "hacky" but it works!
-          if(paramType.getCanonicalName().equals(Integer.class.getCanonicalName())){
-            constructorParams[i] = ((Double)parameter).intValue();
+          if(paramClass.getCanonicalName().equals(Integer.class.getCanonicalName())){
+            constructorParamValues[i] = ((Double)paramValue).intValue();
           }
         }
         //Default case: add paramater to array without type modification.
         else{
-          constructorParams[i] = parameter;
+          constructorParamValues[i] = paramValue;
         }
       }
       
       /*************************************/
       /** CONSTRUCT DOMAIN-SPECIFIC CLASS **/
       /*************************************/
-      Constructor<?> domainClassConstructor = domainClass.getDeclaredConstructor(constructorParamTypes);
+      Constructor<?> domainClassConstructor = domainClass.getDeclaredConstructor(constructorParamClasses);
       domainClassConstructor.setAccessible(true);
-      DomainSpecifics domain = (DomainSpecifics)domainClassConstructor.newInstance(constructorParams);
+      DomainSpecifics domain = (DomainSpecifics)domainClassConstructor.newInstance(constructorParamValues);
       
       /*********************************/
       /** SET CALLING TURTLE'S DOMAIN **/
@@ -122,7 +122,7 @@ public class SetDomain extends DefaultCommand {
       ChrestExtension.getTurtlesChrestInstance(cntxt).setDomain(domain);
     
     } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
-      throw new ExtensionException(ex.getMessage());
+      throw new ExtensionException(ex.getClass().getSimpleName() + ": " + ex.getMessage());
     }
   }
 }
