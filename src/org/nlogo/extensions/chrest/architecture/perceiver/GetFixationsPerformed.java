@@ -1,7 +1,6 @@
 package org.nlogo.extensions.chrest.architecture.perceiver;
 
 import java.util.List;
-import jchrest.architecture.Perceiver;
 import jchrest.domainSpecifics.Fixation;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
@@ -10,6 +9,7 @@ import org.nlogo.api.ExtensionException;
 import org.nlogo.api.LogoException;
 import org.nlogo.api.LogoListBuilder;
 import org.nlogo.api.Syntax;
+import org.nlogo.extensions.chrest.ChrestExtension;
 
 /**
  *
@@ -21,7 +21,6 @@ public class GetFixationsPerformed extends DefaultReporter{
   public Syntax getSyntax(){
     return Syntax.reporterSyntax(
       new int[]{
-        Syntax.WildcardType(),
         Syntax.NumberType()
       }, 
       Syntax.ListType()
@@ -30,15 +29,15 @@ public class GetFixationsPerformed extends DefaultReporter{
   
   /**
    * 
-   * @param args First parameter should be a {@link 
-   * jchrest.architecture.Perceiver}.  For other parameters see {@link 
+   * @param args See {@link 
    * jchrest.architecture.Perceiver#getFixationsPerformed(int)}.
    * @param context
    * 
    * @return The result of invoking {@link 
-   * jchrest.architecture.Perceiver#getFixationsPerformed(int)} in context of
-   * the {@link jchrest.architecture.Perceiver} passed as a first parameter to
-   * this primitive and packaging it as a {@link org.nlogo.api.LogoList}.
+   * jchrest.architecture.Perceiver#getFixationsPerformed(int)} as a {@link 
+   * org.nlogo.api.LogoList} in context of the {@link 
+   * jchrest.architecture.Perceiver} associated with the calling {@link 
+   * org.nlogo.agent.Turtle Turtle's} {@link jchrest.architecture.Chrest} model.
    * 
    * @throws ExtensionException
    * @throws LogoException 
@@ -46,7 +45,7 @@ public class GetFixationsPerformed extends DefaultReporter{
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
     LogoListBuilder fixationsPerformedList = new LogoListBuilder();
-    List<Fixation> fixationsPerformed = ((Perceiver)args[0].get()).getFixationsPerformed(args[1].getIntValue());
+    List<Fixation> fixationsPerformed = (ChrestExtension.getTurtlesChrestInstance(context).getPerceiver().getFixationsPerformed(args[0].getIntValue()));
     if(fixationsPerformed != null) fixationsPerformedList.addAll(fixationsPerformed);
     return fixationsPerformedList.toLogoList();
   }

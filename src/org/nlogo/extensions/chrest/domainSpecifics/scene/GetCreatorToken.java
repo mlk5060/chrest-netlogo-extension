@@ -31,6 +31,6 @@ public class GetCreatorToken extends DefaultReporter {
    */
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
-    return Scene.getCreatorToken();
+    return Scene.CREATOR_TOKEN;
   }
 }

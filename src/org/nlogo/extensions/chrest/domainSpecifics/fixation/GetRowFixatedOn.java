@@ -39,7 +39,7 @@ public class GetRowFixatedOn extends DefaultReporter {
    */
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
-    return ((Fixation)args[0].get()).getRowFixatedOn().doubleValue();
+    return (double)((Fixation)args[0].get()).getRowFixatedOn();
   }
   
 }

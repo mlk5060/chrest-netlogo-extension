@@ -1,6 +1,7 @@
 package org.nlogo.extensions.chrest.domainSpecifics.scene;
 
 import jchrest.domainSpecifics.Scene;
+import jchrest.lib.Square;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
@@ -30,14 +31,17 @@ public class GetLocationOfCreator extends DefaultReporter {
    * 
    * @return The result of invoking {@link 
    * jchrest.domainSpecifics.Scene#getLocationOfCreator()} in context of the 
-   * {@link jchrest.lib.Scene} passed as a parameter to this primitive.
+   * {@link jchrest.lib.Scene} passed as a parameter to this primitive.  If the
+   * creator can not be found, an empty {@link java.lang.String} will be 
+   * returned.
    * 
    * @throws ExtensionException
    * @throws LogoException 
    */
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
-    return ((Scene)args[0].get()).getLocationOfCreator();
+    Square locationOfCreator = ((Scene)args[0].get()).getLocationOfCreator();
+    return (locationOfCreator == null ? "" : locationOfCreator);
   }
   
 }

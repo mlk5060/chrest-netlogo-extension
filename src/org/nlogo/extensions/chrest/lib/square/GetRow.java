@@ -38,7 +38,7 @@ public class GetRow extends DefaultReporter {
    */
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
-    return Double.parseDouble( "" + ((Square)args[0].get()).getRow() );
+    return (double)(((Square)args[0].get()).getRow());
   }
   
 }

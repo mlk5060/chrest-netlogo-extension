@@ -42,7 +42,7 @@ public class GetSceneSpecificColFromDomainSpecificCol extends DefaultReporter{
    */
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
-    return ((Scene)args[0].get()).getSceneSpecificColFromDomainSpecificCol(args[1].getIntValue());
+    return (double)((Scene)args[0].get()).getSceneSpecificColFromDomainSpecificCol(args[1].getIntValue());
   }
   
 }

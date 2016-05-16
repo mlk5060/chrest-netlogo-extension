@@ -1,7 +1,9 @@
 package org.nlogo.extensions.chrest.architecture.chrest;
 
+import java.util.Map;
 import org.nlogo.extensions.chrest.ChrestExtension;
 import java.util.TreeMap;
+import jchrest.architecture.VisualSpatialField;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
@@ -65,34 +67,39 @@ public class GetVisualSpatialFieldAsScene extends DefaultReporter {
    * 
    * @return The result of invoking {@link 
    * jchrest.architecture.VisualSpatialField#getAsScene(int, java.util.TreeMap)}
-   * in context of the {@link jchrest.architecture.VisualSpatialField} present 
-   * in the calling turtle's {@link jchrest.architecture.Chrest} instance at the
-   * time specified as the first parameter passed to this primitive.
+   * in context of the {@link jchrest.architecture.VisualSpatialField} 
+   * associated with the calling {@link org.nlogo.agent.Turtle Turtle's} {@link 
+   * jchrest.architecture.Chrest} model at the time specified as a parameter 
+   * passed to this primitive.  If there is no {@link 
+   * jchrest.architecture.VisualSpatialField} associated with the calling {@link 
+   * org.nlogo.agent.Turtle Turtle's} {@link jchrest.architecture.Chrest} model 
+   * at the time specified, an empty {@link java.lang.String} is returned.
    * 
    * @throws ExtensionException
    * @throws LogoException 
    */
   @Override
   public Object report(Argument args[], Context context) throws ExtensionException, LogoException{
-    
-    //Convert the LogoList that should specify the probabiity of placing various 
-    //VisualSpatialFieldObjects on VisualSpatialField coordinates whose 
-    //VisualSpatialFieldObject status is unknown at the time this function is 
-    //invoked to a TreeMap.
-    LogoList unknownProbabilitiesSpecified = args[1].getList();
-    TreeMap<Double, String> unknownProbabilities = new TreeMap();
-    for(Object unknownProbabilitySpecified : unknownProbabilitiesSpecified){
-      LogoList unknownProbabilitySpecifiedAsList = (LogoList)unknownProbabilitySpecified;
-      unknownProbabilities.put(
-        (Double)unknownProbabilitySpecifiedAsList.get(0), 
-        (String)unknownProbabilitySpecifiedAsList.get(1)
-      );
+    Map.Entry<Integer, VisualSpatialField> entry = ChrestExtension.getTurtlesChrestInstance(context).getVisualSpatialFields().floorEntry(args[0].getIntValue());
+    if(entry != null){
+      
+      //Convert the LogoList that should specify the probabiity of placing various 
+      //VisualSpatialFieldObjects on VisualSpatialField coordinates whose 
+      //VisualSpatialFieldObject status is unknown at the time this function is 
+      //invoked to a TreeMap.
+      LogoList unknownProbabilitiesSpecified = args[1].getList();
+      TreeMap<Double, String> unknownProbabilities = new TreeMap();
+      for(Object unknownProbabilitySpecified : unknownProbabilitiesSpecified){
+        LogoList unknownProbabilitySpecifiedAsList = (LogoList)unknownProbabilitySpecified;
+        unknownProbabilities.put(
+          (Double)unknownProbabilitySpecifiedAsList.get(0), 
+          (String)unknownProbabilitySpecifiedAsList.get(1)
+        );
+      }
+      
+      return entry.getValue().getAsScene(args[0].getIntValue(), unknownProbabilities);
     }
     
-    //Invoke the CHREST function.
-    int time = args[0].getIntValue();
-    return ChrestExtension.getTurtlesChrestInstance(context)
-      .getVisualSpatialFields().floorEntry(time).getValue().getAsScene(time, unknownProbabilities);
-        
+    return "";
   }
 }

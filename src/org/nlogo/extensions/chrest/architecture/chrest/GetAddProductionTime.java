@@ -30,6 +30,6 @@ public class GetAddProductionTime extends DefaultReporter {
    */
   @Override
   public Object report(Argument args[], Context context) throws ExtensionException{
-    return Double.valueOf(ChrestExtension.getTurtlesChrestInstance(context).getAddProductionTime());
+    return (double)(ChrestExtension.getTurtlesChrestInstance(context).getAddProductionTime());
   }
 }

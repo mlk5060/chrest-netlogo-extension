@@ -44,6 +44,7 @@ public class GetCount extends DefaultReporter {
    */
   @Override
   public Double report(Argument args[], Context context) throws ExtensionException, LogoException {
-    return Double.valueOf( ChrestExtension.getTurtlesChrestInstance(context).getStm((Modality)args[0].get()).getCount(args[1].getIntValue()) );
+    Integer count = ChrestExtension.getTurtlesChrestInstance(context).getStm((Modality)args[0].get()).getCount(args[1].getIntValue());
+    return (double)(count == null ? 0 : count);
   }
 }

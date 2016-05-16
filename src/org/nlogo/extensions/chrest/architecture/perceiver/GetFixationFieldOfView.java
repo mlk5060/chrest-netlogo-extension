@@ -1,12 +1,12 @@
 package org.nlogo.extensions.chrest.architecture.perceiver;
 
-import jchrest.architecture.Perceiver;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
 import org.nlogo.api.ExtensionException;
 import org.nlogo.api.LogoException;
 import org.nlogo.api.Syntax;
+import org.nlogo.extensions.chrest.ChrestExtension;
 
 /**
  *
@@ -16,29 +16,25 @@ public class GetFixationFieldOfView extends DefaultReporter {
 
   @Override
   public Syntax getSyntax(){
-    return Syntax.reporterSyntax(
-      new int[]{
-        Syntax.WildcardType()
-      },
-      Syntax.NumberType()
-    );
+    return Syntax.reporterSyntax(Syntax.NumberType());
   }
   
   /**
    * 
-   * @param args A {@link jchrest.architecture.Perceiver}.
+   * @param args 
    * @param context
    * 
    * @return The result of invoking {@link 
-   * jchrest.architecture.Perceiver#getFixationFieldOfView()} on the {@link 
-   * jchrest.architecture.Perceiver} passed as a parameter to this primitive.
+   * jchrest.architecture.Perceiver#getFixationFieldOfView()} in context of the
+   * {@link jchrest.architecture.Perceiver} associated with the calling {@link 
+   * org.nlogo.agent.Turtle Turtle's} {@link jchrest.architecture.Chrest} model.
    * 
    * @throws ExtensionException
    * @throws LogoException 
    */
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
-    return Double.parseDouble( "" + ((Perceiver)args[0].get()).getFixationFieldOfView() );
+    return (double)(ChrestExtension.getTurtlesChrestInstance(context).getPerceiver().getFixationFieldOfView());
   }
   
 }

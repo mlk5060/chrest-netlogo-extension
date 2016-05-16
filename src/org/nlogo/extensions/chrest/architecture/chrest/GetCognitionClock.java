@@ -31,7 +31,7 @@ public class GetCognitionClock extends DefaultReporter {
    */
   @Override
   public Object report(Argument[] argmnts, Context cntxt) throws ExtensionException, LogoException {
-    return Double.valueOf(ChrestExtension.getTurtlesChrestInstance(cntxt).getCognitionClock());
+    return (double)(ChrestExtension.getTurtlesChrestInstance(cntxt).getCognitionClock());
   }
   
 }

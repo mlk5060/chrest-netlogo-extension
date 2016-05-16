@@ -30,7 +30,7 @@ public class GetFamiliarisationTime extends DefaultReporter {
    */
   @Override
   public Object report(Argument args[], Context context) throws ExtensionException{
-    return Double.valueOf(ChrestExtension.getTurtlesChrestInstance(context).getFamiliarisationTime());
+    return (double)(ChrestExtension.getTurtlesChrestInstance(context).getFamiliarisationTime());
   }
   
 }

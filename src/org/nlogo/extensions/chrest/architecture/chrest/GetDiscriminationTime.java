@@ -30,6 +30,6 @@ public class GetDiscriminationTime extends DefaultReporter {
    */
   @Override
   public Object report(Argument args[], Context context) throws ExtensionException{
-    return Double.valueOf(ChrestExtension.getTurtlesChrestInstance(context).getDiscriminationTime());
+    return (double)(ChrestExtension.getTurtlesChrestInstance(context).getDiscriminationTime());
   }
 }

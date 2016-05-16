@@ -1,7 +1,7 @@
 package org.nlogo.extensions.chrest.lib.reinforcementLearning;
 
 import jchrest.lib.ReinforcementLearning;
-import jchrest.lib.ReinforcementLearning.ReinforcementLearningTheories;
+import jchrest.lib.ReinforcementLearning.Theory;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
@@ -36,8 +36,8 @@ public class GetTheoryNames extends DefaultReporter {
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
     LogoListBuilder reinforcementLearningTheoriesList = new LogoListBuilder();
-    ReinforcementLearningTheories[] reinforcementLearningTheories = ReinforcementLearning.getReinforcementLearningTheories();
-    for (ReinforcementLearningTheories reinforcementLearningTheory : reinforcementLearningTheories) {
+    Theory[] reinforcementLearningTheories = ReinforcementLearning.getReinforcementLearningTheories();
+    for (Theory reinforcementLearningTheory : reinforcementLearningTheories) {
       reinforcementLearningTheoriesList.add(reinforcementLearningTheory.toString());
     }
     return reinforcementLearningTheoriesList.toLogoList();

@@ -30,6 +30,6 @@ public class GetAttentionClock extends DefaultReporter{
    */
   @Override
   public Object report(Argument args[], Context context) throws ExtensionException{
-    return Double.valueOf(ChrestExtension.getTurtlesChrestInstance(context).getAttentionClock());
+    return (double)(ChrestExtension.getTurtlesChrestInstance(context).getAttentionClock());
   }
 }

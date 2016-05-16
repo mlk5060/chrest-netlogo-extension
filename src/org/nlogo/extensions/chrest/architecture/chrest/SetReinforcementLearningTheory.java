@@ -3,7 +3,7 @@ package org.nlogo.extensions.chrest.architecture.chrest;
 import org.nlogo.extensions.chrest.ChrestExtension;
 import jchrest.architecture.Chrest;
 import jchrest.lib.ReinforcementLearning;
-import jchrest.lib.ReinforcementLearning.ReinforcementLearningTheories;
+import jchrest.lib.ReinforcementLearning.Theory;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultCommand;
@@ -58,10 +58,10 @@ public class SetReinforcementLearningTheory extends DefaultCommand {
     String specifiedTheory = args[0].getString();
 
     if(!specifiedTheory.equalsIgnoreCase("null") || !specifiedTheory.isEmpty()){
-      ReinforcementLearningTheories[] reinforcementLearningTheories = ReinforcementLearning.getReinforcementLearningTheories();
+      Theory[] reinforcementLearningTheories = ReinforcementLearning.getReinforcementLearningTheories();
       boolean reinforcementLearningTheoryRecognised = false;
 
-      for(ReinforcementLearning.ReinforcementLearningTheories reinforcementLearningTheory : reinforcementLearningTheories){
+      for(Theory reinforcementLearningTheory : reinforcementLearningTheories){
         if(specifiedTheory.equalsIgnoreCase(reinforcementLearningTheory.toString())){
           reinforcementLearningTheoryRecognised = true;
           chrestInstance.setReinforcementLearningTheory(reinforcementLearningTheory);

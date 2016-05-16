@@ -47,8 +47,10 @@ public class GetContents extends DefaultReporter{
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
     LogoListBuilder stmAsList = new LogoListBuilder();
     List<Node> contents = ((Stm)args[0].get()).getContents(args[1].getIntValue());
-    for(Node content : contents){
-      stmAsList.add(content);
+    if(contents != null){
+      for(Node content : contents){
+        stmAsList.add(content);
+      }
     }
     return stmAsList.toLogoList();
   }

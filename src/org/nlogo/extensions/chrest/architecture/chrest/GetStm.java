@@ -1,14 +1,11 @@
 package org.nlogo.extensions.chrest.architecture.chrest;
 
-import java.util.Iterator;
-import jchrest.architecture.Node;
 import jchrest.lib.Modality;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
 import org.nlogo.api.ExtensionException;
 import org.nlogo.api.LogoException;
-import org.nlogo.api.LogoListBuilder;
 import org.nlogo.api.Syntax;
 import org.nlogo.extensions.chrest.ChrestExtension;
 

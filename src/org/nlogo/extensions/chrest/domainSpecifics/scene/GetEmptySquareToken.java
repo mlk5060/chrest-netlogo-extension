@@ -30,6 +30,6 @@ public class GetEmptySquareToken extends DefaultReporter{
    */
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
-    return Scene.getEmptySquareToken();
+    return Scene.EMPTY_SQUARE_TOKEN;
   }
 }

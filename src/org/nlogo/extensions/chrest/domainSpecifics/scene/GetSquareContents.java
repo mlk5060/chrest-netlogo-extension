@@ -1,6 +1,7 @@
 package org.nlogo.extensions.chrest.domainSpecifics.scene;
 
 import jchrest.domainSpecifics.Scene;
+import jchrest.domainSpecifics.SceneObject;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
@@ -26,7 +27,7 @@ public class GetSquareContents extends DefaultReporter {
         Syntax.NumberType(),
         Syntax.NumberType()
       }, 
-      Syntax.ListType()
+      Syntax.WildcardType()
     );
   }
 
@@ -42,14 +43,17 @@ public class GetSquareContents extends DefaultReporter {
    * @return The result of invoking {@link 
    * jchrest.domainSpecifics.Scene#getSquareContents(int, int)} in context of 
    * the {@link jchrest.domainSpecifics.Scene} passed as the first parameter to 
-   * this primitive.
+   * this primitive.  If {@code null} is returned by {@link 
+   * jchrest.domainSpecifics.Scene#getSquareContents(int, int)}, an empty {@link 
+   * java.lang.String) will be returned.
    * 
    * @throws ExtensionException
    * @throws LogoException 
    */
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
-    return ((Scene)args[0].get()).getSquareContents(args[1].getIntValue(), args[2].getIntValue());
+    SceneObject squareContents = ((Scene)args[0].get()).getSquareContents(args[1].getIntValue(), args[2].getIntValue());
+    return (squareContents == null ? "" : squareContents);
   }
   
 }

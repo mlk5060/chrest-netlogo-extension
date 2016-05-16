@@ -2,7 +2,8 @@ package org.nlogo.extensions.chrest.lib.reinforcementLearning;
 
 import java.util.Map;
 import java.util.TreeMap;
-import jchrest.lib.ReinforcementLearning.ReinforcementLearningTheories;
+import jchrest.lib.ReinforcementLearning;
+import jchrest.lib.ReinforcementLearning.Theory;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
@@ -40,12 +41,12 @@ public class Values extends DefaultReporter{
     //returned by ReinforcementLearningTheories.values() as keys in a TreeMap. 
     //When the TreeMap is iterated through using TreeMap.entrySet(), the order 
     //will be alphabetical (from a -> z).
-    TreeMap<String, ReinforcementLearningTheories> reinforcementLearningTheories = new TreeMap();
-    for(ReinforcementLearningTheories rlt : ReinforcementLearningTheories.values()){
+    TreeMap<String, Theory> reinforcementLearningTheories = new TreeMap();
+    for(Theory rlt : ReinforcementLearning.getReinforcementLearningTheories()){
       reinforcementLearningTheories.put(rlt.toString(), rlt);
     }
 
-    for(Map.Entry<String, ReinforcementLearningTheories> rltEntry : reinforcementLearningTheories.entrySet()){
+    for(Map.Entry<String, Theory> rltEntry : reinforcementLearningTheories.entrySet()){
       reinforcementLearningTheoriesList.add(rltEntry.getValue());
     }
 

@@ -43,6 +43,6 @@ public class GetLtmAverageDepth extends DefaultReporter {
    */
   @Override
   public Double report(Argument args[], Context context) throws ExtensionException, LogoException {
-    return ChrestExtension.getTurtlesChrestInstance(context).getLtmAverageDepth((Modality)args[0].get(), args[1].getIntValue());
+    return (double)(ChrestExtension.getTurtlesChrestInstance(context).getLtmAverageDepth((Modality)args[0].get(), args[1].getIntValue()));
   }
 }

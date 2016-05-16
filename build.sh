@@ -1,38 +1,10 @@
 #!/bin/bash
+CHREST_JAR_LOCATION=/home/martyn/chrest/target/
+CHREST_JAR=$(tree -fi "$CHREST_JAR_LOCATION" | grep "\.jar" | awk -F "/" '{print $NF}')
 
-# WORKING ON THIS: SHOULD BE A SCRIPT THAT WILL MAKE BUILDING THE CHREST NETLOGO EXTENSION AND EXPORTING IT TO THE CHREST TILEWORLD NETLOGO MODEL A ONE-STEP INVOCATION.
+cp ${CHREST_JAR_LOCATION}/${CHREST_JAR} .
 
-if [[ -e ./sources.txt ]]; then
-	rm ./sources.txt
-fi
+tree -fi src/ | grep "\.java" > sources.txt
 
-shopt -s nullglob
-set -- chrest-*.jar
-if [ "$#" -gt 0 ]; then
-  rm "$@"
-fi
-
-tree -fi src/ | grep ".java" > sources.txt
-
-while [[ ! -e ./sources.txt ]]; do
-	sleep 1
-done
-
-javac -classpath /home/martyn/netlogo-5.1.0/NetLogo.jar:/home/martyn/netlogo-5.1.0/extensions/chrest/chrest-5-beta.jar -d classes @sources.txt
+javac -classpath /home/martyn/netlogo-5.1.0/NetLogo.jar:/home/martyn/netlogo-5.1.0/extensions/chrest/${CHREST_JAR} -d classes @sources.txt
 jar cfm chrest.jar manifest.txt -C classes .
-
-while [[ ! -e ./chrest.jar ]]; do
-	sleep 1
-done
-
-cp {chrest.jar,chrest-5-beta.jar} /home/martyn/netlogo-5.1.0/models/MyModels/CHRESTTileworld/chrest/
-
-
-
-COMMANDS (FOR REFERENCE BEFORE SCRIPT IS BUILT)
-===============================================
-
-tree -fi src/ | grep ".java" > sources.txt
-javac -classpath /home/martyn/netlogo-5.1.0/NetLogo.jar:/home/martyn/netlogo-5.1.0/extensions/chrest/chrest-5-beta.jar -d classes @sources.txt
-jar cfm chrest.jar manifest.txt -C classes .
-cp {chrest.jar,chrest-5-beta.jar} /home/martyn/netlogo-5.1.0/models/MyModels/CHRESTTileworld/chrest/

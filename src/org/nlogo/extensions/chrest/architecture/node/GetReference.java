@@ -38,7 +38,7 @@ public class GetReference extends DefaultReporter{
    */
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
-    return Double.parseDouble( "" + ((Node)args[0].get()).getReference());
+    return (double)(((Node)args[0].get()).getReference());
   }
   
 }

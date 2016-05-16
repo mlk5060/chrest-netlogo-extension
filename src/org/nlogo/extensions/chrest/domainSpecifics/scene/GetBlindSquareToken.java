@@ -31,6 +31,6 @@ public class GetBlindSquareToken extends DefaultReporter{
    */
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
-    return Scene.getBlindSquareToken();
+    return Scene.BLIND_SQUARE_TOKEN;
   }
 }

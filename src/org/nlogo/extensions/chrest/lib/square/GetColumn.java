@@ -38,7 +38,7 @@ public class GetColumn extends DefaultReporter {
    */
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
-    return Double.parseDouble( "" + ((Square)args[0].get()).getColumn() );
+    return (double)(((Square)args[0].get()).getColumn());
   }
   
 }

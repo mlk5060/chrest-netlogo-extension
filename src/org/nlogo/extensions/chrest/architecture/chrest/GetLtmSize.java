@@ -38,6 +38,6 @@ public class GetLtmSize extends DefaultReporter {
    */
   @Override
   public Double report(Argument args[], Context context) throws ExtensionException, LogoException {
-    return Double.valueOf(ChrestExtension.getTurtlesChrestInstance(context).getLtmSize(args[0].getIntValue()));
+    return (double)(ChrestExtension.getTurtlesChrestInstance(context).getLtmSize(args[0].getIntValue()));
   }
 }

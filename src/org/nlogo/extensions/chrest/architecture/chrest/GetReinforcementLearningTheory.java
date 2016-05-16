@@ -1,5 +1,6 @@
 package org.nlogo.extensions.chrest.architecture.chrest;
 
+import jchrest.lib.ReinforcementLearning.Theory;
 import org.nlogo.extensions.chrest.ChrestExtension;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
@@ -25,13 +26,15 @@ public class GetReinforcementLearningTheory extends DefaultReporter {
    * 
    * @return The result of invoking {@link 
    * jchrest.architecture.Chrest#getReinforcementLearningTheory()} in context of 
-   * the calling turtle's {@link jchrest.architecture.Chrest} instance.
+   * the calling turtle's {@link jchrest.architecture.Chrest} instance.  If this
+   * is {@code null}, an empty string is returned.
    * 
    * @throws ExtensionException
    * @throws LogoException 
    */
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
-    return ChrestExtension.getTurtlesChrestInstance(context).getReinforcementLearningTheory();
+    Theory reinforcementLearningTheory = ChrestExtension.getTurtlesChrestInstance(context).getReinforcementLearningTheory();
+    return (reinforcementLearningTheory == null ? "" : reinforcementLearningTheory);
   }
 }
