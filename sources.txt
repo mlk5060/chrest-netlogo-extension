@@ -14,6 +14,10 @@ src/org/nlogo/extensions/chrest/architecture/chrest/GetProductionCount.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetReinforcementLearningTheory.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetStmItem.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetStm.java
+src/org/nlogo/extensions/chrest/architecture/chrest/GetTimeTakenToDecideUponAheadOfAgentFixations.java
+src/org/nlogo/extensions/chrest/architecture/chrest/GetTimeTakenToDecideUponCentralFixations.java
+src/org/nlogo/extensions/chrest/architecture/chrest/GetTimeTakenToDecideUponPeripheralItemFixations.java
+src/org/nlogo/extensions/chrest/architecture/chrest/GetTimeTakenToDecideUponPeripheralSquareFixations.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetTimeToRetrieveFixationFromPerceiver.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetTimeToRetrieveItemFromStm.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetVisualSpatialFieldAsScene.java
@@ -34,6 +38,10 @@ src/org/nlogo/extensions/chrest/architecture/chrest/SetDomain.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetFamiliarisationTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetRecognisedVisualSpatialFieldObjectLifespan.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetReinforcementLearningTheory.java
+src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeTakenToDecideUponAheadOfAgentFixations.java
+src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeTakenToDecideUponCentralFixations.java
+src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeTakenToDecideUponPeripheralItemFixations.java
+src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeTakenToDecideUponPeripheralSquareFixations.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeToAccessVisualSpatialField.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeToEncodeRecognisedSceneObjectAsVisualSpatialFieldObject.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeToEncodeUnrecognisedEmptySquareSceneObjectAsVisualSpatialFieldObject.java
@@ -89,6 +97,10 @@ src/org/nlogo/extensions/chrest/domainSpecifics/sceneObject/GetObjectType.java
 src/org/nlogo/extensions/chrest/domainSpecifics/tileworld/GetHoleSceneObjectTypeToken.java
 src/org/nlogo/extensions/chrest/domainSpecifics/tileworld/GetOpponentSceneObjectTypeToken.java
 src/org/nlogo/extensions/chrest/domainSpecifics/tileworld/GetTileSceneObjectTypeToken.java
+src/org/nlogo/extensions/chrest/domainSpecifics/tileworld/GetTimeTakenToDecideUponMovementFixations.java
+src/org/nlogo/extensions/chrest/domainSpecifics/tileworld/GetTimeTakenToDecideUponSalientObjectFixations.java
+src/org/nlogo/extensions/chrest/domainSpecifics/tileworld/SetTimeTakenToDecideUponMovementFixations.java
+src/org/nlogo/extensions/chrest/domainSpecifics/tileworld/SetTimeTakenToDecideUponSalientObjectFixations.java
 src/org/nlogo/extensions/chrest/ExtensionOutputStream.java
 src/org/nlogo/extensions/chrest/lib/chrestStatus/ValueOf.java
 src/org/nlogo/extensions/chrest/lib/itemSquarePattern/GetAsString.java

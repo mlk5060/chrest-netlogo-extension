@@ -63,6 +63,10 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("get-ltm-size", new org.nlogo.extensions.chrest.architecture.chrest.GetLtmSize());
     pm.addPrimitive("get-perceiver", new org.nlogo.extensions.chrest.architecture.chrest.GetPerceiver());
     pm.addPrimitive("get-production-count", new org.nlogo.extensions.chrest.architecture.chrest.GetProductionCount());
+    pm.addPrimitive("get-time-taken-to-decide-upon-ahead-of-agent-fixation", new org.nlogo.extensions.chrest.architecture.chrest.GetTimeTakenToDecideUponAheadOfAgentFixations());
+    pm.addPrimitive("get-time-taken-to-decide-upon-central-fixation", new org.nlogo.extensions.chrest.architecture.chrest.GetTimeTakenToDecideUponCentralFixations());
+    pm.addPrimitive("get-time-taken-to-decide-upon-peripheral-item-fixation", new org.nlogo.extensions.chrest.architecture.chrest.GetTimeTakenToDecideUponPeripheralItemFixations());
+    pm.addPrimitive("get-time-taken-to-decide-upon-peripheral-square-fixation", new org.nlogo.extensions.chrest.architecture.chrest.GetTimeTakenToDecideUponPeripheralSquareFixations());
     pm.addPrimitive("get-time-to-retrieve-fixation-from-perceiver", new org.nlogo.extensions.chrest.architecture.chrest.GetTimeToRetrieveFixationFromPerceiver());
     pm.addPrimitive("get-time-to-retrieve-item-from-stm", new org.nlogo.extensions.chrest.architecture.chrest.GetTimeToRetrieveItemFromStm());
     pm.addPrimitive("get-reinforcement-learning-theory", new org.nlogo.extensions.chrest.architecture.chrest.GetReinforcementLearningTheory());
@@ -86,6 +90,10 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("set-familiarisation-time", new org.nlogo.extensions.chrest.architecture.chrest.SetFamiliarisationTime());
     pm.addPrimitive("set-recognised-visual-spatial-field-object-lifespan", new org.nlogo.extensions.chrest.architecture.chrest.SetRecognisedVisualSpatialFieldObjectLifespan());
     pm.addPrimitive("set-reinforcement-learning-theory", new org.nlogo.extensions.chrest.architecture.chrest.SetReinforcementLearningTheory());
+    pm.addPrimitive("set-time-taken-to-decide-upon-ahead-of-agent-fixations", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeTakenToDecideUponAheadOfAgentFixations());
+    pm.addPrimitive("set-time-taken-to-decide-upon-central-fixations", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeTakenToDecideUponCentralFixations());
+    pm.addPrimitive("set-time-taken-to-decide-upon-peripheral-item-fixations", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeTakenToDecideUponPeripheralItemFixations());
+    pm.addPrimitive("set-time-taken-to-decide-upon-peripheral-square-fixations", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeTakenToDecideUponPeripheralSquareFixations());
     pm.addPrimitive("set-time-to-access-visual-spatial-field", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToAccessVisualSpatialField());
     pm.addPrimitive("set-time-to-encode-recognised-scene-object-as-visual-spatial-field-object", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToEncodeRecognisedSceneObjectAsVisualSpatialFieldObject());
     pm.addPrimitive("set-time-to-encode-unrecognised-empty-square-scene-object-as-visual-spatial-field-object", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToEncodeUnrecognisedEmptySquareSceneObjectAsVisualSpatialFieldObject());
@@ -156,6 +164,10 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("TileworldDomain.get-hole-token", new org.nlogo.extensions.chrest.domainSpecifics.tileworld.GetHoleSceneObjectTypeToken());
     pm.addPrimitive("TileworldDomain.get-opponent-token", new org.nlogo.extensions.chrest.domainSpecifics.tileworld.GetOpponentSceneObjectTypeToken());
     pm.addPrimitive("TileworldDomain.get-tile-token", new org.nlogo.extensions.chrest.domainSpecifics.tileworld.GetTileSceneObjectTypeToken());
+    pm.addPrimitive("TileworldDomain.get-time-taken-to-decide-upon-movement-fixations", new org.nlogo.extensions.chrest.domainSpecifics.tileworld.GetTimeTakenToDecideUponMovementFixations());
+    pm.addPrimitive("TileworldDomain.get-time-taken-to-decide-upon-salient-object-fixations", new org.nlogo.extensions.chrest.domainSpecifics.tileworld.GetTimeTakenToDecideUponSalientObjectFixations());
+    pm.addPrimitive("TileworldDomain.set-time-taken-to-decide-upon-movement-fixations", new org.nlogo.extensions.chrest.domainSpecifics.tileworld.SetTimeTakenToDecideUponMovementFixations());
+    pm.addPrimitive("TileworldDomain.set-time-taken-to-decide-upon-salient-object-fixations", new org.nlogo.extensions.chrest.domainSpecifics.tileworld.SetTimeTakenToDecideUponSalientObjectFixations());
     
     //jchrest.lib.ChrestStatus primitives
     pm.addPrimitive("ChrestStatus.value-of", new org.nlogo.extensions.chrest.lib.chrestStatus.ValueOf());
