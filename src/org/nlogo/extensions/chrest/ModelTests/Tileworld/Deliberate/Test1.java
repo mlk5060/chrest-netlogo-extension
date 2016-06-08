@@ -3,6 +3,7 @@ package org.nlogo.extensions.chrest.ModelTests.Tileworld.Deliberate;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jchrest.architecture.Chrest;
@@ -37,50 +38,66 @@ public class Test1 extends DefaultCommand {
     Chrest turtlesModel = ChrestExtension.getTurtlesChrestInstance(context);
     
     /*******************************/
-    /***** CREATE PRODUCTION 1 *****/
+    /***** CREATE VISUAL NODES *****/
     /*******************************/
     
-    //Create Visual Node 1.
+    //Create Visual Node 1.  This should have an information count > 0 so that
+    //it is selected during the first round of roulette selection when
+    //Chrest.generateActionUsingVisualPatternRecognition() is invoked in the 
+    //Netlogo code.
     ListPattern visualNode1ContentsAndImage = new ListPattern(Modality.VISUAL);
     visualNode1ContentsAndImage.add(new ItemSquarePattern("T", 0, -1));
     Node visualNode1 = new Node(turtlesModel, visualNode1ContentsAndImage, visualNode1ContentsAndImage, 0);
     
-    //Create Action Node 1 (should have non-empty contents and image so that it
-    //can be identified in test code).
+    //Create Visual Node 2.  This should have an information count of 0 so that 
+    //it won't be a candidate Node for selection during the first round of 
+    //roulette selection when Chrest.generateActionUsingVisualPatternRecognition() 
+    //is invoked in the Netlogo code.
+    ListPattern visualNode2ContentsAndImage = new ListPattern(Modality.VISUAL);
+    Node visualNode2 = new Node(turtlesModel, visualNode2ContentsAndImage, visualNode2ContentsAndImage, 0);
+    
+    /*******************************/
+    /***** CREATE ACTION NODES *****/
+    /*******************************/
+    
+    //Create action Node 1.
     ListPattern actionNode1ContentsAndImage = new ListPattern(Modality.ACTION);
+    actionNode1ContentsAndImage.add(new ItemSquarePattern("PT", 180, 1));
     actionNode1ContentsAndImage.add(new ItemSquarePattern("PT", 180, 1));
     Node actionNode1 = new Node(turtlesModel, actionNode1ContentsAndImage, actionNode1ContentsAndImage, 0);
     
-    //Construct production between Visual Node 1 and Action Node 1 and value the
-    //production so that it is guaranteed to be selected (production selection 
-    //algorithms are tested seperately so weighting production selection is OK 
-    //here).
-    HashMap visualNode1Production = new HashMap();
-    visualNode1Production.put(actionNode1, 1.0);
-    
-    /*******************************/
-    /***** CREATE PRODUCTION 2 *****/
-    /*******************************/
-    
-    //Create Visual Node 2.
-    ListPattern visualNode2ContentsAndImage = new ListPattern(Modality.VISUAL);
-    visualNode2ContentsAndImage.add(new ItemSquarePattern("H", 0, -2));
-    Node visualNode2 = new Node(turtlesModel, visualNode2ContentsAndImage, visualNode2ContentsAndImage, 0);
-    
-    //Create Action Node 2 (should have non-empty contents and image so that it
-    //can be identified in test code).
+    //Create action Node 2.
     ListPattern actionNode2ContentsAndImage = new ListPattern(Modality.ACTION);
     actionNode2ContentsAndImage.add(new ItemSquarePattern("MV", 180, 1));
     Node actionNode2 = new Node(turtlesModel, actionNode2ContentsAndImage, actionNode2ContentsAndImage, 0);
     
-    //Construct production between Visual Node 2 and Action Node 2 and value the
-    //production so that it is guaranteed to NOT be selected (production 
-    //selection algorithms are tested seperately so weighting production 
-    //selection is OK here).
-    HashMap visualNode2Production = new HashMap();
-    visualNode2Production.put(actionNode2, 0.0);
+    //Create action node 3.
+    ListPattern actionNode3ContentsAndImage = new ListPattern(Modality.ACTION);
+    actionNode3ContentsAndImage.add(new ItemSquarePattern("MV", 0, 1));
+    Node actionNode3 = new Node(turtlesModel, actionNode3ContentsAndImage, actionNode3ContentsAndImage, 0);
+    
+    /******************************/
+    /***** CREATE PRODUCTIONS *****/
+    /******************************/
+    
+    //Construct productions between visual Node 1 and action Nodes 1 and 2 and 
+    //value the productions so that action Node 1 is guaranteed to be selected 
+    //(production selection algorithms are tested seperately so weighting 
+    //production selection is OK here).
+    HashMap visualNode1Productions = new LinkedHashMap();
+    visualNode1Productions.put(actionNode1, 1.0);
+    visualNode1Productions.put(actionNode2, 0.0);
+    
+    //Construct production between visual Node 2 and Action Node 2 and value the
+    //production so that it is guaranteed to be selected.  However, since visual
+    //Node 2 has an information count of 0 and visual Node 1 has an information
+    //count of 1, visual Node 2 and hence, this production, should never be 
+    //selected.
+    HashMap visualNode2Productions = new LinkedHashMap();
+    visualNode2Productions.put(actionNode3, 1.0);
     
     try {
+      
       /***************************/
       /***** SET PRODUCTIONS *****/
       /***************************/
@@ -96,8 +113,8 @@ public class Test1 extends DefaultCommand {
       //To get around this, create an entry using the next available key, i.e. 1
       HistoryTreeMap visualNode1ProductionHistory = (HistoryTreeMap)nodeProductionHistoryField.get(visualNode1);
       HistoryTreeMap visualNode2ProductionHistory = (HistoryTreeMap)nodeProductionHistoryField.get(visualNode2);
-      visualNode1ProductionHistory.put(1, visualNode1Production);
-      visualNode2ProductionHistory.put(1, visualNode2Production);
+      visualNode1ProductionHistory.put(1, visualNode1Productions);
+      visualNode2ProductionHistory.put(1, visualNode2Productions);
       
       /**************************/
       /***** SET VISUAL STM *****/

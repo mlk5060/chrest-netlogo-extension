@@ -1,6 +1,6 @@
 package org.nlogo.extensions.chrest.architecture.chrest;
 
-import jchrest.architecture.Node;
+import jchrest.lib.ListPattern;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
@@ -30,13 +30,13 @@ public class LearnProduction extends DefaultReporter {
   /**
    * 
    * @param args See {@link 
-   * jchrest.architecture.Chrest#learnProduction(jchrest.architecture.Node, 
-   * jchrest.architecture.Node, int)}.
+   * jchrest.architecture.Chrest#learnProduction(jchrest.lib.ListPattern, 
+   * jchrest.lib.ListPattern, int)}.
    * @param context
    * 
    * @return The result of invoking {@link 
-   * jchrest.architecture.Chrest#learnProduction(jchrest.architecture.Node, 
-   * jchrest.architecture.Node, int)} with the primitive parameters specified in 
+   * jchrest.architecture.Chrest#learnProduction(jchrest.lib.ListPattern, 
+   * jchrest.lib.ListPattern, int)} with the primitive parameters specified in 
    * context of the calling {@link org.nlogo.agent.Agent Agent's} {@link 
    * jchrest.architecture.Chrest} model.
    * 
@@ -45,7 +45,10 @@ public class LearnProduction extends DefaultReporter {
    */
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
-    return ChrestExtension.getTurtlesChrestInstance(context).learnProduction((Node)args[0].get(), (Node)args[1].get(), args[2].getIntValue());
+    return ChrestExtension.getTurtlesChrestInstance(context).learnProduction(
+      (ListPattern)args[0].get(), 
+      (ListPattern)args[1].get(), 
+      args[2].getIntValue());
   }
   
 }

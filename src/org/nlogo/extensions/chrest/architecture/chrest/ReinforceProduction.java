@@ -3,6 +3,7 @@ package org.nlogo.extensions.chrest.architecture.chrest;
 import org.nlogo.extensions.chrest.ChrestExtension;
 import java.util.Iterator;
 import jchrest.architecture.Node;
+import jchrest.lib.ListPattern;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
@@ -30,26 +31,27 @@ public class ReinforceProduction extends DefaultReporter {
   }
 
   /**
-   * Invokes {@link jchrest.architecture.Chrest#reinforceProduction(jchrest.architecture.Node, 
-   * jchrest.architecture.Node, java.lang.Double[], int)} in context of the 
+   * Invokes {@link 
+   * jchrest.architecture.Chrest#reinforceProduction(jchrest.lib.ListPattern, 
+   * jchrest.lib.ListPattern, java.lang.Double[], int)} in context of the 
    * calling turtle's {@link jchrest.architecture.Chrest} instance.
    * 
    * @param args See parameters for {@link 
-   * jchrest.architecture.Chrest#reinforceProduction(jchrest.architecture.Node, 
-   * jchrest.architecture.Node, java.lang.Double[], int)}
+   * jchrest.architecture.Chrest#reinforceProduction(jchrest.lib.ListPattern, 
+   * jchrest.lib.ListPattern, java.lang.Double[], int)}
    * @param context
    * 
    * @ return The result of {@link 
-   * jchrest.architecture.Chrest#reinforceProduction(jchrest.architecture.Node, 
-   * jchrest.architecture.Node, java.lang.Double[], int) 
+   * jchrest.architecture.Chrest#reinforceProduction(jchrest.lib.ListPattern, 
+   * jchrest.lib.ListPattern, java.lang.Double[], int)}
    * 
    * @throws ExtensionException
    * @throws LogoException 
    */
   @Override
   public Object report(Argument[] args, Context context) throws ExtensionException, LogoException {
-    Node visualNode = (Node)args[0].get();
-    Node actionNode = (Node)args[1].get();
+    ListPattern vision = (ListPattern)args[0].get();
+    ListPattern action = (ListPattern)args[1].get();
     LogoList reinforcementVariables = args[2].getList(); 
     int time = args[3].getIntValue();
 
@@ -63,12 +65,7 @@ public class ReinforceProduction extends DefaultReporter {
     }
     Double[] variablesToPass = reinforcementVariables.toArray(new Double[reinforcementVariables.size()]);
 
-    return ChrestExtension.getTurtlesChrestInstance(context).reinforceProduction(
-      visualNode, 
-      actionNode, 
-      variablesToPass, 
-      time
-    );
+    return ChrestExtension.getTurtlesChrestInstance(context).reinforceProduction(vision, action, variablesToPass, time);
   }
   
 }

@@ -41,7 +41,25 @@ public class New extends DefaultReporter {
    *  <li>
    *    The {@link org.nlogo.agent.Turtle#id} of the {@link 
    *    org.nlogo.agent.Turtle} on the {@link org.nlogo.agent.Patch} as a {@link 
-   *    java.lang.String}.
+   *    java.lang.String}.  If there is no {@link org.nlogo.agent.Turtle} on a 
+   *    {@link org.nlogo.agent.Patch}, pass an empty {@link java.lang.String} 
+   *    instead.  If the {@link org.nlogo.agent.Turtle#id} is not empty, {@link 
+   *    jchrest.domainSpecifics.SceneObject#SceneObject(java.lang.String, 
+   *    java.lang.String)} will be invoked to construct the relevant {@link 
+   *    jchrest.domainSpecifics.SceneObject}, setting the resulting {@link 
+   *    jchrest.domainSpecifics.SceneObject#_identifier} to the {@link 
+   *    org.nlogo.agent.Turtle#id} passed.  Otherwise, if the {@link 
+   *    org.nlogo.agent.Turtle#id} specified is empty, {@link 
+   *    jchrest.domainSpecifics.SceneObject#SceneObject(java.lang.String)} will 
+   *    be invoked to construct the relevant {@link 
+   *    jchrest.domainSpecifics.SceneObject}, setting the resulting {@link 
+   *    jchrest.domainSpecifics.SceneObject#_identifier} to a unique, random 
+   *    value.  This prevents a {@link org.nlogo.agent.Turtle} endowed with a 
+   *    {@link jchrest.architecture.Chrest} model learning incorrectly if two 
+   *    distinct empty {@link org.nlogo.agent.Patch Patches} are seen in two 
+   *    distinct {@link jchrest.domainSpecifics.Fixation Fixations} (see {@link
+   *    jchrest.architecture.Chrest#performScheduledFixations(java.util.List, 
+   *    jchrest.domainSpecifics.Scene, int)}.
    *  </li>
    *  <li>
    *    The result of {@link org.nlogo.agent.Turtle#getBreed()} for the {@link 
@@ -130,9 +148,11 @@ public class New extends DefaultReporter {
       scene.addObjectToSquare(
         scene.getSceneSpecificColFromDomainSpecificCol( ((Double)patchInfo.get(0)).intValue() ),
         scene.getSceneSpecificRowFromDomainSpecificRow( ((Double)patchInfo.get(1)).intValue() ),
-        new SceneObject(
-          (String)patchInfo.get(2),
-          (String)patchInfo.get(3))
+        (
+          ((String)patchInfo.get(2)).isEmpty() ?
+            new SceneObject((String)patchInfo.get(3)) :
+            new SceneObject((String)patchInfo.get(2), (String)patchInfo.get(3))
+        )
       );
     }
 

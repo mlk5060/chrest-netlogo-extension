@@ -6,18 +6,13 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jchrest.architecture.Chrest;
-import jchrest.architecture.Node;
 import jchrest.architecture.Perceiver;
-import jchrest.architecture.Stm;
 import jchrest.domainSpecifics.Fixation;
 import jchrest.domainSpecifics.Scene;
 import jchrest.domainSpecifics.SceneObject;
-import jchrest.domainSpecifics.fixations.PeripheralSquareFixation;
+import jchrest.domainSpecifics.fixations.AheadOfAgentFixation;
 import jchrest.domainSpecifics.tileworld.TileworldDomain;
 import jchrest.lib.HistoryTreeMap;
-import jchrest.lib.ItemSquarePattern;
-import jchrest.lib.ListPattern;
-import jchrest.lib.Modality;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.DefaultReporter;
@@ -42,50 +37,9 @@ public class Test3 extends DefaultReporter {
     
     Chrest turtlesModel = ChrestExtension.getTurtlesChrestInstance(context);
     
-    boolean tileIncludedInHypothesis = false;
-    
-    ListPattern nodeContents = new ListPattern(Modality.VISUAL);
-    String item = this.selectRandomObject();
-    if (item.equals(TileworldDomain.TILE_SCENE_OBJECT_TYPE_TOKEN)) tileIncludedInHypothesis = true;
-    nodeContents.add(new ItemSquarePattern(item, 0, 1));
-    
-    ListPattern nodeImage = new ListPattern(Modality.VISUAL);
-    item = this.selectRandomObject();
-    if (item.equals(TileworldDomain.TILE_SCENE_OBJECT_TYPE_TOKEN)) tileIncludedInHypothesis = true;
-    nodeImage.add(new ItemSquarePattern(item, 0, 1));
-    
-    item = this.selectRandomObject();
-    if (item.equals(TileworldDomain.TILE_SCENE_OBJECT_TYPE_TOKEN)) tileIncludedInHypothesis = true;
-    ItemSquarePattern filledItemSlot = new ItemSquarePattern(item, 0, 1);
-    ArrayList filledItemSlots = new ArrayList();
-    filledItemSlots.add(filledItemSlot);
-    HistoryTreeMap filledItemSlotsHistory = new HistoryTreeMap();
-    filledItemSlotsHistory.put(1, filledItemSlots);
-    
-    item = this.selectRandomObject();
-    if (item.equals(TileworldDomain.TILE_SCENE_OBJECT_TYPE_TOKEN)) tileIncludedInHypothesis = true;
-    ItemSquarePattern filledPositionSlot = new ItemSquarePattern(item, 0, 1);
-    ArrayList filledPositionSlots = new ArrayList();
-    filledPositionSlots.add(filledPositionSlot);
-    HistoryTreeMap filledPositionSlotsHistory = new HistoryTreeMap();
-    filledPositionSlotsHistory.put(1, filledPositionSlots);
-    
-    //Sets content and image
-    Node node = new Node(turtlesModel, nodeContents, nodeImage, 0);
+    boolean tileIncludedInFixation = false;
     
     try {
-      
-      /************************************/
-      /***** SET FILLED SLOTS HISTORY *****/
-      /************************************/
-      
-      Field filledItemSlotsHistoryField = Node.class.getDeclaredField("_filledItemSlotsHistory");
-      Field filledPositionSlotsHistoryField = Node.class.getDeclaredField("_filledPositionSlotsHistory");
-      filledItemSlotsHistoryField.setAccessible(true);
-      filledPositionSlotsHistoryField.setAccessible(true);
-      
-      filledItemSlotsHistoryField.set(node, filledItemSlotsHistory);
-      filledPositionSlotsHistoryField.set(node, filledPositionSlotsHistory);
       
       /*************************/
       /***** SET FIXATIONS *****/
@@ -111,10 +65,12 @@ public class Test3 extends DefaultReporter {
       }
       scene.get(2).set(2, new SceneObject(Scene.CREATOR_TOKEN));
       
-      //Construct a new Fixation that fixates on the tile in the Scene fixated 
-      //on.  Note that the Fixation will be considered as being performed so is
-      //viable for consideration during problem-solving.
-      PeripheralSquareFixation fixation = new PeripheralSquareFixation(turtlesModel, 0);
+      String object = this.selectRandomObject();
+      if(object.equals(TileworldDomain.TILE_SCENE_OBJECT_TYPE_TOKEN)) tileIncludedInFixation = true;
+      scene.get(2).set(3, new SceneObject(object));
+      
+      //Construct a new Fixation.
+      AheadOfAgentFixation fixation = new AheadOfAgentFixation(0, 0);
       Field fixationPerformanceTimeField = Fixation.class.getDeclaredField("_performanceTime");
       Field fixationPerformedField = Fixation.class.getDeclaredField("_performed");
       Field fixationSceneField = Fixation.class.getDeclaredField("_scene");
@@ -133,7 +89,7 @@ public class Test3 extends DefaultReporter {
       fixationPerformedField.set(fixation, true);
       fixationSceneField.set(fixation, sceneFixatedOn);
       fixationColFixatedOnField.set(fixation, 2);
-      fixationRowFixatedOnField.set(fixation, 0);
+      fixationRowFixatedOnField.set(fixation, 3);
       fixationObjectSeenField.set(
         fixation, 
         scene.get((Integer)fixationColFixatedOnField.get(fixation))
@@ -154,34 +110,11 @@ public class Test3 extends DefaultReporter {
       
       perceiverFixationsField.set(chrestPerceiverField.get(turtlesModel), fixationsHistory);
       
-      /**************************/
-      /***** SET VISUAL STM *****/
-      /**************************/
-      
-      //Need to get the visual STM of the calling turtle's CHREST model.  This 
-      //is a private field so needs to be made accessible so it can be set 
-      //"manually".
-      Field chrestVisualStmField = Chrest.class.getDeclaredField("_visualStm");
-      chrestVisualStmField.setAccessible(true);
-      
-      //Need to get the item history of visual STM for the calling turtle's 
-      //CHREST model.  This is a private field so needs to be made accessible so 
-      //it can be set "manually".
-      Field stmItemHistoryField = Stm.class.getDeclaredField("_itemHistory");
-      stmItemHistoryField.setAccessible(true);
-      
-      //Add the Node to Visual STM at a time when its slots are filled, i.e. 1.
-      ArrayList<Node> visualStmState = new ArrayList();
-      visualStmState.add(node);
-      
-      HistoryTreeMap visualStm = (HistoryTreeMap)stmItemHistoryField.get(chrestVisualStmField.get(turtlesModel));
-      visualStm.put(1, visualStmState);
-      
     } catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException ex) {
-      Logger.getLogger(Test3.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(Test2.class.getName()).log(Level.SEVERE, null, ex);
     }
     
-    return tileIncludedInHypothesis;
+    return tileIncludedInFixation;
   }
   
   private String selectRandomObject(){
@@ -195,5 +128,4 @@ public class Test3 extends DefaultReporter {
     
     return tileworldObjects.get(r.nextInt(tileworldObjects.size()));
   }
-  
 }

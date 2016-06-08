@@ -50,18 +50,24 @@ public class ChrestExtension extends DefaultClassManager {
   public void load(PrimitiveManager pm) {
     
     //jchrest.architecture.Chrest primitives
+    pm.addPrimitive("advance-attention-clock", new org.nlogo.extensions.chrest.architecture.chrest.AdvanceAttentionClock());
+    pm.addPrimitive("generate-action-using-visual-pattern-recognition", new org.nlogo.extensions.chrest.architecture.chrest.GenerateActionUsingVisualPatternRecognition());
     pm.addPrimitive("get-add-production-time", new org.nlogo.extensions.chrest.architecture.chrest.GetAddProductionTime());
     pm.addPrimitive("get-attention-clock", new org.nlogo.extensions.chrest.architecture.chrest.GetAttentionClock());
     pm.addPrimitive("get-cognition-clock", new org.nlogo.extensions.chrest.architecture.chrest.GetCognitionClock());
     pm.addPrimitive("get-discrimination-time", new org.nlogo.extensions.chrest.architecture.chrest.GetDiscriminationTime());
     pm.addPrimitive("get-familiarisation-time", new org.nlogo.extensions.chrest.architecture.chrest.GetFamiliarisationTime());
+    pm.addPrimitive("get-fixation-performed", new org.nlogo.extensions.chrest.architecture.chrest.GetFixationPerformed());
     pm.addPrimitive("get-ltm-avg-depth", new org.nlogo.extensions.chrest.architecture.chrest.GetLtmAverageDepth());
     pm.addPrimitive("get-ltm-modality-size", new org.nlogo.extensions.chrest.architecture.chrest.GetLtmModalitySize());
     pm.addPrimitive("get-ltm-size", new org.nlogo.extensions.chrest.architecture.chrest.GetLtmSize());
     pm.addPrimitive("get-perceiver", new org.nlogo.extensions.chrest.architecture.chrest.GetPerceiver());
     pm.addPrimitive("get-production-count", new org.nlogo.extensions.chrest.architecture.chrest.GetProductionCount());
+    pm.addPrimitive("get-time-to-retrieve-fixation-from-perceiver", new org.nlogo.extensions.chrest.architecture.chrest.GetTimeToRetrieveFixationFromPerceiver());
+    pm.addPrimitive("get-time-to-retrieve-item-from-stm", new org.nlogo.extensions.chrest.architecture.chrest.GetTimeToRetrieveItemFromStm());
     pm.addPrimitive("get-reinforcement-learning-theory", new org.nlogo.extensions.chrest.architecture.chrest.GetReinforcementLearningTheory());
     pm.addPrimitive("get-stm", new org.nlogo.extensions.chrest.architecture.chrest.GetStm());
+    pm.addPrimitive("get-stm-item", new org.nlogo.extensions.chrest.architecture.chrest.GetStmItem());
     pm.addPrimitive("get-visual-spatial-field", new org.nlogo.extensions.chrest.architecture.chrest.GetVisualSpatialField());
     pm.addPrimitive("get-visual-spatial-field-as-scene", new org.nlogo.extensions.chrest.architecture.chrest.GetVisualSpatialFieldAsScene());
     pm.addPrimitive("get-visual-spatial-field-object-locations", new org.nlogo.extensions.chrest.architecture.chrest.GetVisualSpatialFieldObjectLocations());
@@ -86,6 +92,8 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("set-time-to-encode-unrecognised-non-empty-square-scene-object-as-visual-spatial-field-object", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToEncodeUnrecognisedNonEmptySquareSceneObjectAsVisualSpatialFieldObject());
     pm.addPrimitive("set-time-to-move-visual-spatial-field-object", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToMoveVisualSpatialFieldObject());
     pm.addPrimitive("set-time-to-process-unrecognised-scene-object-during-visual-spatial-field-construction", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToProcessUnrecognisedSceneObjectDuringVisualSpatialFieldConstruction());
+    pm.addPrimitive("set-time-to-retrieve-fixation-from-perceiver", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToRetrieveFixationFromPerceiver());
+    pm.addPrimitive("set-time-to-retrieve-item-from-stm", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToRetrieveItemFromStm());
     pm.addPrimitive("set-unrecognised-visual-spatial-field-object-lifespan", new org.nlogo.extensions.chrest.architecture.chrest.SetUnrecognisedVisualSpatialFieldObjectLifespan());
     pm.addPrimitive("turn-off-debugging", new org.nlogo.extensions.chrest.architecture.chrest.TurnOffDebugging());
     pm.addPrimitive("turn-on-debugging", new org.nlogo.extensions.chrest.architecture.chrest.TurnOnDebugging());
@@ -149,6 +157,9 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("TileworldDomain.get-opponent-token", new org.nlogo.extensions.chrest.domainSpecifics.tileworld.GetOpponentSceneObjectTypeToken());
     pm.addPrimitive("TileworldDomain.get-tile-token", new org.nlogo.extensions.chrest.domainSpecifics.tileworld.GetTileSceneObjectTypeToken());
     
+    //jchrest.lib.ChrestStatus primitives
+    pm.addPrimitive("ChrestStatus.value-of", new org.nlogo.extensions.chrest.lib.chrestStatus.ValueOf());
+    
     //jchrest.lib.ItemSquarePattern primitives
     pm.addPrimitive("ItemSquarePattern.new", new org.nlogo.extensions.chrest.lib.itemSquarePattern.New());
     pm.addPrimitive("ItemSquarePattern.get-column", new org.nlogo.extensions.chrest.lib.itemSquarePattern.GetColumn());
@@ -165,7 +176,7 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("ListPattern.remove-blind-empty-and-unknown-patches", new org.nlogo.extensions.chrest.lib.listPattern.RemoveBlindEmptyAndUnknownPatches());
     
     //jchrest.lib.Modality primitives
-    pm.addPrimitive("Modality.get-modalities", new org.nlogo.extensions.chrest.lib.modality.Values());
+    pm.addPrimitive("Modality.value-of", new org.nlogo.extensions.chrest.lib.modality.ValueOf());
     
     //jchrest.lib.Pattern primitives
     pm.addPrimitive("Pattern.create-number-pattern", new org.nlogo.extensions.chrest.lib.pattern.CreateNumberPattern());
@@ -189,8 +200,7 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("TileworldModelTests#deliberate.test-1", new org.nlogo.extensions.chrest.ModelTests.Tileworld.Deliberate.Test1());
     pm.addPrimitive("TileworldModelTests#deliberate.test-2", new org.nlogo.extensions.chrest.ModelTests.Tileworld.Deliberate.Test2());
     pm.addPrimitive("TileworldModelTests#deliberate.test-3", new org.nlogo.extensions.chrest.ModelTests.Tileworld.Deliberate.Test3());
-    pm.addPrimitive("TileworldModelTests#deliberate.test-4", new org.nlogo.extensions.chrest.ModelTests.Tileworld.Deliberate.Test4());
-    pm.addPrimitive("TileworldModelTests#roulette-selection.setup", new org.nlogo.extensions.chrest.ModelTests.Tileworld.RouletteSelection.Setup());
+    pm.addPrimitive("TileworldModelTests#generate-plan.test-1", new org.nlogo.extensions.chrest.ModelTests.Tileworld.GeneratePlan.Test1());
     pm.addPrimitive("TileworldModelTests#generate-visual-spatial-field-moves.test-1", new org.nlogo.extensions.chrest.ModelTests.Tileworld.GenerateVisualSpatialFieldMoves.Test1());
     pm.addPrimitive("TileworldModelTests#generate-visual-spatial-field-moves.test-2", new org.nlogo.extensions.chrest.ModelTests.Tileworld.GenerateVisualSpatialFieldMoves.Test2());
     pm.addPrimitive("TileworldModelTests#generate-visual-spatial-field-moves.test-3", new org.nlogo.extensions.chrest.ModelTests.Tileworld.GenerateVisualSpatialFieldMoves.Test3());
