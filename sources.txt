@@ -6,12 +6,14 @@ src/org/nlogo/extensions/chrest/architecture/chrest/GetCognitionClock.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetDiscriminationTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetFamiliarisationTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetFixationPerformed.java
+src/org/nlogo/extensions/chrest/architecture/chrest/GetFixations.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetLtmAverageDepth.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetLtmModalitySize.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetLtmSize.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetPerceiver.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetProductionCount.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetReinforcementLearningTheory.java
+src/org/nlogo/extensions/chrest/architecture/chrest/GetSaccadeTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetStmItem.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetStm.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetTimeTakenToDecideUponAheadOfAgentFixations.java
@@ -38,6 +40,7 @@ src/org/nlogo/extensions/chrest/architecture/chrest/SetDomain.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetFamiliarisationTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetRecognisedVisualSpatialFieldObjectLifespan.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetReinforcementLearningTheory.java
+src/org/nlogo/extensions/chrest/architecture/chrest/SetSaccadeTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeTakenToDecideUponAheadOfAgentFixations.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeTakenToDecideUponCentralFixations.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeTakenToDecideUponPeripheralItemFixations.java
@@ -62,7 +65,6 @@ src/org/nlogo/extensions/chrest/architecture/node/GetReference.java
 src/org/nlogo/extensions/chrest/architecture/node/IsRootNode.java
 src/org/nlogo/extensions/chrest/architecture/node/IsTemplate.java
 src/org/nlogo/extensions/chrest/architecture/perceiver/GetFixationFieldOfView.java
-src/org/nlogo/extensions/chrest/architecture/perceiver/GetFixations.java
 src/org/nlogo/extensions/chrest/architecture/perceiver/GetFixationsPerformed.java
 src/org/nlogo/extensions/chrest/architecture/perceiver/GetObjectsSeenInFixationFieldOfView.java
 src/org/nlogo/extensions/chrest/architecture/stm/GetContents.java
@@ -129,6 +131,10 @@ src/org/nlogo/extensions/chrest/ModelTests/Tileworld/Deliberate/Test1.java
 src/org/nlogo/extensions/chrest/ModelTests/Tileworld/Deliberate/Test2.java
 src/org/nlogo/extensions/chrest/ModelTests/Tileworld/Deliberate/Test3.java
 src/org/nlogo/extensions/chrest/ModelTests/Tileworld/GeneratePlan/Test1.java
+src/org/nlogo/extensions/chrest/ModelTests/Tileworld/GeneratePlan/Test2.java
+src/org/nlogo/extensions/chrest/ModelTests/Tileworld/GeneratePlan/Test3.java
+src/org/nlogo/extensions/chrest/ModelTests/Tileworld/GeneratePlan/Test4.java
+src/org/nlogo/extensions/chrest/ModelTests/Tileworld/GeneratePlan/Test5.java
 src/org/nlogo/extensions/chrest/ModelTests/Tileworld/GenerateVisualSpatialFieldMoves/Test1.java
 src/org/nlogo/extensions/chrest/ModelTests/Tileworld/GenerateVisualSpatialFieldMoves/Test2.java
 src/org/nlogo/extensions/chrest/ModelTests/Tileworld/GenerateVisualSpatialFieldMoves/Test3.java

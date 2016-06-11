@@ -22,7 +22,8 @@ public class MoveObjectsInVisualSpatialField extends DefaultCommand {
   public Syntax getSyntax() {
     return Syntax.commandSyntax(new int[]{
       Syntax.ListType(), 
-      Syntax.NumberType()
+      Syntax.NumberType(),
+      Syntax.BooleanType()
     });
   }
   
@@ -37,7 +38,7 @@ public class MoveObjectsInVisualSpatialField extends DefaultCommand {
    * These moves should be specified using {@link jchrest.lib.ItemSquarePattern 
    * ItemSquarePatterns} whose structure should be as declared by {@link 
    * jchrest.architecture.Chrest#moveObjectsInVisualSpatialField(
-   * java.util.ArrayList, int)}.  For example, if two {@link 
+   * java.util.ArrayList, int, boolean)}.  For example, if two {@link 
    * jchrest.lib.VisualSpatialFieldObject VisualSpatialFieldObjects} with 
    * identifiers "A" and "B" are to be moved from (0, 1) and (1, 2) to (1, 0) 
    * and (2, 1) respectively, the {@link org.nlogo.api.LogoList} passed should
@@ -49,8 +50,8 @@ public class MoveObjectsInVisualSpatialField extends DefaultCommand {
    * ]
    * <p>
    * For other parameters see {@link 
-   * jchrest.architecture.Chrest#moveObjectsInVisualSpatialField(
-   * java.util.ArrayList, int)}.
+   * jchrest.architecture.Chrest#moveObjectsInVisualSpatialField(java.util.ArrayList, 
+   * int, boolean)}.
    * @param context
    * 
    * @throws ExtensionException
@@ -89,7 +90,11 @@ public class MoveObjectsInVisualSpatialField extends DefaultCommand {
     }
 
     try {
-      ChrestExtension.getTurtlesChrestInstance(context).moveObjectsInVisualSpatialField(movesArrayList, args[1].getIntValue());
+      ChrestExtension.getTurtlesChrestInstance(context).moveObjectsInVisualSpatialField(
+        movesArrayList, 
+        args[1].getIntValue(),
+        args[2].getBooleanValue()
+      );
     } catch (VisualSpatialFieldException ex) {
       throw new ExtensionException(ex);
     }

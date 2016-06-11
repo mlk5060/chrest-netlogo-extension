@@ -63,6 +63,7 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("get-ltm-size", new org.nlogo.extensions.chrest.architecture.chrest.GetLtmSize());
     pm.addPrimitive("get-perceiver", new org.nlogo.extensions.chrest.architecture.chrest.GetPerceiver());
     pm.addPrimitive("get-production-count", new org.nlogo.extensions.chrest.architecture.chrest.GetProductionCount());
+    pm.addPrimitive("get-saccade-time", new org.nlogo.extensions.chrest.architecture.chrest.GetSaccadeTime());
     pm.addPrimitive("get-time-taken-to-decide-upon-ahead-of-agent-fixation", new org.nlogo.extensions.chrest.architecture.chrest.GetTimeTakenToDecideUponAheadOfAgentFixations());
     pm.addPrimitive("get-time-taken-to-decide-upon-central-fixation", new org.nlogo.extensions.chrest.architecture.chrest.GetTimeTakenToDecideUponCentralFixations());
     pm.addPrimitive("get-time-taken-to-decide-upon-peripheral-item-fixation", new org.nlogo.extensions.chrest.architecture.chrest.GetTimeTakenToDecideUponPeripheralItemFixations());
@@ -90,6 +91,7 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("set-familiarisation-time", new org.nlogo.extensions.chrest.architecture.chrest.SetFamiliarisationTime());
     pm.addPrimitive("set-recognised-visual-spatial-field-object-lifespan", new org.nlogo.extensions.chrest.architecture.chrest.SetRecognisedVisualSpatialFieldObjectLifespan());
     pm.addPrimitive("set-reinforcement-learning-theory", new org.nlogo.extensions.chrest.architecture.chrest.SetReinforcementLearningTheory());
+    pm.addPrimitive("set-saccade-time", new org.nlogo.extensions.chrest.architecture.chrest.SetSaccadeTime());
     pm.addPrimitive("set-time-taken-to-decide-upon-ahead-of-agent-fixations", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeTakenToDecideUponAheadOfAgentFixations());
     pm.addPrimitive("set-time-taken-to-decide-upon-central-fixations", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeTakenToDecideUponCentralFixations());
     pm.addPrimitive("set-time-taken-to-decide-upon-peripheral-item-fixations", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeTakenToDecideUponPeripheralItemFixations());
@@ -118,7 +120,7 @@ public class ChrestExtension extends DefaultClassManager {
     
     //jchrest.architecture.Perceiver primitives.
     pm.addPrimitive("Perceiver.get-fixation-field-of-view", new org.nlogo.extensions.chrest.architecture.perceiver.GetFixationFieldOfView());
-    pm.addPrimitive("Perceiver.get-fixations", new org.nlogo.extensions.chrest.architecture.perceiver.GetFixations());
+    pm.addPrimitive("Perceiver.get-fixations", new org.nlogo.extensions.chrest.architecture.chrest.GetFixations());
     pm.addPrimitive("Perceiver.get-fixations-performed", new org.nlogo.extensions.chrest.architecture.perceiver.GetFixationsPerformed());
     pm.addPrimitive("Perceiver.get-objects-seen-in-fixation-field-of-view", new org.nlogo.extensions.chrest.architecture.perceiver.GetObjectsSeenInFixationFieldOfView());
     
@@ -213,6 +215,10 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("TileworldModelTests#deliberate.test-2", new org.nlogo.extensions.chrest.ModelTests.Tileworld.Deliberate.Test2());
     pm.addPrimitive("TileworldModelTests#deliberate.test-3", new org.nlogo.extensions.chrest.ModelTests.Tileworld.Deliberate.Test3());
     pm.addPrimitive("TileworldModelTests#generate-plan.test-1", new org.nlogo.extensions.chrest.ModelTests.Tileworld.GeneratePlan.Test1());
+    pm.addPrimitive("TileworldModelTests#generate-plan.test-2", new org.nlogo.extensions.chrest.ModelTests.Tileworld.GeneratePlan.Test2());
+    pm.addPrimitive("TileworldModelTests#generate-plan.test-3", new org.nlogo.extensions.chrest.ModelTests.Tileworld.GeneratePlan.Test3());
+    pm.addPrimitive("TileworldModelTests#generate-plan.test-4", new org.nlogo.extensions.chrest.ModelTests.Tileworld.GeneratePlan.Test4());
+    pm.addPrimitive("TileworldModelTests#generate-plan.test-5", new org.nlogo.extensions.chrest.ModelTests.Tileworld.GeneratePlan.Test5());
     pm.addPrimitive("TileworldModelTests#generate-visual-spatial-field-moves.test-1", new org.nlogo.extensions.chrest.ModelTests.Tileworld.GenerateVisualSpatialFieldMoves.Test1());
     pm.addPrimitive("TileworldModelTests#generate-visual-spatial-field-moves.test-2", new org.nlogo.extensions.chrest.ModelTests.Tileworld.GenerateVisualSpatialFieldMoves.Test2());
     pm.addPrimitive("TileworldModelTests#generate-visual-spatial-field-moves.test-3", new org.nlogo.extensions.chrest.ModelTests.Tileworld.GenerateVisualSpatialFieldMoves.Test3());

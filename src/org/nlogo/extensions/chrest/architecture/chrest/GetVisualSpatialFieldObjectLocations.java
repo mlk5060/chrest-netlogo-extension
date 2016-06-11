@@ -75,7 +75,7 @@ public class GetVisualSpatialFieldObjectLocations extends DefaultReporter {
     for(int col = 0; col < visualSpatialField.getWidth(); col++){
       for(int row = 0; row < visualSpatialField.getHeight(); row++){
         for(VisualSpatialFieldObject object : visualSpatialField.getCoordinateContents(col, row, time, false)){
-
+          
           if( objectToFind.equals(identifyByObjectType ? object.getObjectType() : object.getIdentifier()) ){
             LogoListBuilder objectLocation = new LogoListBuilder();
             objectLocation.add((double)col);
