@@ -65,6 +65,8 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("get-ltm-modality-size", new org.nlogo.extensions.chrest.architecture.chrest.GetLtmModalitySize());
     pm.addPrimitive("get-ltm-size", new org.nlogo.extensions.chrest.architecture.chrest.GetLtmSize());
     pm.addPrimitive("get-maximum-semantic-link-search-distance", new org.nlogo.extensions.chrest.architecture.chrest.GetMaximumSemanticLinkSearchDistance());
+    pm.addPrimitive("get-minimum-item-or-position-occurrences-in-node-images-to-be-a-slot-value", new org.nlogo.extensions.chrest.architecture.chrest.GetMinimumItemOrPositionOccurrencesInNodeImagesToBeSlotValue());
+    pm.addPrimitive("get-minimum-node-depth-in-network-to-be-a-template", new org.nlogo.extensions.chrest.architecture.chrest.GetMinimumNodeDepthInNetworkToBeATemplate());
     pm.addPrimitive("get-node-comparison-time", new org.nlogo.extensions.chrest.architecture.chrest.GetNodeComparisonTime());
     pm.addPrimitive("get-perceiver", new org.nlogo.extensions.chrest.architecture.chrest.GetPerceiver());
     pm.addPrimitive("get-production-count", new org.nlogo.extensions.chrest.architecture.chrest.GetProductionCount());
@@ -109,6 +111,7 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("set-reinforcement-learning-theory", new org.nlogo.extensions.chrest.architecture.chrest.SetReinforcementLearningTheory());
     pm.addPrimitive("set-rho", new org.nlogo.extensions.chrest.architecture.chrest.SetRho());
     pm.addPrimitive("set-saccade-time", new org.nlogo.extensions.chrest.architecture.chrest.SetSaccadeTime());
+    pm.addPrimitive("set-template-construction-parameters", new org.nlogo.extensions.chrest.architecture.chrest.SetTemplateConstructionParameters());
     pm.addPrimitive("set-time-taken-to-decide-upon-ahead-of-agent-fixations", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeTakenToDecideUponAheadOfAgentFixations());
     pm.addPrimitive("set-time-taken-to-decide-upon-central-fixations", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeTakenToDecideUponCentralFixations());
     pm.addPrimitive("set-time-taken-to-decide-upon-peripheral-item-fixations", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeTakenToDecideUponPeripheralItemFixations());

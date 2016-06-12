@@ -14,6 +14,8 @@ src/org/nlogo/extensions/chrest/architecture/chrest/GetLtmLinkTraversalTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetLtmModalitySize.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetLtmSize.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetMaximumSemanticLinkSearchDistance.java
+src/org/nlogo/extensions/chrest/architecture/chrest/GetMinimumItemOrPositionOccurrencesInNodeImagesToBeSlotValue.java
+src/org/nlogo/extensions/chrest/architecture/chrest/GetMinimumNodeDepthInNetworkToBeATemplate.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetNodeComparisonTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetNodeImageSimilarityThreshold.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetPerceiver.java
@@ -59,6 +61,7 @@ src/org/nlogo/extensions/chrest/architecture/chrest/SetReinforcementLearningTheo
 src/org/nlogo/extensions/chrest/architecture/chrest/SetReinforceProductionTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetRho.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetSaccadeTime.java
+src/org/nlogo/extensions/chrest/architecture/chrest/SetTemplateConstructionParameters.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeTakenToDecideUponAheadOfAgentFixations.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeTakenToDecideUponCentralFixations.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeTakenToDecideUponPeripheralItemFixations.java
