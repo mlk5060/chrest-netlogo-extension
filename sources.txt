@@ -23,6 +23,7 @@ src/org/nlogo/extensions/chrest/architecture/chrest/GetTimeTakenToDecideUponAhea
 src/org/nlogo/extensions/chrest/architecture/chrest/GetTimeTakenToDecideUponCentralFixations.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetTimeTakenToDecideUponPeripheralItemFixations.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetTimeTakenToDecideUponPeripheralSquareFixations.java
+src/org/nlogo/extensions/chrest/architecture/chrest/GetTimeToCreateSemanticLink.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetTimeToRetrieveFixationFromPerceiver.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetTimeToRetrieveItemFromStm.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetTimeToUpdateStm.java
@@ -53,6 +54,7 @@ src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeTakenToDecideUponCent
 src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeTakenToDecideUponPeripheralItemFixations.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeTakenToDecideUponPeripheralSquareFixations.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeToAccessVisualSpatialField.java
+src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeToCreateSemanticLink.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeToEncodeRecognisedSceneObjectAsVisualSpatialFieldObject.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeToEncodeUnrecognisedEmptySquareSceneObjectAsVisualSpatialFieldObject.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeToEncodeUnrecognisedNonEmptySquareSceneObjectAsVisualSpatialFieldObject.java
