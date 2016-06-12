@@ -63,6 +63,7 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("get-ltm-link-traversal-time", new org.nlogo.extensions.chrest.architecture.chrest.GetLtmLinkTraversalTime());
     pm.addPrimitive("get-ltm-modality-size", new org.nlogo.extensions.chrest.architecture.chrest.GetLtmModalitySize());
     pm.addPrimitive("get-ltm-size", new org.nlogo.extensions.chrest.architecture.chrest.GetLtmSize());
+    pm.addPrimitive("get-maximum-semantic-link-search-distance", new org.nlogo.extensions.chrest.architecture.chrest.GetMaximumSemanticLinkSearchDistance());
     pm.addPrimitive("get-node-comparison-time", new org.nlogo.extensions.chrest.architecture.chrest.GetNodeComparisonTime());
     pm.addPrimitive("get-perceiver", new org.nlogo.extensions.chrest.architecture.chrest.GetPerceiver());
     pm.addPrimitive("get-production-count", new org.nlogo.extensions.chrest.architecture.chrest.GetProductionCount());
@@ -98,6 +99,7 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("set-domain", new org.nlogo.extensions.chrest.architecture.chrest.SetDomain());
     pm.addPrimitive("set-familiarisation-time", new org.nlogo.extensions.chrest.architecture.chrest.SetFamiliarisationTime());
     pm.addPrimitive("set-ltm-link-traversal-time", new org.nlogo.extensions.chrest.architecture.chrest.SetLtmLinkTraversalTime());
+    pm.addPrimitive("set-maximum-semantic-link-search-distance", new org.nlogo.extensions.chrest.architecture.chrest.SetMaximumSemanticLinkSearchDistance());
     pm.addPrimitive("set-node-comparison-time", new org.nlogo.extensions.chrest.architecture.chrest.SetNodeComparisonTime());
     pm.addPrimitive("set-node-image-similarity-threshold", new org.nlogo.extensions.chrest.architecture.chrest.SetNodeImageSimilarityThreshold());
     pm.addPrimitive("set-recognised-visual-spatial-field-object-lifespan", new org.nlogo.extensions.chrest.architecture.chrest.SetRecognisedVisualSpatialFieldObjectLifespan());

@@ -12,6 +12,7 @@ src/org/nlogo/extensions/chrest/architecture/chrest/GetLtmAverageDepth.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetLtmLinkTraversalTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetLtmModalitySize.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetLtmSize.java
+src/org/nlogo/extensions/chrest/architecture/chrest/GetMaximumSemanticLinkSearchDistance.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetNodeComparisonTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetNodeImageSimilarityThreshold.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetPerceiver.java
@@ -48,6 +49,7 @@ src/org/nlogo/extensions/chrest/architecture/chrest/SetDiscriminationTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetDomain.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetFamiliarisationTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetLtmLinkTraversalTime.java
+src/org/nlogo/extensions/chrest/architecture/chrest/SetMaximumSemanticLinkSearchDistance.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetNodeComparisonTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetNodeImageSimilarityThreshold.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetRecognisedVisualSpatialFieldObjectLifespan.java
