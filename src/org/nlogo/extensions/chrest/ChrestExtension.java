@@ -210,6 +210,8 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("ListPattern.empty?", new org.nlogo.extensions.chrest.lib.listPattern.IsEmpty());
     pm.addPrimitive("ListPattern.remove", new org.nlogo.extensions.chrest.lib.listPattern.Remove());
     pm.addPrimitive("ListPattern.remove-blind-empty-and-unknown-patches", new org.nlogo.extensions.chrest.lib.listPattern.RemoveBlindEmptyAndUnknownPatches());
+    pm.addPrimitive("ListPattern.set-finished", new org.nlogo.extensions.chrest.lib.listPattern.SetFinished());
+    pm.addPrimitive("ListPattern.set-not-finished", new org.nlogo.extensions.chrest.lib.listPattern.SetNotFinished());
     
     //jchrest.lib.Modality primitives
     pm.addPrimitive("Modality.value-of", new org.nlogo.extensions.chrest.lib.modality.ValueOf());
