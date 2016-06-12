@@ -23,6 +23,7 @@ src/org/nlogo/extensions/chrest/architecture/chrest/GetTimeTakenToDecideUponPeri
 src/org/nlogo/extensions/chrest/architecture/chrest/GetTimeTakenToDecideUponPeripheralSquareFixations.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetTimeToRetrieveFixationFromPerceiver.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetTimeToRetrieveItemFromStm.java
+src/org/nlogo/extensions/chrest/architecture/chrest/GetTimeToUpdateStm.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetVisualSpatialFieldAsScene.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetVisualSpatialField.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetVisualSpatialFieldObjectLocations.java
@@ -55,6 +56,7 @@ src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeToMoveVisualSpatialFi
 src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeToProcessUnrecognisedSceneObjectDuringVisualSpatialFieldConstruction.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeToRetrieveFixationFromPerceiver.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeToRetrieveItemFromStm.java
+src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeToUpdateStm.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetUnrecognisedVisualSpatialFieldObjectLifespan.java
 src/org/nlogo/extensions/chrest/architecture/chrest/TurnOffDebugging.java
 src/org/nlogo/extensions/chrest/architecture/chrest/TurnOnDebugging.java

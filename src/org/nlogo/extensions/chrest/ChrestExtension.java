@@ -74,6 +74,7 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("get-reinforcement-learning-theory", new org.nlogo.extensions.chrest.architecture.chrest.GetReinforcementLearningTheory());
     pm.addPrimitive("get-stm", new org.nlogo.extensions.chrest.architecture.chrest.GetStm());
     pm.addPrimitive("get-stm-item", new org.nlogo.extensions.chrest.architecture.chrest.GetStmItem());
+    pm.addPrimitive("get-time-to-update-stm", new org.nlogo.extensions.chrest.architecture.chrest.GetTimeToUpdateStm());
     pm.addPrimitive("get-visual-spatial-field", new org.nlogo.extensions.chrest.architecture.chrest.GetVisualSpatialField());
     pm.addPrimitive("get-visual-spatial-field-as-scene", new org.nlogo.extensions.chrest.architecture.chrest.GetVisualSpatialFieldAsScene());
     pm.addPrimitive("get-visual-spatial-field-object-locations", new org.nlogo.extensions.chrest.architecture.chrest.GetVisualSpatialFieldObjectLocations());
@@ -106,6 +107,7 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("set-time-to-process-unrecognised-scene-object-during-visual-spatial-field-construction", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToProcessUnrecognisedSceneObjectDuringVisualSpatialFieldConstruction());
     pm.addPrimitive("set-time-to-retrieve-fixation-from-perceiver", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToRetrieveFixationFromPerceiver());
     pm.addPrimitive("set-time-to-retrieve-item-from-stm", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToRetrieveItemFromStm());
+    pm.addPrimitive("set-time-to-update-stm", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToUpdateStm());
     pm.addPrimitive("set-unrecognised-visual-spatial-field-object-lifespan", new org.nlogo.extensions.chrest.architecture.chrest.SetUnrecognisedVisualSpatialFieldObjectLifespan());
     pm.addPrimitive("turn-off-debugging", new org.nlogo.extensions.chrest.architecture.chrest.TurnOffDebugging());
     pm.addPrimitive("turn-on-debugging", new org.nlogo.extensions.chrest.architecture.chrest.TurnOnDebugging());
