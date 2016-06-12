@@ -16,6 +16,7 @@ src/org/nlogo/extensions/chrest/architecture/chrest/GetPerceiver.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetProductionCount.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetReinforcementLearningTheory.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetReinforceProductionTime.java
+src/org/nlogo/extensions/chrest/architecture/chrest/GetRho.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetSaccadeTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetStmItem.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetStm.java
@@ -48,6 +49,7 @@ src/org/nlogo/extensions/chrest/architecture/chrest/SetNodeComparisonTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetRecognisedVisualSpatialFieldObjectLifespan.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetReinforcementLearningTheory.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetReinforceProductionTime.java
+src/org/nlogo/extensions/chrest/architecture/chrest/SetRho.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetSaccadeTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeTakenToDecideUponAheadOfAgentFixations.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetTimeTakenToDecideUponCentralFixations.java

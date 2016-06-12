@@ -75,6 +75,7 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("get-time-to-retrieve-fixation-from-perceiver", new org.nlogo.extensions.chrest.architecture.chrest.GetTimeToRetrieveFixationFromPerceiver());
     pm.addPrimitive("get-time-to-retrieve-item-from-stm", new org.nlogo.extensions.chrest.architecture.chrest.GetTimeToRetrieveItemFromStm());
     pm.addPrimitive("get-reinforcement-learning-theory", new org.nlogo.extensions.chrest.architecture.chrest.GetReinforcementLearningTheory());
+    pm.addPrimitive("get-rho", new org.nlogo.extensions.chrest.architecture.chrest.GetRho());
     pm.addPrimitive("get-stm", new org.nlogo.extensions.chrest.architecture.chrest.GetStm());
     pm.addPrimitive("get-stm-item", new org.nlogo.extensions.chrest.architecture.chrest.GetStmItem());
     pm.addPrimitive("get-time-to-update-stm", new org.nlogo.extensions.chrest.architecture.chrest.GetTimeToUpdateStm());
@@ -99,6 +100,7 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("set-recognised-visual-spatial-field-object-lifespan", new org.nlogo.extensions.chrest.architecture.chrest.SetRecognisedVisualSpatialFieldObjectLifespan());
     pm.addPrimitive("set-reinforce-production-time", new org.nlogo.extensions.chrest.architecture.chrest.SetReinforceProductionTime());
     pm.addPrimitive("set-reinforcement-learning-theory", new org.nlogo.extensions.chrest.architecture.chrest.SetReinforcementLearningTheory());
+    pm.addPrimitive("set-rho", new org.nlogo.extensions.chrest.architecture.chrest.SetRho());
     pm.addPrimitive("set-saccade-time", new org.nlogo.extensions.chrest.architecture.chrest.SetSaccadeTime());
     pm.addPrimitive("set-time-taken-to-decide-upon-ahead-of-agent-fixations", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeTakenToDecideUponAheadOfAgentFixations());
     pm.addPrimitive("set-time-taken-to-decide-upon-central-fixations", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeTakenToDecideUponCentralFixations());
