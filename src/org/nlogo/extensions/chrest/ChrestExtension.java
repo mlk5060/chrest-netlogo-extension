@@ -65,6 +65,7 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("get-node-comparison-time", new org.nlogo.extensions.chrest.architecture.chrest.GetNodeComparisonTime());
     pm.addPrimitive("get-perceiver", new org.nlogo.extensions.chrest.architecture.chrest.GetPerceiver());
     pm.addPrimitive("get-production-count", new org.nlogo.extensions.chrest.architecture.chrest.GetProductionCount());
+    pm.addPrimitive("get-reinforce-production-time", new org.nlogo.extensions.chrest.architecture.chrest.GetReinforceProductionTime());
     pm.addPrimitive("get-saccade-time", new org.nlogo.extensions.chrest.architecture.chrest.GetSaccadeTime());
     pm.addPrimitive("get-time-taken-to-decide-upon-ahead-of-agent-fixation", new org.nlogo.extensions.chrest.architecture.chrest.GetTimeTakenToDecideUponAheadOfAgentFixations());
     pm.addPrimitive("get-time-taken-to-decide-upon-central-fixation", new org.nlogo.extensions.chrest.architecture.chrest.GetTimeTakenToDecideUponCentralFixations());
@@ -95,6 +96,7 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("set-ltm-link-traversal-time", new org.nlogo.extensions.chrest.architecture.chrest.SetLtmLinkTraversalTime());
     pm.addPrimitive("set-node-comparison-time", new org.nlogo.extensions.chrest.architecture.chrest.SetNodeComparisonTime());
     pm.addPrimitive("set-recognised-visual-spatial-field-object-lifespan", new org.nlogo.extensions.chrest.architecture.chrest.SetRecognisedVisualSpatialFieldObjectLifespan());
+    pm.addPrimitive("set-reinforce-production-time", new org.nlogo.extensions.chrest.architecture.chrest.SetReinforceProductionTime());
     pm.addPrimitive("set-reinforcement-learning-theory", new org.nlogo.extensions.chrest.architecture.chrest.SetReinforcementLearningTheory());
     pm.addPrimitive("set-saccade-time", new org.nlogo.extensions.chrest.architecture.chrest.SetSaccadeTime());
     pm.addPrimitive("set-time-taken-to-decide-upon-ahead-of-agent-fixations", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeTakenToDecideUponAheadOfAgentFixations());
