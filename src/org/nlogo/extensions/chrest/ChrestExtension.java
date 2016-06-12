@@ -99,6 +99,7 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("set-familiarisation-time", new org.nlogo.extensions.chrest.architecture.chrest.SetFamiliarisationTime());
     pm.addPrimitive("set-ltm-link-traversal-time", new org.nlogo.extensions.chrest.architecture.chrest.SetLtmLinkTraversalTime());
     pm.addPrimitive("set-node-comparison-time", new org.nlogo.extensions.chrest.architecture.chrest.SetNodeComparisonTime());
+    pm.addPrimitive("set-node-image-similarity-threshold", new org.nlogo.extensions.chrest.architecture.chrest.SetNodeImageSimilarityThreshold());
     pm.addPrimitive("set-recognised-visual-spatial-field-object-lifespan", new org.nlogo.extensions.chrest.architecture.chrest.SetRecognisedVisualSpatialFieldObjectLifespan());
     pm.addPrimitive("set-reinforce-production-time", new org.nlogo.extensions.chrest.architecture.chrest.SetReinforceProductionTime());
     pm.addPrimitive("set-reinforcement-learning-theory", new org.nlogo.extensions.chrest.architecture.chrest.SetReinforcementLearningTheory());
