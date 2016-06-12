@@ -133,6 +133,7 @@ src/org/nlogo/extensions/chrest/lib/itemSquarePattern/GetColumn.java
 src/org/nlogo/extensions/chrest/lib/itemSquarePattern/GetItem.java
 src/org/nlogo/extensions/chrest/lib/itemSquarePattern/GetRow.java
 src/org/nlogo/extensions/chrest/lib/itemSquarePattern/New.java
+src/org/nlogo/extensions/chrest/lib/listPattern/Append.java
 src/org/nlogo/extensions/chrest/lib/listPattern/GetAsNetlogoList.java
 src/org/nlogo/extensions/chrest/lib/listPattern/GetAsString.java
 src/org/nlogo/extensions/chrest/lib/listPattern/IsEmpty.java

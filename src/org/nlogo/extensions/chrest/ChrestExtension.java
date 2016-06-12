@@ -204,6 +204,7 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("ItemSquarePattern.get-row", new org.nlogo.extensions.chrest.lib.itemSquarePattern.GetRow());
     
     //jchrest.lib.ListPattern primitives
+    pm.addPrimitive("ListPattern.append", new org.nlogo.extensions.chrest.lib.listPattern.Append());
     pm.addPrimitive("ListPattern.new", new org.nlogo.extensions.chrest.lib.listPattern.New());
     pm.addPrimitive("ListPattern.get-as-netlogo-list", new org.nlogo.extensions.chrest.lib.listPattern.GetAsNetlogoList());
     pm.addPrimitive("ListPattern.get-as-string", new org.nlogo.extensions.chrest.lib.listPattern.GetAsString());
