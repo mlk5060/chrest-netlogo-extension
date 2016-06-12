@@ -51,6 +51,7 @@ public class ChrestExtension extends DefaultClassManager {
     
     //jchrest.architecture.Chrest primitives
     pm.addPrimitive("advance-attention-clock", new org.nlogo.extensions.chrest.architecture.chrest.AdvanceAttentionClock());
+    pm.addPrimitive("can-create-semantic-links?", new org.nlogo.extensions.chrest.architecture.chrest.CanCreateSemanticLinks());
     pm.addPrimitive("generate-action-using-visual-pattern-recognition", new org.nlogo.extensions.chrest.architecture.chrest.GenerateActionUsingVisualPatternRecognition());
     pm.addPrimitive("get-add-production-time", new org.nlogo.extensions.chrest.architecture.chrest.GetAddProductionTime());
     pm.addPrimitive("get-attention-clock", new org.nlogo.extensions.chrest.architecture.chrest.GetAttentionClock());
@@ -92,6 +93,7 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("save-ltm-network-image", new org.nlogo.extensions.chrest.architecture.chrest.SaveLtmNetworkImage());
     pm.addPrimitive("schedule-or-make-next-fixation", new org.nlogo.extensions.chrest.architecture.chrest.ScheduleOrMakeNextFixation());
     pm.addPrimitive("set-add-production-time", new org.nlogo.extensions.chrest.architecture.chrest.SetAddProductionTime());
+    pm.addPrimitive("set-create-semantic-links", new org.nlogo.extensions.chrest.architecture.chrest.SetCreateSemanticLinks());
     pm.addPrimitive("set-discrimination-time", new org.nlogo.extensions.chrest.architecture.chrest.SetDiscriminationTime());
     pm.addPrimitive("set-domain", new org.nlogo.extensions.chrest.architecture.chrest.SetDomain());
     pm.addPrimitive("set-familiarisation-time", new org.nlogo.extensions.chrest.architecture.chrest.SetFamiliarisationTime());

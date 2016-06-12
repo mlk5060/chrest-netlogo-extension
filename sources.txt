@@ -1,4 +1,5 @@
 src/org/nlogo/extensions/chrest/architecture/chrest/AdvanceAttentionClock.java
+src/org/nlogo/extensions/chrest/architecture/chrest/CanCreateSemanticLinks.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GenerateActionUsingVisualPatternRecognition.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetAddProductionTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetAttentionClock.java
@@ -41,6 +42,7 @@ src/org/nlogo/extensions/chrest/architecture/chrest/ReinforceProduction.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SaveLtmNetworkImage.java
 src/org/nlogo/extensions/chrest/architecture/chrest/ScheduleOrMakeNextFixation.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetAddProductionTime.java
+src/org/nlogo/extensions/chrest/architecture/chrest/SetCreateSemanticLinks.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetDiscriminationTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetDomain.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetFamiliarisationTime.java
