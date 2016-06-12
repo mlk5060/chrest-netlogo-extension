@@ -62,6 +62,7 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("get-ltm-link-traversal-time", new org.nlogo.extensions.chrest.architecture.chrest.GetLtmLinkTraversalTime());
     pm.addPrimitive("get-ltm-modality-size", new org.nlogo.extensions.chrest.architecture.chrest.GetLtmModalitySize());
     pm.addPrimitive("get-ltm-size", new org.nlogo.extensions.chrest.architecture.chrest.GetLtmSize());
+    pm.addPrimitive("get-node-comparison-time", new org.nlogo.extensions.chrest.architecture.chrest.GetNodeComparisonTime());
     pm.addPrimitive("get-perceiver", new org.nlogo.extensions.chrest.architecture.chrest.GetPerceiver());
     pm.addPrimitive("get-production-count", new org.nlogo.extensions.chrest.architecture.chrest.GetProductionCount());
     pm.addPrimitive("get-saccade-time", new org.nlogo.extensions.chrest.architecture.chrest.GetSaccadeTime());
@@ -92,6 +93,7 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("set-domain", new org.nlogo.extensions.chrest.architecture.chrest.SetDomain());
     pm.addPrimitive("set-familiarisation-time", new org.nlogo.extensions.chrest.architecture.chrest.SetFamiliarisationTime());
     pm.addPrimitive("set-ltm-link-traversal-time", new org.nlogo.extensions.chrest.architecture.chrest.SetLtmLinkTraversalTime());
+    pm.addPrimitive("set-node-comparison-time", new org.nlogo.extensions.chrest.architecture.chrest.SetNodeComparisonTime());
     pm.addPrimitive("set-recognised-visual-spatial-field-object-lifespan", new org.nlogo.extensions.chrest.architecture.chrest.SetRecognisedVisualSpatialFieldObjectLifespan());
     pm.addPrimitive("set-reinforcement-learning-theory", new org.nlogo.extensions.chrest.architecture.chrest.SetReinforcementLearningTheory());
     pm.addPrimitive("set-saccade-time", new org.nlogo.extensions.chrest.architecture.chrest.SetSaccadeTime());

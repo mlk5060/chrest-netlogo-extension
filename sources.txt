@@ -11,6 +11,7 @@ src/org/nlogo/extensions/chrest/architecture/chrest/GetLtmAverageDepth.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetLtmLinkTraversalTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetLtmModalitySize.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetLtmSize.java
+src/org/nlogo/extensions/chrest/architecture/chrest/GetNodeComparisonTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetPerceiver.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetProductionCount.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetReinforcementLearningTheory.java
@@ -41,6 +42,7 @@ src/org/nlogo/extensions/chrest/architecture/chrest/SetDiscriminationTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetDomain.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetFamiliarisationTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetLtmLinkTraversalTime.java
+src/org/nlogo/extensions/chrest/architecture/chrest/SetNodeComparisonTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetRecognisedVisualSpatialFieldObjectLifespan.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetReinforcementLearningTheory.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetSaccadeTime.java
