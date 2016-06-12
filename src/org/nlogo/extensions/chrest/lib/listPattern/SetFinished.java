@@ -31,7 +31,7 @@ public class SetFinished extends DefaultCommand {
    */
   @Override
   public void perform(Argument[] args, Context context) throws ExtensionException, LogoException {
-    ((ListPattern)args[0]).setFinished();
+    ((ListPattern)args[0].get()).setFinished();
   }
   
 }
