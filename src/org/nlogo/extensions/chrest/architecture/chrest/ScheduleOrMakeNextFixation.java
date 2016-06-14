@@ -21,6 +21,7 @@ public class ScheduleOrMakeNextFixation extends DefaultReporter {
       new int[]{
         Syntax.WildcardType(),
         Syntax.BooleanType(),
+        Syntax.BooleanType(),
         Syntax.NumberType()
       },
       Syntax.BooleanType()
@@ -31,13 +32,13 @@ public class ScheduleOrMakeNextFixation extends DefaultReporter {
    * 
    * @param args See parameters for {@link 
    * jchrest.architecture.Chrest#scheduleOrMakeNextFixation(
-   * jchrest.domainSpecifics.Scene, boolean, int)}.
+   * jchrest.domainSpecifics.Scene, boolean, boolean, int)}.
    * @param context
    * 
    * @return The result of invoking {@link 
    * jchrest.architecture.Chrest#scheduleOrMakeNextFixation(
-   * jchrest.domainSpecifics.Scene, boolean, int)} in context of the calling 
-   * turtle's {@link jchrest.architecture.Chrest} instance.
+   * jchrest.domainSpecifics.Scene, boolean, boolean, int)} in context of the 
+   * calling turtle's {@link jchrest.architecture.Chrest} model.
    * 
    * @throws ExtensionException
    * @throws LogoException 
@@ -47,7 +48,8 @@ public class ScheduleOrMakeNextFixation extends DefaultReporter {
     return ChrestExtension.getTurtlesChrestInstance(context).scheduleOrMakeNextFixation(
       (Scene)args[0].get(), 
       args[1].getBooleanValue(), 
-      args[2].getIntValue()
+      args[2].getBooleanValue(),
+      args[3].getIntValue()
     );
   }
   
