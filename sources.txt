@@ -142,6 +142,7 @@ src/org/nlogo/extensions/chrest/lib/listPattern/RemoveBlindEmptyAndUnknownPatche
 src/org/nlogo/extensions/chrest/lib/listPattern/Remove.java
 src/org/nlogo/extensions/chrest/lib/listPattern/SetFinished.java
 src/org/nlogo/extensions/chrest/lib/listPattern/SetNotFinished.java
+src/org/nlogo/extensions/chrest/lib/listPattern/Size.java
 src/org/nlogo/extensions/chrest/lib/modality/ValueOf.java
 src/org/nlogo/extensions/chrest/lib/pattern/CreateNumberPattern.java
 src/org/nlogo/extensions/chrest/lib/pattern/GetSubclasses.java
