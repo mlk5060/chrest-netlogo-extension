@@ -1,8 +1,6 @@
 package org.nlogo.extensions.chrest.architecture.chrest;
 
 import org.nlogo.extensions.chrest.ChrestExtension;
-import jchrest.architecture.Chrest;
-import jchrest.lib.ReinforcementLearning;
 import jchrest.lib.ReinforcementLearning.Theory;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
@@ -35,18 +33,14 @@ public class SetReinforcementLearningTheory extends DefaultCommand {
   }
   
   /**
-   * Invokes {@link jchrest.architecture.Chrest#setReinforcementLearningTheory(
-   * jchrest.lib.ReinforcementLearning.ReinforcementLearningTheories)} in 
-   * context of the calling turtle's {@link jchrest.architecture.Chrest} 
-   * instance.
+   * Invokes {@link 
+   * jchrest.architecture.Chrest#setReinforcementLearningTheory(jchrest.lib.ReinforcementLearning.Theory) 
+   * } in context of the calling turtle's {@link jchrest.architecture.Chrest} 
+   * model.
    * 
    * @param args See parameters for {@link 
-   * jchrest.architecture.Chrest#setReinforcementLearningTheory(
-   * jchrest.lib.ReinforcementLearning.ReinforcementLearningTheories)}.  
-   * <p>
-   * The value for the first parameter can be obtained using {@link 
-   * lib.ReinforcementLearning.Values#report(org.nlogo.api.Argument[], 
-   * org.nlogo.api.Context)}.
+   * jchrest.architecture.Chrest#setReinforcementLearningTheory(jchrest.lib.ReinforcementLearning.Theory) 
+   * }.
    * @param context
    * 
    * @throws ExtensionException
@@ -54,24 +48,6 @@ public class SetReinforcementLearningTheory extends DefaultCommand {
    */
   @Override
   public void perform(Argument[] args, Context context) throws ExtensionException, LogoException {
-    Chrest chrestInstance = ChrestExtension.getTurtlesChrestInstance(context);
-    String specifiedTheory = args[0].getString();
-
-    if(!specifiedTheory.equalsIgnoreCase("null") || !specifiedTheory.isEmpty()){
-      Theory[] reinforcementLearningTheories = ReinforcementLearning.getReinforcementLearningTheories();
-      boolean reinforcementLearningTheoryRecognised = false;
-
-      for(Theory reinforcementLearningTheory : reinforcementLearningTheories){
-        if(specifiedTheory.equalsIgnoreCase(reinforcementLearningTheory.toString())){
-          reinforcementLearningTheoryRecognised = true;
-          chrestInstance.setReinforcementLearningTheory(reinforcementLearningTheory);
-          break;
-        }
-      }
-
-      if(!reinforcementLearningTheoryRecognised){
-        throw new ExtensionException("The reinforcement theory specified (" + specifiedTheory + ") is not a reinforcement learning theory recognised by CHREST.");
-      }
-    }
+    ChrestExtension.getTurtlesChrestInstance(context).setReinforcementLearningTheory((Theory)args[0].get());
   }
 }

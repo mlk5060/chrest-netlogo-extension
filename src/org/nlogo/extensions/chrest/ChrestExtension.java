@@ -223,8 +223,7 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("Pattern.get-subclasses", new org.nlogo.extensions.chrest.lib.pattern.GetSubclasses());
     
     //jchrest.lib.ReinforcementLearning primitives
-    pm.addPrimitive("ReinforcementLearning.get-theory-names", new org.nlogo.extensions.chrest.lib.reinforcementLearning.GetTheoryNames());
-    pm.addPrimitive("ReinforcementLearning.values", new org.nlogo.extensions.chrest.lib.reinforcementLearning.Values());
+    pm.addPrimitive("ReinforcementLearning.value-of", new org.nlogo.extensions.chrest.lib.reinforcementLearning.ValueOf());
     
     //jchrest.lib.Square primitives
     pm.addPrimitive("Square.get-column", new org.nlogo.extensions.chrest.lib.square.GetColumn());

@@ -146,8 +146,7 @@ src/org/nlogo/extensions/chrest/lib/listPattern/Size.java
 src/org/nlogo/extensions/chrest/lib/modality/ValueOf.java
 src/org/nlogo/extensions/chrest/lib/pattern/CreateNumberPattern.java
 src/org/nlogo/extensions/chrest/lib/pattern/GetSubclasses.java
-src/org/nlogo/extensions/chrest/lib/reinforcementLearning/GetTheoryNames.java
-src/org/nlogo/extensions/chrest/lib/reinforcementLearning/Values.java
+src/org/nlogo/extensions/chrest/lib/reinforcementLearning/ValueOf.java
 src/org/nlogo/extensions/chrest/lib/square/GetColumn.java
 src/org/nlogo/extensions/chrest/lib/square/GetRow.java
 src/org/nlogo/extensions/chrest/lib/visualSpatialFieldObject/GetIdentifier.java
