@@ -168,3 +168,8 @@ src/org/nlogo/extensions/chrest/ModelTests/Tileworld/GenerateVisualSpatialFieldM
 src/org/nlogo/extensions/chrest/ModelTests/Tileworld/GenerateVisualSpatialFieldMoves/Test4.java
 src/org/nlogo/extensions/chrest/ModelTests/Tileworld/GenerateVisualSpatialFieldMoves/Test5.java
 src/org/nlogo/extensions/chrest/ModelTests/Tileworld/LearnAction/Test.java
+src/org/nlogo/extensions/chrest/ModelTests/Tileworld/ReinforceProductions/ReinforceExactProductionMatchTest.java
+src/org/nlogo/extensions/chrest/ModelTests/Tileworld/ReinforceProductions/ReinforceHighProductionMatchTest.java
+src/org/nlogo/extensions/chrest/ModelTests/Tileworld/ReinforceProductions/ReinforceLowProductionMatchTest.java
+src/org/nlogo/extensions/chrest/ModelTests/Tileworld/ReinforceProductions/ReinforceModerateProductionMatchTest.java
+src/org/nlogo/extensions/chrest/ModelTests/Tileworld/ReinforceProductions/ReinforceProductionMatchSetup.java

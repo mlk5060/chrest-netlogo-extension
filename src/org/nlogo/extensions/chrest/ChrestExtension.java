@@ -251,5 +251,9 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("TileworldModelTests#generate-visual-spatial-field-moves.test-4", new org.nlogo.extensions.chrest.ModelTests.Tileworld.GenerateVisualSpatialFieldMoves.Test4());
     pm.addPrimitive("TileworldModelTests#generate-visual-spatial-field-moves.test-5", new org.nlogo.extensions.chrest.ModelTests.Tileworld.GenerateVisualSpatialFieldMoves.Test5());
     pm.addPrimitive("TileworldModelTests#learn-action.test", new org.nlogo.extensions.chrest.ModelTests.Tileworld.LearnAction.Test());
+    pm.addPrimitive("TileworldModelTests#reinforce-productions.reinforce-exact-production-match-test", new org.nlogo.extensions.chrest.ModelTests.Tileworld.ReinforceProductions.ReinforceExactProductionMatchTest());
+    pm.addPrimitive("TileworldModelTests#reinforce-productions.reinforce-high-production-match-test", new org.nlogo.extensions.chrest.ModelTests.Tileworld.ReinforceProductions.ReinforceHighProductionMatchTest());
+    pm.addPrimitive("TileworldModelTests#reinforce-productions.reinforce-moderate-production-match-test", new org.nlogo.extensions.chrest.ModelTests.Tileworld.ReinforceProductions.ReinforceModerateProductionMatchTest());
+    pm.addPrimitive("TileworldModelTests#reinforce-productions.reinforce-low-production-match-test", new org.nlogo.extensions.chrest.ModelTests.Tileworld.ReinforceProductions.ReinforceLowProductionMatchTest());
   }
 }
