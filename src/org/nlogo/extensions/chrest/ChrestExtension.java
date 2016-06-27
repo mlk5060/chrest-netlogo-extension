@@ -145,6 +145,7 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("Perceiver.get-fixations", new org.nlogo.extensions.chrest.architecture.chrest.GetFixations());
     pm.addPrimitive("Perceiver.get-fixations-performed", new org.nlogo.extensions.chrest.architecture.perceiver.GetFixationsPerformed());
     pm.addPrimitive("Perceiver.get-objects-seen-in-fixation-field-of-view", new org.nlogo.extensions.chrest.architecture.perceiver.GetObjectsSeenInFixationFieldOfView());
+    pm.addPrimitive("Perceiver.set-fixation-field-of-view", new org.nlogo.extensions.chrest.architecture.perceiver.SetFixationFieldOfView());
     
     //jchrest.architecture.Stm primitives
     pm.addPrimitive("Stm.get-count", new org.nlogo.extensions.chrest.architecture.stm.GetCount());

@@ -90,6 +90,7 @@ src/org/nlogo/extensions/chrest/architecture/node/IsTemplate.java
 src/org/nlogo/extensions/chrest/architecture/perceiver/GetFixationFieldOfView.java
 src/org/nlogo/extensions/chrest/architecture/perceiver/GetFixationsPerformed.java
 src/org/nlogo/extensions/chrest/architecture/perceiver/GetObjectsSeenInFixationFieldOfView.java
+src/org/nlogo/extensions/chrest/architecture/perceiver/SetFixationFieldOfView.java
 src/org/nlogo/extensions/chrest/architecture/stm/GetContents.java
 src/org/nlogo/extensions/chrest/architecture/stm/GetCount.java
 src/org/nlogo/extensions/chrest/architecture/visualSpatialField/GetCoordinateContents.java
