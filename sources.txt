@@ -91,6 +91,7 @@ src/org/nlogo/extensions/chrest/architecture/perceiver/GetFixationFieldOfView.ja
 src/org/nlogo/extensions/chrest/architecture/perceiver/GetFixationsPerformed.java
 src/org/nlogo/extensions/chrest/architecture/perceiver/GetObjectsSeenInFixationFieldOfView.java
 src/org/nlogo/extensions/chrest/architecture/perceiver/SetFixationFieldOfView.java
+src/org/nlogo/extensions/chrest/architecture/stm/Clear.java
 src/org/nlogo/extensions/chrest/architecture/stm/GetContents.java
 src/org/nlogo/extensions/chrest/architecture/stm/GetCount.java
 src/org/nlogo/extensions/chrest/architecture/visualSpatialField/GetCoordinateContents.java

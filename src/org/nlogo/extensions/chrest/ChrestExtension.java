@@ -150,6 +150,7 @@ public class ChrestExtension extends DefaultClassManager {
     //jchrest.architecture.Stm primitives
     pm.addPrimitive("Stm.get-count", new org.nlogo.extensions.chrest.architecture.stm.GetCount());
     pm.addPrimitive("Stm.get-contents", new org.nlogo.extensions.chrest.architecture.stm.GetContents());
+    pm.addPrimitive("Stm.clear", new org.nlogo.extensions.chrest.architecture.stm.Clear());
     
     //jchrest.architecture.VisualSpatialField primitives
     pm.addPrimitive("VisualSpatialField.get-coordinate-contents", new org.nlogo.extensions.chrest.architecture.visualSpatialField.GetCoordinateContents());
