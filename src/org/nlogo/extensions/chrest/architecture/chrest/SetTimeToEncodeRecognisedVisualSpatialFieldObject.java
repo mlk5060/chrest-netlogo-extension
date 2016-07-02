@@ -12,7 +12,7 @@ import org.nlogo.extensions.chrest.ChrestExtension;
  *
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
-public class SetTimeToEncodeUnrecognisedNonEmptySquareSceneObjectAsVisualSpatialFieldObject extends DefaultCommand{
+public class SetTimeToEncodeRecognisedVisualSpatialFieldObject extends DefaultCommand {
   
   @Override
   public Syntax getSyntax(){
@@ -26,7 +26,7 @@ public class SetTimeToEncodeUnrecognisedNonEmptySquareSceneObjectAsVisualSpatial
   /**
    * 
    * @param args See parameters for {@link 
-   * jchrest.architecture.Chrest#setTimeToEncodeUnrecognisedNonEmptySquareSceneObjectAsVisualSpatialFieldObject(int)}.
+   * jchrest.architecture.Chrest#setTimeToEncodeRecognisedVisualSpatialFieldObject(int)}.
    * @param context
    * 
    * @throws ExtensionException
@@ -34,6 +34,6 @@ public class SetTimeToEncodeUnrecognisedNonEmptySquareSceneObjectAsVisualSpatial
    */
   @Override
   public void perform(Argument[] args, Context context) throws ExtensionException, LogoException {
-    ChrestExtension.getTurtlesChrestInstance(context).setTimeToEncodeUnrecognisedNonEmptySquareSceneObjectAsVisualSpatialFieldObject(args[0].getIntValue());
+    ChrestExtension.getTurtlesChrestInstance(context).setTimeToEncodeRecognisedVisualSpatialFieldObject(args[0].getIntValue());
   }
 }

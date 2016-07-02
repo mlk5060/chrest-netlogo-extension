@@ -97,8 +97,8 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("save-ltm-network-image", new org.nlogo.extensions.chrest.architecture.chrest.SaveLtmNetworkImage());
     pm.addPrimitive("schedule-or-make-next-fixation", new org.nlogo.extensions.chrest.architecture.chrest.ScheduleOrMakeNextFixation());
     pm.addPrimitive("set-add-production-time", new org.nlogo.extensions.chrest.architecture.chrest.SetAddProductionTime());
-    pm.addPrimitive("set-create-semantic-links", new org.nlogo.extensions.chrest.architecture.chrest.SetCreateSemanticLinks());
-    pm.addPrimitive("set-create-templates", new org.nlogo.extensions.chrest.architecture.chrest.SetCreateTemplates());
+    pm.addPrimitive("set-can-create-semantic-links", new org.nlogo.extensions.chrest.architecture.chrest.SetCanCreateSemanticLinks());
+    pm.addPrimitive("set-can-create-templates", new org.nlogo.extensions.chrest.architecture.chrest.SetCanCreateTemplates());
     pm.addPrimitive("set-discrimination-time", new org.nlogo.extensions.chrest.architecture.chrest.SetDiscriminationTime());
     pm.addPrimitive("set-domain", new org.nlogo.extensions.chrest.architecture.chrest.SetDomain());
     pm.addPrimitive("set-familiarisation-time", new org.nlogo.extensions.chrest.architecture.chrest.SetFamiliarisationTime());
@@ -118,9 +118,9 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("set-time-taken-to-decide-upon-peripheral-square-fixations", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeTakenToDecideUponPeripheralSquareFixations());
     pm.addPrimitive("set-time-to-access-visual-spatial-field", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToAccessVisualSpatialField());
     pm.addPrimitive("set-time-to-create-semantic-link", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToCreateSemanticLink());
-    pm.addPrimitive("set-time-to-encode-recognised-scene-object-as-visual-spatial-field-object", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToEncodeRecognisedSceneObjectAsVisualSpatialFieldObject());
-    pm.addPrimitive("set-time-to-encode-unrecognised-empty-square-scene-object-as-visual-spatial-field-object", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToEncodeUnrecognisedEmptySquareSceneObjectAsVisualSpatialFieldObject());
-    pm.addPrimitive("set-time-to-encode-unrecognised-non-empty-square-scene-object-as-visual-spatial-field-object", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToEncodeUnrecognisedNonEmptySquareSceneObjectAsVisualSpatialFieldObject());
+    pm.addPrimitive("set-time-to-encode-recognised-visual-spatial-field-object", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToEncodeRecognisedVisualSpatialFieldObject());
+    pm.addPrimitive("set-time-to-encode-unrecognised-empty-square-as-visual-spatial-field-object", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToEncodeUnrecognisedEmptySquareAsVisualSpatialFieldObject());
+    pm.addPrimitive("set-time-to-encode-unrecognised-visual-spatial-field-object", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToEncodeUnrecognisedVisualSpatialFieldObject());
     pm.addPrimitive("set-time-to-move-visual-spatial-field-object", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToMoveVisualSpatialFieldObject());
     pm.addPrimitive("set-time-to-process-unrecognised-scene-object-during-visual-spatial-field-construction", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToProcessUnrecognisedSceneObjectDuringVisualSpatialFieldConstruction());
     pm.addPrimitive("set-time-to-retrieve-fixation-from-perceiver", new org.nlogo.extensions.chrest.architecture.chrest.SetTimeToRetrieveFixationFromPerceiver());
