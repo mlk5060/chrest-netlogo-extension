@@ -12,19 +12,20 @@ import org.nlogo.extensions.chrest.ChrestExtension;
  *
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
-public class SetCreateTemplates extends DefaultCommand {
-  
+public class SetCanCreateSemanticLinks extends DefaultCommand {
+
   @Override
   public Syntax getSyntax(){
     return Syntax.commandSyntax(new int[]{Syntax.BooleanType()});
   }
-
+  
   /**
-   * Invokes {@link jchrest.architecture.Chrest#setCreateTemplates(boolean)} in
-   * context of the calling turtle's {@link jchrest.architecture.Chrest} model.
+   * Invokes {@link jchrest.architecture.Chrest#setCanCreateSemanticLinks(boolean)}
+   * in context of the calling turtle's {@link jchrest.architecture.Chrest} 
+   * model.
    * 
    * @param args See parameter descriptions for {@link 
-   * jchrest.architecture.Chrest#setCreateTemplates(boolean)}.
+   * jchrest.architecture.Chrest#setCanCreateSemanticLinks(boolean)}.
    * @param context
    * 
    * @throws ExtensionException
@@ -32,7 +33,7 @@ public class SetCreateTemplates extends DefaultCommand {
    */
   @Override
   public void perform(Argument[] args, Context context) throws ExtensionException, LogoException {
-    ChrestExtension.getTurtlesChrestInstance(context).setCreateTemplates(args[0].getBooleanValue());
+    ChrestExtension.getTurtlesChrestInstance(context).setCanCreateSemanticLinks(args[0].getBooleanValue());
   }
   
 }
