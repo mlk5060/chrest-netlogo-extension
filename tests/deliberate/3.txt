@@ -1,0 +1,195 @@
+;====================
+;===== TEST AIM =====
+;====================
+;
+; To determine if the "deliberation" prodcedure produces expected output when:
+; 1. The calling turtle is a CHREST turtle.
+; 2. The calling turtle can use pattern recognition but is guaranteed to use
+;    problem-solving.
+; 3. The calling turtle does not have a hypothesis in visual STM.
+; 4. The calling turtle has a Fixation in the attempted Fixation
+;    data structure found in the jchrest.architecture.Perceiver
+;    instance associated with the calling turtle's 
+;    jchrest.architecture.Chrest instance. The Fixation may/may not
+;    have included a tile.
+;
+;============================
+;===== TEST DESCRIPTION =====
+;============================
+;
+; A CHREST turtle is setup according to the instructions in the previous 
+; section.
+;                                        
+;===========================
+;===== EXPECTED OUTPUT =====
+;===========================
+;
+; - The time taken to deliberate should be equal to the value of the 
+;   CHREST turtle's 'time-to-retrieve-fixation-from-perceiver' since the 
+;   last Fixation performed will be retrieved from visual STM.  Even 
+;   though the CHREST turtle will attempt to retrieve the visual STM 
+;   hypothesis, this will not incur a time cost since visual STM will
+;   be empty.  The 'time-to-retrieve-fixation-from-perceiver' will then 
+;   be added to:
+;   ~ The CHREST turtle's 'time-to-generate-action-when-no-tile-seen' 
+;     variable if a tile's location was not encoded in the visual STM
+;     hypothesis.
+;   ~ The CHREST turtle's 'time-to-generate-action-when-tile-seen' 
+;     variable if a tile's location was encoded in the visual STM
+;     hypothesis.
+;   
+; - The CHREST turtle's 'frequency-of-pattern-recognitions' variable should
+;   be equal to 0 whilst its 'frequency-of-problem-solving' variable should
+;   be equal to 1.
+;
+; - The CHREST turtle's 'total-deliberation-time' variable should equal 
+;   the time taken to deliberate (see above).
+; 
+; - The CHREST turtle's episodic memory should contain 1 episode, i.e. the
+;   one just added and this should have specific contents.
+;
+<test>
+	let counter 0
+	let tile-included-in-fixation (false)
+	let tile-not-included-in-fixation (false)
+	while[counter < 50][
+		
+		create-chrest-turtles 1[
+
+			;Set variables that affect the test's outcome.
+			set can-use-pattern-recognition? (true)
+			set probability-of-using-problem-solving (1.0)
+			set play-time (14400000.0)
+			set time-to-generate-action-when-tile-seen (100)
+			set time-to-generate-action-when-no-tile-seen (50)
+			set time-to-retrieve-fixation-from-perceiver (200)
+
+			;Set variables unrelated to test but required to get the
+			;test to work
+			set can-plan? (ifelse-value (random-float (1.0) < 0.5) [false] [true])
+			set max-fixations-in-set (10)
+			set initial-fixation-threshold (3)
+			set peripheral-item-fixation-max-attempts (3)
+			set reinforcement-learning-theory ("profit_sharing_with_discount_rate")
+			set recognised-visual-spatial-field-object-lifespan (0)
+			set time-to-access-visual-spatial-field (0)
+			set time-to-encode-recognised-scene-object-as-visual-spatial-field-object (0)
+			set time-to-encode-unrecognised-empty-square-scene-object-as-visual-spatial-field-object (0)
+			set time-to-encode-unrecognised-non-empty-square-scene-object-as-visual-spatial-field-object (0)
+			set time-to-move-visual-spatial-field-object (0)
+			set time-to-process-unrecognised-scene-object-during-visual-spatial-field-construction (0)
+			set unrecognised-visual-spatial-field-object-lifespan (0)
+		]
+		setup (true)
+
+		ask turtle 0 [
+
+			let tile-seen-in-fixation (chrest:TileworldModelTests#Deliberate.test-3)
+
+			ifelse (tile-seen-in-fixation)[
+				set tile-included-in-fixation (true)
+			]
+			[
+				set tile-not-included-in-fixation (true)
+			]
+
+			set current-training-time (1)
+
+			let deliberation-result (deliberate)
+			
+			;===========;
+			;== TESTS ==;
+			;===========;
+
+			check-equal 
+				(deliberation-result)
+				time-to-retrieve-fixation-from-perceiver + (ifelse-value (tile-seen-in-fixation) 
+					[time-to-generate-action-when-tile-seen] 
+					[time-to-generate-action-when-no-tile-seen]
+				)
+				("when checking the value of the time taken to deliberate returned by the procedure")
+
+			check-equal
+				(frequency-of-pattern-recognitions)
+				(0)
+				("when checking the 'frequency-of-pattern-recognitions' turtle variable")
+
+			check-equal
+				(frequency-of-problem-solving)
+				(1)
+				("when checking the 'frequency-of-problem-solving' turtle variable")
+
+			check-equal
+				(total-deliberation-time)
+				time-to-retrieve-fixation-from-perceiver + (ifelse-value (tile-seen-in-fixation) 
+					[time-to-generate-action-when-tile-seen] 
+					[time-to-generate-action-when-no-tile-seen]
+				)
+				("when checking the 'total-deliberation-time' turtle variable")
+
+			;===========================;
+			;== CHECK EPISODIC MEMORY ==;
+			;===========================;
+
+			;Check that an episode has been added by "deliberate"
+
+			check-equal
+				(length episodic-memory)
+				(1)
+				("when checking the length of episodic memory")
+
+			;Check that the episode added by "deliberate" has the 
+			;correct structure
+
+			let most-recent-episode (last (episodic-memory))
+
+			;The visual part of the episode should be the result of getting
+			;all objects seen when the last Fixation performed was made after
+			;"normalising" this (hence the second parameter to the relevant
+			;extension primitive being set to 'true') as a jchrest.lib.ListPattern.
+			check-equal
+				(chrest:ListPattern.get-as-string (item (0) (most-recent-episode)))
+				(chrest:ListPattern.get-as-string
+					(chrest:Perceiver.get-objects-seen-in-fixation-field-of-view
+						(item (0) (chrest:Perceiver.get-fixations-performed (report-current-time))) 
+						(true)
+					)
+				)
+				("when checking the visual part of the episode just added")
+
+			;The action part of the episode should be the action returned as a 
+			;jchrest.lib.ItemSquarePattern enclosed in a jchrest.lib.ListPattern.
+			check-test-output
+				(list (chrest:ListPattern.get-as-string (item (1) (most-recent-episode))))
+				(ifelse-value (tile-seen-in-fixation) 
+					[(list
+						(chrest:ListPattern.get-as-string (chrest:ListPattern.new (list (chrest:ItemSquarePattern.new (push-tile-token) (0) (1))) (chrest:Modality.value-of ("ACTION"))))
+						(chrest:ListPattern.get-as-string (chrest:ListPattern.new (list (chrest:ItemSquarePattern.new (move-token) (90) (1))) (chrest:Modality.value-of ("ACTION"))))
+						(chrest:ListPattern.get-as-string (chrest:ListPattern.new (list (chrest:ItemSquarePattern.new (move-token) (270) (1))) (chrest:Modality.value-of ("ACTION"))))
+					)]
+					[(map 
+						([(chrest:ListPattern.get-as-string (chrest:ListPattern.new 
+							(list (chrest:ItemSquarePattern.new (move-randomly-token) (?) (1)))
+							(chrest:Modality.value-of ("ACTION"))
+						))]) 
+						(movement-headings)
+					)]
+				)
+				("when checking the action part of the episode just added")
+
+			check-equal
+				(item (2) (most-recent-episode))
+				(-1)
+				("when checking the time the episode is performed")
+		]
+
+		if(
+			tile-included-in-fixation and 
+			tile-not-included-in-fixation
+		)[
+			set counter (counter + 1)
+		]
+
+		reset (true)
+	]
+</test>

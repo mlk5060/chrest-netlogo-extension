@@ -1,0 +1,135 @@
+;==============================
+;========== TEST AIM ==========
+;==============================
+;
+; To determine if the "push-tile" procedure generates the expected output if
+; a player turtle, P, runs the "push-tile" procedure and a visible hole exists 
+; 1 patch along the heading that a tile is to be pushed.
+;
+;======================================
+;========== TEST DESCRIPTION ==========
+;====================================== 
+;
+; - For each value in the global 'movement-headings' list and for each breed of
+;   turtle in the model (including holes):
+;   ~ A player turtle, the "pusher", is created.
+;   ~ A tile is created immediately ahead of the player turtle along the heading 
+;     specified.
+;   ~ A hole is created immediately ahead of the tile along the heading specified
+;     and its 'hidden?' turtle variable is set to 'false'.
+;   ~ A hole is created immediately ahead of the tile along the heading specified
+;     and its 'hidden?' turtle variable is set to 'true'.
+;   ~ The pusher invokes the "push-tile" procedure and passes the heading specified 
+;     as input.
+;
+;=====================================
+;========== TESTS PERFORMED ==========
+;=====================================
+; 
+; - The result of the "push-tile" procedure is checked:
+;   ~ Boolean true should always be reported with respect to whether the action was 
+;     performed successfully.
+;   ~ Boolean true should always be reported with respect to whether a hole was
+;     filled as a result of the action being performed.
+;
+; - The pusher's 'score' turtle variable is incremented to 1.
+; - The pusher is located 1 patch along the heading specified from its original 
+;   location.
+; - The tile and visible hole are no longer present in the environment but the hidden 
+;   hole is (a sum of the number of tiles and holes in the environment should equal 1
+;   since the visible hole should have died along with the tile but the hidden hole
+;   should still exist).
+;
+<test>
+	foreach(movement-headings)[
+		let heading-specified (?)
+
+		;====================;
+		;== CREATE TURTLES ==;
+		;====================;
+
+		create-chrest-turtles 1
+
+		if(heading-specified = 0)[
+			create-tiles 1 [ setxy ( ([pxcor] of turtle 0) ) ( ([pycor] of turtle 0) + 1 ) ]
+			create-holes 2 [ setxy ( ([pxcor] of turtle 0) ) ( ([pycor] of turtle 0) + 2 ) ]
+		]
+
+		if(heading-specified = 90)[
+			create-tiles 1 [ setxy ( ([pxcor] of turtle 0) + 1 ) ( ([pycor] of turtle 0) ) ]
+			create-holes 2 [ setxy ( ([pxcor] of turtle 0) + 2 ) ( ([pycor] of turtle 0) ) ]
+		]
+
+		if(heading-specified = 180)[
+			create-tiles 1 [ setxy ( ([pxcor] of turtle 0) ) ( ([pycor] of turtle 0) - 1 ) ]
+			create-holes 2 [ setxy ( ([pxcor] of turtle 0) ) ( ([pycor] of turtle 0) - 2 ) ]
+		]
+
+		if(heading-specified = 270)[
+			create-tiles 1 [ setxy ( ([pxcor] of turtle 0) - 1 ) ( ([pycor] of turtle 0) ) ]
+			create-holes 2 [ setxy ( ([pxcor] of turtle 0) - 2 ) ( ([pycor] of turtle 0) ) ]
+		]
+
+		;==============================================;
+		;== SET 'hidden?' TURTLE VARIABLES FOR HOLES ==;
+		;==============================================;
+
+		ask turtle 2 [
+			set hidden? (false)
+		]
+
+		ask turtle 3 [
+			set hidden? (true)
+		]
+
+		;============================================;
+		;== SET EXPECTED TURTLE LOCATION VARIABLES ==;
+		;============================================;
+
+		let pusher-expected-location []
+		let hidden-hole-expected-location []
+
+		ask turtle 0 [
+			if (heading-specified = 0)[ set pusher-expected-location ( list ([xcor] of self) (([ycor] of self) + 1) ) ]
+			if (heading-specified = 90)[ set pusher-expected-location ( list (([xcor] of self) + 1) ([ycor] of self) ) ]
+			if (heading-specified = 180)[ set pusher-expected-location ( list ([xcor] of self) (([ycor] of self) - 1) ) ]
+			if (heading-specified = 270)[ set pusher-expected-location ( list (([xcor] of self) - 1) ([ycor] of self) ) ]
+		]
+
+		ask turtle 3 [
+			set hidden-hole-expected-location (list (xcor) (ycor))
+		]
+
+		;===========;
+		;== TESTS ==;
+		;===========;
+
+		ask turtle 0 [
+			check-equal 
+				(push-tile (heading-specified)) 
+				(list (true) (true))
+				("when checking the output of the 'push-tile' procedure")
+
+			check-equal
+				(score)
+				(1)
+				("when checking the 'score' of the 'pusher'")
+		]
+
+		check-equal 
+			( 
+				([xcor] of turtle 0) = (item (0) (pusher-expected-location)) and 
+				([ycor] of turtle 0) = (item (1) (pusher-expected-location)) 
+			) 
+			(true)
+			("when checking the location of the 'pusher'")
+
+
+		check-equal 
+			( (count (tiles)) + (count (holes)) ) 
+			(1)
+			("when checking the number of tiles and holes in the environment")
+
+		reset (true)
+	]
+</test>

@@ -1,0 +1,74 @@
+;====================
+;===== TEST AIM =====
+;====================
+;
+; To determine if the "age" procedure operates as expected.
+;
+;============================
+;===== TEST DESCRIPTION =====
+;============================
+; 
+; 1) Two tiles and one hole are created (the only breed that 'age'
+;     affects).
+; 2) All tiles and holes have their 'time-created' turtle variable
+;    set to 0.
+; 3) First tile has its lifespan set to 1000, the second has its
+;    lifespan set to 2000 and the hole has its lifespan set to 3000.
+; 4) The 'age' procedure is invoked 1000 times for 3 sets with the 
+;    model clock being incremented by 1 and the 'age' procedure 
+;    being called immediately afterwards each time.
+; 5) After each set of 1000 'age' procedure calls, the number of 
+;    tiles and holes in the model is checked.
+;
+;===========================
+;===== EXPECTED OUTPUT =====
+;===========================
+;
+; - After the first set of 1000 'age' procedure calls, only 1 tile
+;   and 1 hole should exist in the model.
+; - After the second set of 1000 'age' procedure calls, only 1 hole 
+;   should exist in the model.
+; - After the third set of 1000 'age' procedure calls, no turtles 
+;   should exist in the model.
+;
+<test>
+
+	create-tiles 1 [ 
+		set lifespan 1000
+		set time-created 0 
+	]
+
+	create-tiles 1 [ 
+		set lifespan 2000 
+		set time-created 0 
+	]
+
+	create-holes 1 [ 
+		set lifespan 3000 
+		set time-created 0 
+	]
+
+	repeat (1000)[
+		set current-training-time (current-training-time + 1)
+		age
+	]
+
+	check-equal (count tiles-on patches) (1) ("when checking the number of tiles after 1000ms have passed")
+	check-equal (count holes-on patches) (1) ("when checking the number of holes after 1000ms have passed")
+
+	repeat (1000)[
+		set current-training-time (current-training-time + 1)
+		age
+	]
+
+	check-equal (count tiles-on patches) (0) ("when checking the number of tiles after 2000ms have passed")
+	check-equal (count holes-on patches) (1) ("when checking the number of holes after 2000ms have passed")
+
+	repeat (1000)[
+		set current-training-time (current-training-time + 1)
+		age
+	]
+	
+	check-equal (count tiles-on patches) (0) ("when checking the number of tiles after 3000ms have passed")
+	check-equal (count holes-on patches) (0) ("when checking the number of holes after 3000ms have passed")
+</test>

@@ -1,0 +1,155 @@
+;====================
+;===== TEST AIM =====
+;====================
+;
+; To determine if the "deliberation" procedure produces expected output when:
+; 1. The calling turtle is a CHREST turtle
+; 2. The calling turtle can use pattern recognition
+; 3. The calling turtle has visual Nodes with productions in visual STM
+;
+;============================
+;===== TEST DESCRIPTION =====
+;============================
+;
+; A CHREST turtle is setup and its visual STM is populated with two visual 
+; Nodes.  The first visual Node has 2 productions and the second has 1.  
+; 
+; The first visual Node has an information count of 1 whilst the second has
+; an information count of 0, guaranteeing the first Node to be the one 
+; selected during the first round of roulette selection (what visual Node
+; to use) during Chrest.getActionUsingVisualPatternRecognition().
+;
+; The first production of visual Node 1 prescribes that the turtle should
+; push a tile south twice and whose rating is 1.0. The second visual Node has a 
+; production to an action Node whose contents/image prescribe that the turtle
+; should move south and whose rating is 0.0.  Therefore, the first production
+; should always be selected and the second should never be selected due to 
+; their values.
+;
+; Note that the production selected is a jchrest.lib.ListPattern composed of
+; two jchrest.lib.ItemSquarePatterns.  This ensures that sequential actions
+; are parsed and returned correctly by the procedure.
+;   
+;===========================
+;===== EXPECTED OUTPUT =====
+;===========================
+;
+; - The time taken to deliberate should equal the time the CHREST turtle takes 
+;   to use pattern-recognition, i.e. its 'time-to-retrieve-item-from-stm' 
+;   multiplied by how many Nodes are in visual STM when deliberation is invoked.
+; - The CHREST turtle's 'frequency-of-pattern-recognitions' variable should
+;   be equal to 1.
+; - The CHREST turtle's 'frequency-of-problem-solving' variable should
+;   be equal to 0.
+; - The CHREST turtle's 'total-deliberation-time' variable should equal 
+;   the time taken to deliberate (see above).
+; - The CHREST turtle's episodic memory should contain 1 episode, i.e. the
+;   one just added and this should have specific contents.
+;
+<test>
+	repeat 50 [
+		
+		create-chrest-turtles 1[
+
+			;Set variables that affect the test's outcome.
+			set can-use-pattern-recognition? (true)
+			set probability-of-using-problem-solving (0.0)
+			set play-time (14400000.0)
+			set time-to-retrieve-item-from-stm (50)
+
+			;Set variables unrelated to test but required to get the
+			;test to work
+			set can-plan? (false)
+			set max-fixations-in-set (10)
+			set initial-fixation-threshold (3)
+			set peripheral-item-fixation-max-attempts (3)
+			set reinforcement-learning-theory ("profit_sharing_with_discount_rate")
+			set recognised-visual-spatial-field-object-lifespan (0)
+			set time-to-access-visual-spatial-field (0)
+			set time-to-encode-recognised-scene-object-as-visual-spatial-field-object (0)
+			set time-to-encode-unrecognised-empty-square-scene-object-as-visual-spatial-field-object (0)
+			set time-to-encode-unrecognised-non-empty-square-scene-object-as-visual-spatial-field-object (0)
+			set time-to-move-visual-spatial-field-object (0)
+			set time-to-process-unrecognised-scene-object-during-visual-spatial-field-construction (0)
+			set unrecognised-visual-spatial-field-object-lifespan (0)
+		]
+		setup (true)
+
+		ask turtle 0 [
+
+			chrest:TileworldModelTests#Deliberate.test-1
+
+			set current-training-time (1)
+
+			let deliberation-result (deliberate)
+			
+			;===========;
+			;== TESTS ==;
+			;===========;
+
+			check-equal 
+				(deliberation-result)
+				(time-to-retrieve-item-from-stm * 2)
+				("when checking the value of the time taken to deliberate returned by the procedure")
+
+			check-equal
+				(frequency-of-pattern-recognitions)
+				(1)
+				("when checking the 'frequency-of-pattern-recognitions' turtle variable")
+
+			check-equal
+				(frequency-of-problem-solving)
+				(0)
+				("when checking the 'frequency-of-problem-solving' turtle variable")
+
+			check-equal
+				(total-deliberation-time)
+				(time-to-retrieve-item-from-stm * 2)
+				("when checking the 'total-deliberation-time' turtle variable")
+
+			;===========================;
+			;== CHECK EPISODIC MEMORY ==;
+			;===========================;
+
+			;Check that an episode has been added by "deliberate"
+
+			check-equal
+				(length episodic-memory)
+				(1)
+				("when checking the length of episodic memory")
+
+			;Check that the episode added by "deliberate" has the 
+			;correct structure
+
+			let most-recent-episode (last (episodic-memory))
+			check-equal
+				(chrest:ListPattern.get-as-string (item (0) (most-recent-episode)))
+				(chrest:ListPattern.get-as-string 
+					(chrest:ListPattern.new 
+						(list (chrest:ItemSquarePattern.new ("T") (0) (-1))) 
+						(chrest:Modality.value-of ("VISUAL"))
+					)
+				)
+				("when checking the first item of the episode just added")
+
+			check-equal
+				(chrest:ListPattern.get-as-string (item (1) (most-recent-episode)))
+				(chrest:ListPattern.get-as-string 
+					(chrest:ListPattern.new 
+						(list 
+							(chrest:ItemSquarePattern.new ("PT") (180) (1))
+							(chrest:ItemSquarePattern.new ("PT") (180) (1))
+						) 
+						(chrest:Modality.value-of ("ACTION"))
+					)
+				)
+				("when checking the second item of the episode just added")
+
+			check-equal
+				(item (2) (most-recent-episode))
+				(-1)
+				("when checking the third item of the episode just added")
+		]
+		reset (true)
+	]
+</test>

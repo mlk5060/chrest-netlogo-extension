@@ -1,0 +1,158 @@
+;==============================
+;========== TEST AIM ==========
+;==============================
+;
+; To determine if the "push-tile" procedure generates the expected output if
+; a player turtle, P, runs the "push-tile" procedure and a tile is blocked from
+; being pushed along the heading passed to the "push-tile" procedure.
+;
+;======================================
+;========== TEST DESCRIPTION ==========
+;====================================== 
+;
+; - For each value in the global 'movement-headings' list and for each breed of
+;   turtle in the model that isn't a "hole" (holes are the only turtle breed that
+;   do not block tiles):
+;   ~ A player turtle, the "pusher" is created.
+;   ~ A tile is created immediately ahead of the player turtle along the heading 
+;     specified.
+;   ~ An instance of the turtle breed specified, the "blocker" is created immediately 
+;     ahead of the tile along the heading specified.
+;   ~ The pusher invokes the "push-tile" procedure and passes the heading specified 
+;     as input.
+;
+;=====================================
+;========== TESTS PERFORMED ==========
+;=====================================
+;
+; - The result of the "push-tile" procedure is checked:
+;   ~ Boolean false should always be reported with respect to whether the action was 
+;     performed successfully.
+;   ~ Boolean false should always be reported with respect to whether a hole was
+;     filled as a result of the action being performed.
+;
+; - The pusher's 'score' turtle variable is still equal to 0.
+; - The pusher, tile and blocker are all located on the patches they were originally 
+;   placed on.
+;
+<test>
+	
+	foreach(movement-headings)[
+		let heading-specified (?)
+
+		foreach (breeds)[
+			let blocker-breed (?)
+
+			if (blocker-breed != "holes")[
+
+				;====================;
+				;== CREATE TURTLES ==;
+				;====================;
+
+				create-chrest-turtles 1
+
+				if(heading-specified = 0)[
+					create-tiles 1 [ 
+						setxy ( ([pxcor] of turtle 0) ) ( ([pycor] of turtle 0) + 1 ) 
+					]
+
+					run (word "create-" blocker-breed " 1 [ 
+						setxy ( ([pxcor] of turtle 0) ) ( ([pycor] of turtle 0) + 2 )
+					]")
+				]
+
+				if(heading-specified = 90)[
+					create-tiles 1 [ 
+						setxy ( ([pxcor] of turtle 0) + 1 ) ( ([pycor] of turtle 0) )
+					]
+
+					run (word "create-" blocker-breed " 1 [ 
+						setxy ( ([pxcor] of turtle 0) + 2 ) ( ([pycor] of turtle 0) ) 
+					]")
+				]
+
+				if(heading-specified = 180)[
+					create-tiles 1 [ 
+						setxy ( ([pxcor] of turtle 0) ) ( ([pycor] of turtle 0) - 1 )
+					]
+
+					run (word "create-" blocker-breed " 1 [ 
+						setxy ( ([pxcor] of turtle 0) ) ( ([pycor] of turtle 0) - 2 ) 
+					]")
+				]
+
+				if(heading-specified = 270)[
+					create-tiles 1 [ 
+						setxy ( ([pxcor] of turtle 0) - 1 ) ( ([pycor] of turtle 0) ) 
+					]
+
+					run (word "create-" blocker-breed " 1 [ 
+						setxy ( ([pxcor] of turtle 0) - 2 ) ( ([pycor] of turtle 0) ) 
+					]")
+				]
+			
+				;=====================================;
+				;== SET ORIGINAL LOCATION VARIABLES ==;
+				;=====================================;
+
+				let pusher-expected-location []
+				let tile-expected-location []
+				let blocker-expected-location []
+
+				ask turtle 0 [
+					set pusher-expected-location (list (xcor) (ycor))
+				]
+
+				ask turtle 1 [
+					set tile-expected-location (list (xcor) (ycor))
+				]
+
+				ask turtle 2 [
+					set blocker-expected-location (list (xcor) (ycor))
+				]
+
+				;===========;
+				;== TESTS ==;
+				;===========;
+
+				ask turtle 0 [
+					check-equal 
+						(push-tile (heading-specified)) 
+						( list (false) (false) ) 
+						("when checking the output of the 'push-tile' procedure")
+
+					check-equal
+						(score)
+						(0)
+						("when checking the 'score' of the 'pusher'")
+				]
+
+				check-equal 
+					( 
+						([xcor] of turtle 0) = (item (0) (pusher-expected-location)) and 
+						([ycor] of turtle 0) = (item (1) (pusher-expected-location)) 
+					) 
+					(true)
+					("when checking the location of the 'pusher'")
+
+				check-equal 
+					( 
+						([xcor] of turtle 1) = (item (0) (tile-expected-location)) and 
+						([ycor] of turtle 1) = (item (1) (tile-expected-location)) 
+					)
+					(true) 
+					("when checking the location of the tile")
+
+				check-equal 
+					( 
+						([xcor] of turtle 2) = (item (0) (blocker-expected-location)) and 
+						([ycor] of turtle 2) = (item (1) (blocker-expected-location)) 
+					)
+					(true) 
+					("when checking the location of the 'blocker'")
+
+				reset (true)
+			]
+		]
+	]
+</test>

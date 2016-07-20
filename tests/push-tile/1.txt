@@ -1,0 +1,55 @@
+;==============================
+;========== TEST AIM ==========
+;==============================
+; 
+; To determine if the "push-tile" procedure generates the expected output if
+; a player turtle runs the "push-tile" procedure but no tiles exist in the
+; environment.
+;
+;======================================
+;========== TEST DESCRIPTION ==========
+;====================================== 
+;
+; - A player turtle, the pusher, is created.
+; - The pusher invokes the "push-tile" procedure and each value in the global 
+;   'movement-headings' variable is passed as input.
+;
+;=====================================
+;========== TESTS PERFORMED ==========
+;=====================================
+; 
+; - The result of the "push-tile" procedure is checked:
+;   ~ Boolean false should always be reported with respect to whether the action was 
+;     performed successfully.
+;   ~ Boolean false should always be reported with respect to whether a hole was
+;     filled as a result of the action being performed.
+;
+; - The pusher is located on the patch it was originally placed on.
+; - The pusher's 'score' turtle variable is still equal to 0.
+;
+<test>
+	let initial-patch ""
+	
+	create-chrest-turtles 1 [ 
+		set initial-patch (patch-here) 
+	]
+
+	foreach(movement-headings)[
+		ask turtle 0 [ 
+			check-equal 
+				(push-tile (?)) 
+				( list (false) (false) ) 
+				("when checking the output of the 'push-tile' procedure")
+			
+			check-equal 
+				(patch-here) 
+				(initial-patch) 
+				("when checking the location of the 'pusher'")
+
+			check-equal
+				(score)
+				(0)
+				("when checking the 'score' of the 'pusher'")
+		]
+	]
+</test>
