@@ -39,14 +39,12 @@ src/org/nlogo/extensions/chrest/architecture/chrest/GetVisualSpatialField.java
 src/org/nlogo/extensions/chrest/architecture/chrest/GetVisualSpatialFieldObjectLocations.java
 src/org/nlogo/extensions/chrest/architecture/chrest/IsAttentionFree.java
 src/org/nlogo/extensions/chrest/architecture/chrest/LearnProduction.java
-src/org/nlogo/extensions/chrest/architecture/chrest/LoadLtmState.java
 src/org/nlogo/extensions/chrest/architecture/chrest/MoveObjectsInVisualSpatialField.java
 src/org/nlogo/extensions/chrest/architecture/chrest/New.java
 src/org/nlogo/extensions/chrest/architecture/chrest/RecogniseAndLearn.java
 src/org/nlogo/extensions/chrest/architecture/chrest/Recognise.java
 src/org/nlogo/extensions/chrest/architecture/chrest/ReinforceProduction.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SaveLtmNetworkImage.java
-src/org/nlogo/extensions/chrest/architecture/chrest/SaveLtmState.java
 src/org/nlogo/extensions/chrest/architecture/chrest/ScheduleOrMakeNextFixation.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetAddProductionTime.java
 src/org/nlogo/extensions/chrest/architecture/chrest/SetCanCreateSemanticLinks.java

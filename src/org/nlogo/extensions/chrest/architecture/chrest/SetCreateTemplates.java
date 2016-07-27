@@ -12,7 +12,7 @@ import org.nlogo.extensions.chrest.ChrestExtension;
  *
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
-public class SetCanCreateTemplates extends DefaultCommand {
+public class SetCreateTemplates extends DefaultCommand {
   
   @Override
   public Syntax getSyntax(){
@@ -20,11 +20,11 @@ public class SetCanCreateTemplates extends DefaultCommand {
   }
 
   /**
-   * Invokes {@link jchrest.architecture.Chrest#setCanCreateTemplates(boolean)} in
+   * Invokes {@link jchrest.architecture.Chrest#setCreateTemplates(boolean)} in
    * context of the calling turtle's {@link jchrest.architecture.Chrest} model.
    * 
    * @param args See parameter descriptions for {@link 
-   * jchrest.architecture.Chrest#setCanCreateTemplates(boolean)}.
+   * jchrest.architecture.Chrest#setCreateTemplates(boolean)}.
    * @param context
    * 
    * @throws ExtensionException
@@ -32,7 +32,7 @@ public class SetCanCreateTemplates extends DefaultCommand {
    */
   @Override
   public void perform(Argument[] args, Context context) throws ExtensionException, LogoException {
-    ChrestExtension.getTurtlesChrestInstance(context).setCanCreateTemplates(args[0].getBooleanValue());
+    ChrestExtension.getTurtlesChrestInstance(context).setCreateTemplates(args[0].getBooleanValue());
   }
   
 }

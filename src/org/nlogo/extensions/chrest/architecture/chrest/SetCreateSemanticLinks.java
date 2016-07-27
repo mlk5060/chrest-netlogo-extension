@@ -12,28 +12,28 @@ import org.nlogo.extensions.chrest.ChrestExtension;
  *
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
-public class SaveLtmState extends DefaultCommand {
-  
+public class SetCreateSemanticLinks extends DefaultCommand {
+
   @Override
   public Syntax getSyntax(){
-    return Syntax.commandSyntax(
-      new int[]{
-        Syntax.StringType(),
-        Syntax.NumberType()
-      }
-    );
+    return Syntax.commandSyntax(new int[]{Syntax.BooleanType()});
   }
-
+  
   /**
+   * Invokes {@link jchrest.architecture.Chrest#setCreateSemanticLinks(boolean)}
+   * in context of the calling turtle's {@link jchrest.architecture.Chrest} 
+   * model.
    * 
-   * @param args
+   * @param args See parameter descriptions for {@link 
+   * jchrest.architecture.Chrest#setCreateSemanticLinks(boolean)}.
    * @param context
+   * 
    * @throws ExtensionException
    * @throws LogoException 
    */
   @Override
   public void perform(Argument[] args, Context context) throws ExtensionException, LogoException {
-    ChrestExtension.getTurtlesChrestInstance(context).saveLtmState(args[0].getString(), args[1].getIntValue());
+    ChrestExtension.getTurtlesChrestInstance(context).setCreateSemanticLinks(args[0].getBooleanValue());
   }
   
 }
