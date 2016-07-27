@@ -89,12 +89,14 @@ public class ChrestExtension extends DefaultClassManager {
     pm.addPrimitive("get-visual-spatial-field-object-locations", new org.nlogo.extensions.chrest.architecture.chrest.GetVisualSpatialFieldObjectLocations());
     pm.addPrimitive("is-attention-free?", new org.nlogo.extensions.chrest.architecture.chrest.IsAttentionFree());
     pm.addPrimitive("learn-production", new org.nlogo.extensions.chrest.architecture.chrest.LearnProduction());
+    pm.addPrimitive("load-ltm-state", new org.nlogo.extensions.chrest.architecture.chrest.LoadLtmState());
     pm.addPrimitive("move-visual-spatial-field-objects", new org.nlogo.extensions.chrest.architecture.chrest.MoveObjectsInVisualSpatialField());
     pm.addPrimitive("new", new org.nlogo.extensions.chrest.architecture.chrest.New());
     pm.addPrimitive("recognise", new org.nlogo.extensions.chrest.architecture.chrest.Recognise());
     pm.addPrimitive("recognise-and-learn", new org.nlogo.extensions.chrest.architecture.chrest.RecogniseAndLearn());
     pm.addPrimitive("reinforce-production", new org.nlogo.extensions.chrest.architecture.chrest.ReinforceProduction());
     pm.addPrimitive("save-ltm-network-image", new org.nlogo.extensions.chrest.architecture.chrest.SaveLtmNetworkImage());
+    pm.addPrimitive("save-ltm-state", new org.nlogo.extensions.chrest.architecture.chrest.SaveLtmState());
     pm.addPrimitive("schedule-or-make-next-fixation", new org.nlogo.extensions.chrest.architecture.chrest.ScheduleOrMakeNextFixation());
     pm.addPrimitive("set-add-production-time", new org.nlogo.extensions.chrest.architecture.chrest.SetAddProductionTime());
     pm.addPrimitive("set-can-create-semantic-links", new org.nlogo.extensions.chrest.architecture.chrest.SetCanCreateSemanticLinks());
