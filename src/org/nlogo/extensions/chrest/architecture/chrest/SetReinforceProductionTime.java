@@ -12,19 +12,20 @@ import org.nlogo.extensions.chrest.ChrestExtension;
  *
  * @author Martyn Lloyd-Kelly <martynlk@liverpool.ac.uk>
  */
-public class SetCreateTemplates extends DefaultCommand {
-  
+public class SetReinforceProductionTime extends DefaultCommand {
+
   @Override
   public Syntax getSyntax(){
-    return Syntax.commandSyntax(new int[]{Syntax.BooleanType()});
+    return Syntax.commandSyntax(new int[]{Syntax.NumberType()});
   }
-
+  
   /**
-   * Invokes {@link jchrest.architecture.Chrest#setCreateTemplates(boolean)} in
-   * context of the calling turtle's {@link jchrest.architecture.Chrest} model.
+   * Invokes {@link jchrest.architecture.Chrest#setReinforceProductionTime(int)}
+   * in context of the calling turtle's {@link jchrest.architecture.Chrest} 
+   * model.
    * 
    * @param args See parameter descriptions for {@link 
-   * jchrest.architecture.Chrest#setCreateTemplates(boolean)}.
+   * jchrest.architecture.Chrest#setReinforceProductionTime(int)}.
    * @param context
    * 
    * @throws ExtensionException
@@ -32,7 +33,7 @@ public class SetCreateTemplates extends DefaultCommand {
    */
   @Override
   public void perform(Argument[] args, Context context) throws ExtensionException, LogoException {
-    ChrestExtension.getTurtlesChrestInstance(context).setCreateTemplates(args[0].getBooleanValue());
+    ChrestExtension.getTurtlesChrestInstance(context).setReinforceProductionTime(args[0].getIntValue());
   }
   
 }
