@@ -2,7 +2,6 @@ package org.nlogo.extensions.chrest.architecture.chrest;
 
 import org.nlogo.extensions.chrest.ChrestExtension;
 import java.util.Iterator;
-import jchrest.architecture.Node;
 import jchrest.lib.ListPattern;
 import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
@@ -58,10 +57,11 @@ public class ReinforceProduction extends DefaultReporter {
     Iterator reinforcementVariablesIterator = reinforcementVariables.iterator();
     int variableCount = 1;
     while(reinforcementVariablesIterator.hasNext()){
-      String variable = reinforcementVariablesIterator.next().toString();
-      if(!variable.matches("-?[0-9]+\\.[0-9]+")){
-        throw new ExtensionException("Element " + variableCount + "(" + variable + ") in the list passed to this primitive is not a 'Double' object." );
+      Object listElement = reinforcementVariablesIterator.next();
+      if(!(reinforcementVariablesIterator.next() instanceof Double)){
+        throw new ExtensionException("Element " + variableCount + " (" + listElement + ") in the list passed to this primitive is not a 'Double' object." );
       }
+      variableCount++;
     }
     Double[] variablesToPass = reinforcementVariables.toArray(new Double[reinforcementVariables.size()]);
 
